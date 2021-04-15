@@ -1,0 +1,16 @@
+<!--index.wxml-->
+<page-meta>
+  <navigation-bar
+    title="{{nbTitle}}"
+    front-color="{{nbFrontColor}}"
+    background-color="{{nbBackgroundColor}}"
+    color-animation-duration="2000"
+    color-animation-timing-func="easeIn"
+  />
+</page-meta>
+<view class="container">
+</view>
+
+
+
+
