@@ -1,0 +1,45 @@
+<!--mine.wxml-->
+<page-meta style="fontsize: 25">
+  <navigation-bar
+    title="{{nbTitle}}"
+    loading="{{nbLoading}}"
+    front-color="{{nbFrontColor}}"
+    background-color="{{nbBackgroundColor}}"
+    color-animation-duration="2000"
+    color-animation-timing-func="easeIn"
+  />
+</page-meta>
+
+<view
+  style="width: 750rpx; background: #FFFFFF; min-height: 100px; height: 301rpx; display: block; box-sizing: border-box; left: NaNrpx; top: NaNrpx">
+  <text class="iconfont icon-touxiang" style="position: relative; left: 66rpx; top: 88rpx; font-size: 65px"></text>
+  <button type="primary" bindtab="login_button" style="width: 276rpx; height: 84rpx; display: block; box-sizing: border-box; left: 22rpx; top: -26rpx; position: relative">点击登录</button>
+</view>
+
+  <view style="display: flex; flex-direction: column; min-height: 150px; padding: 10px; margin-bottom: 10px; width: 750rpx; height: 368rpx; box-sizing: border-box; left: NaNrpx; top: NaNrpx">
+    <view style="background-color: #FFFFFF; flex: 1;">
+      <text class="iconfont icon-fabu" style="position: relative; left: 46rpx; top: 15rpx;font-size:25px"></text>
+      <text style="position: relative; left: 75rpx; top: 15rpx;font-size:25px">我的发布</text>
+      <text class="iconfont icon-rightarrow"style="position: relative; left: 420rpx; top: 15rpx;font-size:20px"></text>
+    </view>
+    <view class="divLine"></view>
+    <view style="background-color: #FFFFFF; flex: 1;">
+      <text class="iconfont icon-dingdan" style="position: relative; left: 46rpx; top: 15rpx;font-size:25px"></text>
+      <text style="position: relative; left: 75rpx; top: 15rpx;font-size:25px">我的订单</text>
+      <text class="iconfont icon-rightarrow"style="position: relative; left: 420rpx; top: 15rpx;font-size:20px"></text>
+    </view>
+    <view class="divLine"></view>
+    <view style="background-color: #FFFFFF; flex: 1;">
+      <text class="iconfont icon-guanyu" style="position: relative; left: 46rpx; top: 15rpx;font-size:25px"></text>
+      <text style="position: relative; left: 75rpx; top: 15rpx;font-size:25px">关于我们</text>
+      <text class="iconfont icon-rightarrow"style="position: relative; left: 420rpx; top: 15rpx;font-size:20px"></text>
+    </view>
+    <view class="divLine"></view>
+  </view>
+
+
+            
+
+
+
+

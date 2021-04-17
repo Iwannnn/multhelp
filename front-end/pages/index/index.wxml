@@ -8,21 +8,14 @@
     color-animation-timing-func="easeIn"
   />
 </page-meta>
-<view
-  style="width: 750rpx; background: #ffffff; min-height: 100px; height: 1125rpx; display: block; box-sizing: border-box; left: NaNrpx; top: NaNrpx">
-  <!-- <view wx:for="{{helloworld}}" wx:key="key">
-    {{item}}
-  </view> -->
-  <form bindsubmit="formSubmit" bindreset="formReset">
-    <view class="section">
-      <view class="section__title">姓名</view>
-      <input name="name" placeholder="请输入姓名" />
-    </view>
-    <view class="btn-area">
-      <button formType="submit">提交</button>
-      <button formType="reset">重置</button>
-    </view>
-  </form>
+<view>
+  <swiper indicator-dots="{{indicatorDots}}"autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+    <block wx:for="{{background}}" wx:key="*this">
+      <swiper-item>
+        <image src="{{item}}"></image>
+      </swiper-item>
+    </block>
+  </swiper>
 </view>
 
 
