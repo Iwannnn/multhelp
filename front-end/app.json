@@ -42,8 +42,6 @@
     ]
   },
   "usingComponents": {
-    "mp-icon": "weui-miniprogram/icon/icon",
-    "mp-emoji": "@miniprogram-component-plus/emoji"
   },
   "style": "v2",
   "sitemapLocation": "sitemap.json"

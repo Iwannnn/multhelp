@@ -9,33 +9,67 @@
     color-animation-timing-func="easeIn"
   />
 </page-meta>
-
-<view
-  style="width: 750rpx; background: #FFFFFF; min-height: 100px; height: 301rpx; display: block; box-sizing: border-box; left: NaNrpx; top: NaNrpx">
+<block wx:if="{{!hasUserInfo}}">
+  <view
+    style="width: 750rpx; background: #FFFFFF; min-height: 100px; height: 301rpx; display: block; box-sizing: border-box; left: NaNrpx; top: NaNrpx">
   <text class="iconfont icon-touxiang" style="position: relative; left: 66rpx; top: 88rpx; font-size: 65px"></text>
-  <button type="primary" bindtab="login_button" style="width: 276rpx; height: 84rpx; display: block; box-sizing: border-box; left: 22rpx; top: -26rpx; position: relative">点击登录</button>
-</view>
-
+  <button type="primary" bindtap="getUserProfile" style="width: 276rpx; height: 84rpx; display: block; box-sizing: border-box; left: 22rpx; top: -26rpx; position: relative">点击登录</button>
+  </view>
+  <view style="display: flex; flex-direction: column; min-height: 150px; padding: 10px; margin-bottom: 10px; width: 750rpx; height: 216rpx; box-sizing: border-box; left: NaNrpx; top: NaNrpx">
+    <view class="divLine"></view>
+      <navigator url="../about/about" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+        <text class="iconfont icon-guanyu" style="position: relative; left: 44rpx; top: 25rpx; font-size: 25px"></text>
+        <text style="position: relative; left: 74rpx; top: 19rpx; font-size: 25px">关于我们</text>
+        <text class="iconfont icon-rightarrow"style="position: relative; left: 420rpx; top: 15rpx;font-size:20px" style="position: relative; left: 396rpx; top: 14rpx"></text>
+      </navigator>
+    <view style="position: relative; left: 0rpx; top: 44rpx" class="divLine"></view>
+  </view>
+</block>
+<block wx:else>
+  <view
+    style="width: 750rpx; background: #FFFFFF; min-height: 100px; height: 301rpx; display: block; box-sizing: border-box; left: NaNrpx; top: NaNrpx">
+    <image class="avatar" style="position: relative; left: 66rpx; top: 88rpx; width: 130rpx; height: 130rpx; display: inline-block; box-sizing: border-box" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+    <text class="userinfo-nickname" style="position: relative; left: 120rpx; top: 36rpx;font-size:30px;">{{userInfo.nickName}}</text>
+  </view>
   <view style="display: flex; flex-direction: column; min-height: 150px; padding: 10px; margin-bottom: 10px; width: 750rpx; height: 368rpx; box-sizing: border-box; left: NaNrpx; top: NaNrpx">
+    <view class="divLine"></view>
     <view style="background-color: #FFFFFF; flex: 1;">
-      <text class="iconfont icon-fabu" style="position: relative; left: 46rpx; top: 15rpx;font-size:25px"></text>
-      <text style="position: relative; left: 75rpx; top: 15rpx;font-size:25px">我的发布</text>
-      <text class="iconfont icon-rightarrow"style="position: relative; left: 420rpx; top: 15rpx;font-size:20px"></text>
+      <navigator url="myPost/myPost" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+        <text class="iconfont icon-fabu" style="position: relative; left: 46rpx; top: 15rpx;font-size:25px"></text>
+        <text style="position: relative; left: 75rpx; top: 15rpx;font-size:25px">我的发布</text>
+        <text class="iconfont icon-rightarrow"style="position: relative; left: 420rpx; top: 15rpx;font-size:20px"></text>
+      </navigator>
     </view>
     <view class="divLine"></view>
     <view style="background-color: #FFFFFF; flex: 1;">
-      <text class="iconfont icon-dingdan" style="position: relative; left: 46rpx; top: 15rpx;font-size:25px"></text>
-      <text style="position: relative; left: 75rpx; top: 15rpx;font-size:25px">我的订单</text>
-      <text class="iconfont icon-rightarrow"style="position: relative; left: 420rpx; top: 15rpx;font-size:20px"></text>
+      <navigator url="myOrder/myOrder" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+        <text class="iconfont icon-dingdan" style="position: relative; left: 46rpx; top: 15rpx;font-size:25px"></text>
+        <text style="position: relative; left: 75rpx; top: 15rpx;font-size:25px">我的订单</text>
+        <text class="iconfont icon-rightarrow"style="position: relative; left: 420rpx; top: 15rpx;font-size:20px"></text>
+      </navigator>
     </view>
     <view class="divLine"></view>
     <view style="background-color: #FFFFFF; flex: 1;">
-      <text class="iconfont icon-guanyu" style="position: relative; left: 46rpx; top: 15rpx;font-size:25px"></text>
-      <text style="position: relative; left: 75rpx; top: 15rpx;font-size:25px">关于我们</text>
-      <text class="iconfont icon-rightarrow"style="position: relative; left: 420rpx; top: 15rpx;font-size:20px"></text>
+      <navigator url="../about/about" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+        <text class="iconfont icon-guanyu" style="position: relative; left: 46rpx; top: 15rpx;font-size:25px"></text>
+        <text style="position: relative; left: 75rpx; top: 15rpx;font-size:25px">关于我们</text>
+        <text class="iconfont icon-rightarrow"style="position: relative; left: 420rpx; top: 15rpx;font-size:20px"></text>
+      </navigator>
     </view>
     <view class="divLine"></view>
   </view>
+</block>
+
+
+
+
+
+
+
+
+
+
+
 
 
             
