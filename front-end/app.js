@@ -17,9 +17,6 @@ App({
                       data: {
                         code: res.code
                       },
-                      success:res=>{
-                        console.log(res)
-                      }
                     })
                   } else {
                     console.log('登录失败！' + res.errMsg)
