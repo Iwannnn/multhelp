@@ -1,4 +1,5 @@
 // app.js
+
 App({
   onLaunch() {
     // 展示本地存储能力
@@ -19,6 +20,7 @@ App({
               },
             })
             this.globalData.code=res.code
+            // console.log("login ok")
         } else {
           console.log('登录失败！' + res.errMsg)
         }
@@ -27,7 +29,7 @@ App({
   },
   globalData: {
       userInfo: null,
-      doamin: "http://localhost:8080",
+      domain: "http://localhost:8080",
       code:"",
   }
 })

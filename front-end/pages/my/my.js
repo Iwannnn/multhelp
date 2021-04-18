@@ -4,7 +4,7 @@ Page({
     nbFrontColor: '#000000',
     nbBackgroundColor: '#ffffff',
     userInfo: {},
-    hasUserInfo: ""
+    hasUserInfo: 'false'
   },
   onLoad() {
     this.setData({
@@ -12,27 +12,27 @@ Page({
       nbLoading: false,
       nbFrontColor: '#000000',
       nbBackgroundColor: '#ffffff',
-    })
-    console.log(app.globalData.code)
+    }),
     this.canIUseProfile()
   },
-  canIUseProfile :function(){
+  canIUseProfile:function(){
     var that=this;
     wx.request({
-      url: app.globalData.domain+"/wx/account/checkUserProfile",
+      url:  app.globalData.domain +"/wx/account/checkUserProfile",
       data:{
         code:app.globalData.code
       },
-      success:res=>{
-        console.log(res.data)
-        if(res.data=="false"){
+      success:function(res){
+        if(res.data==false){
           that.setData({
-            hasUserInfo: 'false'
+            hasUserInfo: false
           })
         }else{
-          TouchList.setData({
-            hasUserInfo:'true',
-            userInfo:res.data
+          that.setData({
+            hasUserInfo: true
+          })
+          wx.request({
+            url: app.globalData.domain+"/wx/account/getUserProfile",
           })
         }
       }
@@ -49,10 +49,26 @@ Page({
           userInfo: res.userInfo,
           hasUserInfo: true
         })
+        this.setUserProfile(res.userInfo)
       }
     })
   },
-  setUserProfile:function(){
-
+  setUserProfile:function(userInfo){
+    wx.request({
+      url: app.globalData.domain+'/wx/account/updateUserProfile',
+      method:'POST',
+      data:{
+        avatarUrl: userInfo.avatarUrl,
+        city: userInfo.city,
+        country: userInfo.country,
+        gender: userInfo.gender,
+        language: userInfo.language,
+        nickName: userInfo.nickName,
+        province: userInfo.province,
+      },
+      success:function(res){
+        console.log("保存成功")
+      }
+    })
   }
 })

@@ -5,7 +5,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 
-public class ConnectDatabase {
+public class DatabaseUtils {
     private static String url = "jdbc:mysql://localhost:3306/mutualassistanceplatform?useUnicode=true&characterEncoding=utf8&useSSL=true";
     private static String username = "iwan";
     private static String password = "123456";
@@ -38,6 +38,7 @@ public class ConnectDatabase {
 
     public static void insertIntoDatabase(String table, String index, String info) throws Exception {
         String cmd = insertCmd(table, index, info);
+        System.out.println(cmd);
         connectDatabase();
         statement.executeUpdate(cmd);
         System.out.println(cmd);
@@ -62,6 +63,7 @@ public class ConnectDatabase {
     public static void updateDatabase(String table, String index, String indexInfo, String key, String keyInfo)
             throws Exception {
         String cmd = updateCmd(table, index, indexInfo, key, keyInfo);
+        System.out.println(cmd);
         connectDatabase();
         statement.executeUpdate(cmd);
         disconnectDatabase();
@@ -81,8 +83,9 @@ public class ConnectDatabase {
     public static String selectFromDatabase(String index, String table, String info) throws Exception {
         connectDatabase();
         String cmd = selectCmd(index, table, info);
+        System.out.println(cmd);
         resultSet = statement.executeQuery(cmd);
-        String res = null;
+        String res = "";
         while (resultSet.next()) {
             res += (resultSet.getObject(index));
         }
