@@ -45,11 +45,11 @@ public class ConnectDatabase {
     }
 
     public static String updateCmd(String table, String index, String indexInfo, String key, String keyInfo) {
-        StringBuilder cmd = new StringBuilder("UPDATE INTO `");
+        StringBuilder cmd = new StringBuilder("UPDATE `");
         cmd.append(table);
-        cmd.append("` SET`");
+        cmd.append("` SET `");
         cmd.append(index);
-        cmd.append("` = `'");
+        cmd.append("` = '");
         cmd.append(indexInfo);
         cmd.append("' WHERE `");
         cmd.append(key);

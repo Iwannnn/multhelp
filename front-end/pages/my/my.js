@@ -14,6 +14,7 @@ Page({
       nbBackgroundColor: '#ffffff',
     })
     console.log(app.globalData.code)
+    this.canIUseProfile()
   },
   canIUseProfile :function(){
     var that=this;
@@ -23,6 +24,7 @@ Page({
         code:app.globalData.code
       },
       success:res=>{
+        console.log(res.data)
         if(res.data=="false"){
           that.setData({
             hasUserInfo: 'false'
@@ -48,7 +50,9 @@ Page({
           hasUserInfo: true
         })
       }
-
     })
   },
+  setUserProfile:function(){
+
+  }
 })

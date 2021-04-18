@@ -10,14 +10,23 @@ import cn.iwannnn.mutualassistanceplatform.account.AccountProfile;
 @RequestMapping("wx/account")
 public class AccountProfileController extends AccountController {
 
-    // @RequestMapping("getUserProfile")
-    // public void getUserProfile(@RequestBody AccountProfile accountProfile) {
-    // accountProfile.saveProfile();
-    // }
+    @RequestMapping("setUserProfile")
+    public void setUserProfile(@RequestBody AccountProfile accountProfile) {
+        accountProfile.saveProfile();
+    }
 
     @RequestMapping("checkUserProfile")
     public String checkUserProfile(String code) {
         AccountProfile accountProfile = (AccountProfile) getAccount(code);
+        if (accountProfile.checkProfile(accountProfile.getOpenid()))
+            return "true";
+        else
+            return "false";
+    }
+
+    @RequestMapping("getUserProfile")
+    public void getUserProfile(@RequestBody AccountProfile accountProfile) {
+        accountProfile.getProfile();
     }
 
 }

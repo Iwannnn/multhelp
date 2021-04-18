@@ -12,10 +12,10 @@ public class Account {
     private static final String APP_ID = "wxb07fbb1d3f12062f";
     private static final String APP_SECRET = "726d441fa159e5c5515f2a67b7e3f5f8";
 
-    private String index = "open_id";
-    private String table = "account";
-    private String session_key;
-    private String openid;
+    protected String index = "open_id";
+    protected String table = "account";
+    protected String session_key;
+    protected String openid;
 
     public static String getAppID() {
         return APP_ID;
