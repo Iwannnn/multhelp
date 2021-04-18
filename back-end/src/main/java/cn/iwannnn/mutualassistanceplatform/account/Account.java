@@ -11,7 +11,6 @@ import lombok.NoArgsConstructor;
 public class Account {
     private static final String APP_ID = "wxb07fbb1d3f12062f";
     private static final String APP_SECRET = "726d441fa159e5c5515f2a67b7e3f5f8";
-
     protected static String index = "open_id";
     protected static String table = "account";
     protected String session_key;
@@ -45,9 +44,5 @@ public class Account {
             e.printStackTrace();
         }
         return res.equals("") ? false : true;
-        // if (res == null)
-        // return false;
-        // else
-        // return true;
     }
 }

@@ -2,12 +2,8 @@ package cn.iwannnn.mutualassistanceplatform.controller.account;
 
 import cn.iwannnn.mutualassistanceplatform.account.Account;
 import cn.iwannnn.mutualassistanceplatform.account.AccountProfile;
-import cn.iwannnn.mutualassistanceplatform.account.ProfileData;
-
-import org.springframework.boot.jackson.JsonObjectDeserializer;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.client.methods.HttpGet;
@@ -16,8 +12,8 @@ import org.apache.http.HttpResponse;
 import org.apache.http.HttpEntity;
 import org.apache.http.util.EntityUtils;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.jsonFormatVisitors.JsonObjectFormatVisitor;
 
 @RestController
 @RequestMapping("wx/account")
@@ -55,7 +51,6 @@ public class AccountController {
     }
 
     @RequestMapping("updateUserProfile")
-    // @ResponseBody
     public void updateUserProfile(@RequestBody AccountProfile accountProfileData) {
         accountProfile.setProfileData(accountProfileData);
         accountProfile.updateProfile();
@@ -68,8 +63,17 @@ public class AccountController {
     }
 
     @RequestMapping("getUserProfile")
-    public void getUserProfile() {
-        accountProfile.getProfile();
+    public String getUserProfile() {
+        ObjectMapper mapper = new ObjectMapper();
+        AccountProfile profileData = accountProfile.getProfile();
+        System.out.println(profileData.toString());
+        String res = "";
+        try {
+            res = mapper.writeValueAsString(profileData);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+        return res;
     }
 
 }

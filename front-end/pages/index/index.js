@@ -5,7 +5,7 @@ Page({
   data: {
     nbFrontColor: '#000000',
     nbBackgroundColor: '#ffffff',
-    background: ['../../img/picture/asuka.png', '../../img/picture/xiaoxin.jpg', '../../img/picture/eva3.01.0.jpg'],
+    background: ['http://47.98.63.97:8080/img/picture/asuka.png', 'http://47.98.63.97:8080/img/picture/xiaoxin.jpg', 'http://47.98.63.97:8080/img/picture/eva3.01.0.jpg'],
     indicatorDots: true,
     autoplay: true,
     interval: 2000,
@@ -20,5 +20,3 @@ Page({
     })
   },
 })
-
-

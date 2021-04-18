@@ -1,5 +1,7 @@
 package cn.iwannnn.mutualassistanceplatform.account;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import cn.iwannnn.mutualassistanceplatform.utils.DatabaseUtils;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -11,19 +13,21 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class AccountProfile extends Account {
-    private String nickName;
-    private String avatarUrl;
-    private String gender;
-    private String language;
-    private String city;
-    private String province;
-    private String country;
+    protected String nickName;
+    protected String avatarUrl;
+    protected String gender;
+    protected String language;
+    protected String city;
+    protected String province;
+    protected String country;
 
+    @JsonIgnore
     public AccountProfile(Account account) {
         this.openid = account.openid;
         this.session_key = account.session_key;
     }
 
+    @JsonIgnore
     public void updateProfile() {
         StringBuilder info = new StringBuilder("`open_id`= '");
         info.append(this.openid);
@@ -41,23 +45,27 @@ public class AccountProfile extends Account {
         }
     }
 
-    public void getProfile() {
+    @JsonIgnore
+    public AccountProfile getProfile() {
         StringBuilder info = new StringBuilder("`open_id`= '");
         info.append(this.openid);
         info.append("'");
+        AccountProfile res = new AccountProfile();
         try {
-            DatabaseUtils.selectFromDatabase("nickname", table, info.toString());
-            DatabaseUtils.selectFromDatabase("avatarUrl", table, info.toString());
-            DatabaseUtils.selectFromDatabase("gender", table, info.toString());
-            DatabaseUtils.selectFromDatabase("language", table, info.toString());
-            DatabaseUtils.selectFromDatabase("city", table, info.toString());
-            DatabaseUtils.selectFromDatabase("province", table, info.toString());
-            DatabaseUtils.selectFromDatabase("country", table, info.toString());
+            res.setNickName(DatabaseUtils.selectFromDatabase("nickname", table, info.toString()));
+            res.setAvatarUrl(DatabaseUtils.selectFromDatabase("avatarUrl", table, info.toString()));
+            res.setGender(DatabaseUtils.selectFromDatabase("gender", table, info.toString()));
+            res.setLanguage(DatabaseUtils.selectFromDatabase("language", table, info.toString()));
+            res.setCity(DatabaseUtils.selectFromDatabase("city", table, info.toString()));
+            res.setProvince(DatabaseUtils.selectFromDatabase("province", table, info.toString()));
+            res.setCountry(DatabaseUtils.selectFromDatabase("country", table, info.toString()));
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return res;
     }
 
+    @JsonIgnore
     public boolean checkProfile() {
         StringBuilder info = new StringBuilder("`open_id`= '");
         info.append(this.openid);
@@ -71,6 +79,7 @@ public class AccountProfile extends Account {
         return res.equals("null") ? false : true;
     }
 
+    @JsonIgnore
     public void setProfileData(AccountProfile duplicate) {
         this.avatarUrl = duplicate.avatarUrl;
         this.city = duplicate.city;

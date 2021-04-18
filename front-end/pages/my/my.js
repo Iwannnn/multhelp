@@ -32,7 +32,12 @@ Page({
             hasUserInfo: true
           })
           wx.request({
-            url: app.globalData.domain+"/wx/account/getUserProfile",
+            url: app.globalData.domain + '/wx/account/getUserProfile',
+            success (res) {
+              that.setData({
+                userInfo:res.data
+              })
+            }
           })
         }
       }
