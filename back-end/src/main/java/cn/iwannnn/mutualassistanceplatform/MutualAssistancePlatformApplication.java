@@ -1,9 +1,11 @@
 package cn.iwannnn.mutualassistanceplatform;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
+@MapperScan("cn.iwannnn.mutualassistanceplatform.mapper")
 public class MutualAssistancePlatformApplication {
 
     public static void main(String[] args) {

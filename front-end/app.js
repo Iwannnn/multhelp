@@ -19,7 +19,6 @@ App({
                 code: res.code
               },
             })
-            this.globalData.code=res.code
             // console.log("login ok")
         } else {
           console.log('登录失败！' + res.errMsg)
@@ -30,6 +29,5 @@ App({
   globalData: {
       userInfo: null,
       domain: "http://localhost:8080",
-      code:"",
   }
 })
