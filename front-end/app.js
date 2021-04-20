@@ -18,6 +18,10 @@ App({
               data: {
                 code: res.code
               },
+              success:request_res=>{
+                console.log(request_res.data)
+                this.globalData.openid=request_res.data
+              }
             })
             // console.log("login ok")
         } else {
@@ -29,5 +33,6 @@ App({
   globalData: {
       userInfo: null,
       domain: "http://localhost:8080",
+      openid: "",
   }
 })

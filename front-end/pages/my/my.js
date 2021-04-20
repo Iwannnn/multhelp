@@ -17,46 +17,32 @@ Page({
   },
   canIUseProfile:function(){
     var that=this;
-    wx.login({
-      success: login_res => {
-        // 发送 res.code 到后台换取 openId, sessionKey, unionId
-        if (login_res.code) {
+    wx.request({
+      url:  app.globalData.domain +"/wx/account/checkUserProfile",
+      data:{
+        openid:app.globalData.openid
+      },
+      success: request_res => {
+        if(request_res.data==false){
+          that.setData({
+            hasUserInfo: false
+          })
+        }else{
+          that.setData({
+            hasUserInfo: true
+          })
           wx.request({
-            url:  app.globalData.domain +"/wx/account/checkUserProfile",
+            url: app.globalData.domain + '/wx/account/getUserProfile',
             data:{
-              code:login_res.code
+              openid:app.globalData.openid
             },
-            success: request_res => {
+            success:request_res => {
               console.log(request_res.data)
-              if(request_res.data==false){
-                that.setData({
-                  hasUserInfo: false
-                })
-              }else{
-                that.setData({
-                  hasUserInfo: true
-                })
-                wx.login({
-                  success: login_res => {
-                    wx.request({
-                      url: app.globalData.domain + '/wx/account/getUserProfile',
-                      data:{
-                        code:login_res.code
-                      },
-                      success:request_res => {
-                        console.log(request_res.data)
-                        that.setData({
-                          userInfo:request_res.data
-                        })
-                      }
-                    })
-                  }
-                })
-              }
+              that.setData({
+                userInfo:request_res.data
+              })
             }
           })
-        } else {
-          console.log('登录失败！' + login_res.errMsg)
         }
       }
     })
@@ -72,26 +58,16 @@ Page({
           userInfo: profile_res.userInfo,
           hasUserInfo: true
         })
-        wx.login({
-          success: login_res => {
-            // 发送 res.code 到后台换取 openId, sessionKey, unionId
-            if (login_res.code) {
-              this.setUserProfile(login_res.code,profile_res.userInfo)
-            } else {
-              console.log('登录失败！' + res.errMsg)
-            }
-          }
-        })
+        this.setUserProfile(profile_res.userInfo)
       }
     })
   },
-  setUserProfile:function(code,userInfo){
-    console.log(code,userInfo)
+  setUserProfile:function(userInfo){
     wx.request({
       url: app.globalData.domain+'/wx/account/updateUserProfile',
       method:'POST',
       data:{
-        code:code,
+        openid:app.globalData.openid,
         avatarUrl: userInfo.avatarUrl,
         city: userInfo.city,
         country: userInfo.country,

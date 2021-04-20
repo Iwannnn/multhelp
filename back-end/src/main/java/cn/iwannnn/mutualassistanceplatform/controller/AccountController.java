@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import cn.iwannnn.mutualassistanceplatform.entity.AccountProfile;
+import cn.iwannnn.mutualassistanceplatform.entity.Account;
 import cn.iwannnn.mutualassistanceplatform.service.Impl.AccountServiceImpl;
 
 @RestController
@@ -16,23 +16,23 @@ public class AccountController {
     private AccountServiceImpl accountServiceImpl;
 
     @RequestMapping("login")
-    public void acocunteLogin(String code) {
-        accountServiceImpl.accountLogin(code);
+    public String acocunteLogin(String code) {
+        return accountServiceImpl.accountLogin(code);
     }
 
     @RequestMapping("checkUserProfile")
-    public boolean checkUserProfile(String code) {
-        return accountServiceImpl.checkUserProfile(code);
+    public boolean checkUserProfile(String openid) {
+        return accountServiceImpl.checkUserProfile(openid);
     }
 
     @RequestMapping("updateUserProfile")
-    public void updateUserProfile(@RequestBody AccountProfile accountProfile) {
-        accountServiceImpl.updateUserProfile(accountProfile);
+    public void updateUserProfile(@RequestBody Account account) {
+        accountServiceImpl.updateUserProfile(account);
     }
 
     @RequestMapping("getUserProfile")
-    public String getUserProfile(String code) {
-        return accountServiceImpl.getUserProfile(code);
+    public String getUserProfile(String openid) {
+        return accountServiceImpl.getUserProfile(openid);
     }
 
 }

@@ -6,7 +6,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import cn.iwannnn.mutualassistanceplatform.entity.AccountProfile;
+import cn.iwannnn.mutualassistanceplatform.entity.Account;
 import cn.iwannnn.mutualassistanceplatform.entity.App;
 import cn.iwannnn.mutualassistanceplatform.entity.Login;
 import cn.iwannnn.mutualassistanceplatform.mapper.AccountMapper;
@@ -25,51 +25,39 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public void accountLogin(String code) {
+    public String accountLogin(String code) {
         Login login = getLoginInfo(code);
         String openid = login.getOpenid();
         String session_key = login.getSession_key();
         accountMapper.login(openid);
         accountMapper.updateProfile("session_key", session_key, openid);
+        return openid;
     }
 
     @Override
-    public boolean checkUserProfile(String code) {
-        Login login = getLoginInfo(code);
-        String openid = login.getOpenid();
-        String session_key = login.getSession_key();
-        accountMapper.updateProfile("session_key", session_key, openid);
-        AccountProfile accountProfile = accountMapper.selectProfile(openid);
-        return !(accountProfile.getNickName() == null);
+    public boolean checkUserProfile(String openid) {
+        Account account = accountMapper.selectProfile(openid);
+        return !(account.getNickName() == null);
     }
 
     @Override
-    public void updateUserProfile(AccountProfile accountProfile) {
-        System.out.println(accountProfile.toString());
-        Login login = getLoginInfo(accountProfile.getCode());
-        String openid = login.getOpenid();
-        String session_key = login.getSession_key();
-        accountMapper.updateProfile("session_key", session_key, openid);
-        accountMapper.updateProfile("nickname", accountProfile.getNickName(), openid);
-        accountMapper.updateProfile("avatarurl", accountProfile.getAvatarUrl(), openid);
-        accountMapper.updateProfile("gender", accountProfile.getGender(), openid);
-        accountMapper.updateProfile("language", accountProfile.getLanguage(), openid);
-        accountMapper.updateProfile("city", accountProfile.getCity(), openid);
-        accountMapper.updateProfile("province", accountProfile.getProvince(), openid);
-        accountMapper.updateProfile("country", accountProfile.getCountry(), openid);
+    public void updateUserProfile(Account account) {
+        accountMapper.updateProfile("nickname", account.getNickName(), account.getOpenid());
+        accountMapper.updateProfile("avatarurl", account.getAvatarUrl(), account.getOpenid());
+        accountMapper.updateProfile("gender", account.getGender(), account.getOpenid());
+        accountMapper.updateProfile("language", account.getLanguage(), account.getOpenid());
+        accountMapper.updateProfile("city", account.getCity(), account.getOpenid());
+        accountMapper.updateProfile("province", account.getProvince(), account.getOpenid());
+        accountMapper.updateProfile("country", account.getCountry(), account.getOpenid());
     }
 
     @Override
-    public String getUserProfile(String code) {
-        Login login = getLoginInfo(code);
-        String openid = login.getOpenid();
-        String session_key = login.getSession_key();
-        accountMapper.updateProfile("session_key", session_key, openid);
-        AccountProfile accountProfile = accountMapper.selectProfile(openid);
+    public String getUserProfile(String openid) {
+        Account account = accountMapper.selectProfile(openid);
         ObjectMapper mapper = new ObjectMapper();
         String res = "";
         try {
-            res = mapper.writeValueAsString(accountProfile);
+            res = mapper.writeValueAsString(account);
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
