@@ -24,7 +24,7 @@ public class AccountServiceImpl implements AccountService {
         String openid = sessionUtils.getOpenid(session_3rd);
         accountMapper.insertOpenid(openid);
         Account account = accountMapper.selectProfile(openid);
-        return !(account.getNickName() == null);
+        return !(account.getNickName().equals(""));
     }
 
     @Override
