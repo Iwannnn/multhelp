@@ -7,7 +7,8 @@
     "pages/my/mySetting/mySetting",
     "pages/my/myOrder/myOrder",
     "pages/my/myPost/myPost",
-    "pages/about/about"
+    "pages/about/about",
+    "pages/message/message"
   ],
   "window":{
     "backgroundTextStyle":"light",
@@ -34,6 +35,12 @@
         "text": "发布"
       },
       {
+        "pagePath": "pages/message/message",
+        "iconPath": "img/tabBar/message.png",
+        "selectedIconPath": "img/tabBar/message-selected.png",
+        "text": "消息"
+      },
+      {
         "pagePath": "pages/my/my",
         "iconPath": "img/tabBar/my.png",
         "selectedIconPath": "img/tabBar/my-selected.png",
@@ -42,7 +49,5 @@
     ]
   },
   "usingComponents": {
-  },
-  "style": "v2",
-  "sitemapLocation": "sitemap.json"
+  }
 }

@@ -17,6 +17,20 @@
     </block>
   </swiper>
 </view>
+<view wx:for="{{miniposts}}" wx:key="id">
+  <view style="background-color: #FFFFFF; flex: 1;">
+    <navigator class="weui-cell weui-cell_access" hover-class="weui-cell_active"
+      style="width: 744rpx; height: 360rpx; display: block; box-sizing: border-box; left: NaNrpx; top: NaNrpx">
+      <text style="position: relative; left: 54rpx; top: 24rpx">标题</text>
+      <text style="position: relative; left: -10rpx; top: 66rpx">类别</text>
+      <text style="position: relative; left: -74rpx; top: 108rpx">帮助金</text>
+      <text style="position: relative; left: -170rpx; top: 150rpx">地址</text>
+      <text style="position: relative; left: -234rpx; top: 192rpx">发布时间</text>
+      <text style="position: relative; left: -362rpx; top: 234rpx">求助时间</text>
+    </navigator>
+  </view>
+  <view class="divLine"></view>
+</view> 
 
 
 

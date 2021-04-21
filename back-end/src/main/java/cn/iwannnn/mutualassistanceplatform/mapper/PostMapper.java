@@ -1,8 +1,13 @@
 package cn.iwannnn.mutualassistanceplatform.mapper;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
+
+import cn.iwannnn.mutualassistanceplatform.entity.Post;
+import cn.iwannnn.mutualassistanceplatform.entity.PostMini;
 
 public interface PostMapper {
 
@@ -14,4 +19,7 @@ public interface PostMapper {
 
     @Update("UPDATE `post` SET ${updatedColumn} = #{updatedInfo} WHERE `postid` = #{postid};")
     public void updatePost(String updatedColumn, String updatedInfo, String postid);
+
+    @Select("SELECT * FROM `post` order by `postid` limit #{nums}")
+    public List<PostMini> getPosts(int nums);
 }

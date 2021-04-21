@@ -128,6 +128,23 @@ Page({
         address:that.data.address,
         need_time:that.data.need_date+" "+that.data.need_time+":00",
       },
+      success:request_res=>{
+        wx.showToast({
+          title: '发布成功',
+          duration: 1500,
+          success: function () {
+           //弹窗后执行，可以省略
+            setTimeout(
+              function () {
+                wx.reLaunch({
+                  url: '../index/index',
+                })
+              }, 
+              1500
+            );
+          }
+        })
+      }
     })
   },
   checkPost:function(){
