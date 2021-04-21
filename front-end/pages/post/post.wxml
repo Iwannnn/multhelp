@@ -46,9 +46,6 @@
   <!-- <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" class="btn" style="position: relative; left: 44rpx; top: -39rpx">授权电话号码</button> -->
 </view>
 <view class="divLine"/>
-<view style="position: relative; width: 706rpx; height: 90rpx; display: block; box-sizing: border-box; left: 22rpx; top: -1rpx">
-  <text style="position: relative;font-size: 10px;margin:auto;">注：由于是个人账号无法实现微信认证，调用不了获取电话号码的接口就只好手动输入了</text>
-</view>
 <view class="section" style="width: 750rpx; height: 100rpx; display: block; box-sizing: border-box; left: NaNrpx; top: NaNrpx">
   <text style="position: relative; left: 50rpx; top: 30rpx; font-size: 17px">需求日期</text>
   <picker style="position: relative; width: 220rpx; height: 44rpx; left: 230rpx; top: -16rpx; font-size: 17px; display: block; box-sizing: border-box" mode="date" value="{{end_date}}" start="2021-05-01" end="2031-05-01" bindchange="bindDateChange">
@@ -66,7 +63,11 @@
   </picker>
 </view>
 <view class="divLine"/>
-<button class="btn-big" style="position: relative; left: 1rpx; top: 144rpx; width: 600rpx;display: block; box-sizing: border-box">提交发布</button>
+<view style="position: relative; width: 706rpx; height: 90rpx; display: block; box-sizing: border-box; left: 22rpx; top: -1rpx">
+  <text style="position: relative;font-size: 10px;margin:auto;">注：由于是个人账号无法实现微信认证，调用不了获取电话号码的接口就只好手动输入了</text>
+</view>
+<button class="btn-big" style="position: relative; left: -1rpx; top: 58rpx; width: 600rpx; display: block; box-sizing: border-box">提交发布</button>
+
 
 
 
