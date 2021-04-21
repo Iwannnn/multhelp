@@ -8,57 +8,57 @@
     color-animation-timing-func="easeIn"
   />
 </page-meta>
-<view class="weui-cell weui-cell_input;position:relative" style="width: 750rpx; height: 100rpx; display: block; box-sizing: border-box; left: NaNrpx; top: NaNrpx">
+<view style="width: 750rpx; height: 100rpx; display: block; box-sizing: border-box; left: NaNrpx; top: NaNrpx">
   <text style="position: relative; left: 50rpx; top: 30rpx; font-size: 17px">标题</text>
   <input style="position: relative; width: 460rpx; height: 44rpx; left: 230rpx; top: -16rpx; font-size: 17px; display: block; box-sizing: border-box"  bindblur="titleInput" class="weui-input" placeholder="请输入求助的标题" />
 </view>
 <view class="divLine"/>
-<view class="section" style="width: 750rpx; height: 260rpx; display: block; box-sizing: border-box; left: NaNrpx; top: NaNrpx">
+<view style="width: 750rpx; height: 260rpx; display: block; box-sizing: border-box; left: NaNrpx; top: NaNrpx">
   <textarea style="width: 700rpx; height: 200rpx; display: block; position: relative; font-size: 17px; margin: auto; box-sizing: border-box; left: 0rpx; top: 30rpx" bindblur="detailTextArea" placeholder="请在这里为你的求助进行详细的描述，比如在时间，具体事项。" />
 </view>
 <view class="divLine"/>
-<view class="section" style="width: 750rpx; height: 100rpx; display: block; box-sizing: border-box; left: NaNrpx; top: NaNrpx">
+<view style="width: 750rpx; height: 100rpx; display: block; box-sizing: border-box; left: NaNrpx; top: NaNrpx">
   <text style="position: relative; left: 50rpx; top: 30rpx; font-size: 17px">分类</text>
   <picker  bindchange="bindPickerChange" value="{{category_index}}" range="{{categories}}" style="position: relative; width: 460rpx; height: 44rpx; left: 230rpx; top: -16rpx; font-size: 17px; ">
-    <view class="picker" style="width: 154rpx; height: 44rpx; display: block; box-sizing: border-box; left: NaNrpx; top: NaNrpx">
+    <view class="picker" style="width: 440rpx; height: 44rpx; display: block; box-sizing: border-box; left: NaNrpx; top: NaNrpx">
       {{categories[category_index]}}
     </view>
   </picker>
 </view>
 <view class="divLine"/>
-<view class="weui-cell weui-cell_input;position:relative"
-  style="width: 750rpx; height: 100rpx; display: block; box-sizing: border-box; left: NaNrpx; top: NaNrpx">
+<view style="width: 750rpx; height: 100rpx; display: block; box-sizing: border-box; left: NaNrpx; top: NaNrpx">
   <text style="position: relative; left: 50rpx; top: 30rpx; font-size: 17px">地址</text>
   <input
     style="position: relative; width: 376rpx; height: 44rpx; left: 230rpx; top: -16rpx; font-size: 17px; display: block; box-sizing: border-box" bindblur="addressInput"
     class="weui-input" placeholder="大概描述地址(可不输入)" value="{{address}}"/>
-    <button class="btn" bindtap="getLocation" size="mini" style="position: relative; left: 606rpx; top: -75rpx">获取</button>
+    <button class="btn" bindtap="getLocation" size="mini" style="position: relative; margin: auto; left: 606rpx; top: -74rpx">获取</button>
 </view>
 <view class="divLine"/>
-<view class="weui-cell weui-cell_input;position:relative" style="width: 750rpx; height: 100rpx; display: block; box-sizing: border-box; left: NaNrpx; top: NaNrpx">
+<view  style="width: 750rpx; height: 100rpx; display: block; box-sizing: border-box; left: NaNrpx; top: NaNrpx">
   <text style="position: relative; left: 50rpx; top: 30rpx; font-size: 17px">帮助金￥</text>
-  <input style="position: relative; width: 460rpx; height: 44rpx; left: 230rpx; top: -16rpx; font-size: 17px; display: block; box-sizing: border-box" type="digit" class="weui-input" bindblur="priceInput" placeholder="请输入愿意支付的帮助金"/>
+  <input style="position: relative; width: 498rpx; height: 44rpx; left: 230rpx; top: -16rpx; font-size: 17px; display: block; box-sizing: border-box" type="digit" class="weui-input" bindblur="priceInput" placeholder="请输入愿意支付的帮助金(可为0)"/>
 </view>
 <view class="divLine"/>
 <view style="width: 750rpx; height: 100rpx; display: block; box-sizing: border-box; left: NaNrpx; top: NaNrpx">
   <text style="position: relative; left: 50rpx; top: 30rpx; font-size: 17px">电话</text>
-  <input style="position: relative; width: 460rpx; height: 44rpx; left: 230rpx; top: -16rpx; font-size: 17px; display: block; box-sizing: border-box" type="number" class="weui-input" bindblur="phoneInput" placeholder="请输入手机号码"/>
+  <input style="position: relative; width: 460rpx; height: 44rpx; left: 230rpx; top: -15rpx; font-size: 17px; display: block; box-sizing: border-box" type="number" class="weui-input" bindblur="phoneInput" placeholder="请输入手机号码"/>
   <!-- <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" class="btn" style="position: relative; left: 44rpx; top: -39rpx">授权电话号码</button> -->
 </view>
 <view class="divLine"/>
 <view class="section" style="width: 750rpx; height: 100rpx; display: block; box-sizing: border-box; left: NaNrpx; top: NaNrpx">
   <text style="position: relative; left: 50rpx; top: 30rpx; font-size: 17px">需求日期</text>
-  <picker style="position: relative; width: 220rpx; height: 44rpx; left: 230rpx; top: -16rpx; font-size: 17px; display: block; box-sizing: border-box" mode="date" value="{{end_date}}" start="2021-05-01" end="2031-05-01" bindchange="bindDateChange">
-    <view class="picker">
-      {{end_date}}
+  <picker style="position: relative; width: 220rpx; height: 44rpx; left: 230rpx; top: -16rpx; font-size: 17px; display: block; box-sizing: border-box" mode="date" value="{{need_date}}" start="{{need_date}}" end="2031-05-01" bindchange="bindDateChange">
+    <view class="picker" style="width: 450rpx; height: 44rpx; display: block; box-sizing: border-box; left: NaNrpx; top: NaNrpx">
+      {{need_date}}
     </view>
   </picker>
 </view>
-<view class="divLine"/><view class="section" style="width: 750rpx; height: 100rpx; display: block; box-sizing: border-box; left: NaNrpx; top: NaNrpx">
+<view class="divLine"/>
+<view class="section" style="width: 750rpx; height: 100rpx; display: block; box-sizing: border-box; left: NaNrpx; top: NaNrpx">
   <text style="position: relative; left: 50rpx; top: 30rpx; font-size: 17px">需求时间</text>
-  <picker style="position: relative; width: 104rpx; height: 44rpx; left: 230rpx; top: -16rpx; font-size: 17px; display: block; box-sizing: border-box" mode="time" value="{{time}}" start="00:00" end="23:59" bindchange="bindTimeChange">
-    <view class="picker">
-      {{end_time}}
+  <picker style="position: relative; width: 104rpx; height: 44rpx; left: 230rpx; top: -16rpx; font-size: 17px; display: block; box-sizing: border-box" mode="time" value="{{need_time}}" start="{{need_time}}" end="23:59" bindchange="bindTimeChange">
+    <view class="picker" style="width: 444rpx; height: 44rpx; display: block; box-sizing: border-box; left: NaNrpx; top: NaNrpx">
+      {{need_time}}
     </view>
   </picker>
 </view>
@@ -66,7 +66,7 @@
 <view style="position: relative; width: 706rpx; height: 90rpx; display: block; box-sizing: border-box; left: 22rpx; top: -1rpx">
   <text style="position: relative;font-size: 10px;margin:auto;">注：由于是个人账号无法实现微信认证，调用不了获取电话号码的接口就只好手动输入了</text>
 </view>
-<button class="btn-big" style="position: relative; left: -1rpx; top: 58rpx; width: 600rpx; display: block; box-sizing: border-box">提交发布</button>
+<button class="btn-big" bindtap="publishPost" style="position: relative; left: -1rpx; top: 58rpx; width: 600rpx; display: block; box-sizing: border-box">提交发布</button>
 
 
 

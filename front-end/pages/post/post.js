@@ -1,4 +1,7 @@
+const { formatData } = require('../../utils/util.js');
 // pages/post/post.js
+var util=require('../../utils/util.js')
+const app=getApp();
 Page({
 
   /**
@@ -27,7 +30,7 @@ Page({
       }
     ],
     category_index: 0,
-    title:"",
+    tittle:"",
     detail:"",
     category:"",
     price:"",
@@ -35,22 +38,25 @@ Page({
     destination_name:"",
     destination_address:"",
     address:"",
-    end_date:"2021-05-01",
-    end_time:"00:00"
-    
+    need_date:Date,
+    need_time:"00:00",
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var date = util.formatDate(new Date());
+    var time = util.formatHM(new Date());
     this.setData({
       nbTitle: '发布',
       nbLoading: false,
+      need_date:date,
+      need_time:time
     })
   },
   titleInput:function(e){
     this.setData({
-      title:e.detail.value
+      tittle:e.detail.value
     })
   },
   detailTextArea:function (e) {
@@ -97,12 +103,46 @@ Page({
   },
   bindDateChange: function (e) {
     this.setData({
-      end_date: e.detail.value
+      need_date: e.detail.value
     })
   },
   bindTimeChange: function (e) {
     this.setData({
-      end_time: e.detail.value
+      need_time: e.detail.value
     })
   },
+  publishPost:function(){
+    var that=this;
+    app.checkSession_3rd();
+    this.checkPost();
+    wx.request({
+      url: app.globalData.domain+'/wx/post/publishPost',
+      method:'POST',
+      data:{
+        session_3rd:app.globalData.session_3rd, 
+        tittle:that.data.tittle,
+        detail:that.data.detail,
+        category:that.data.category,
+        price:that.data.price,
+        phone:that.data.phone,
+        address:that.data.address,
+        need_time:that.data.need_date+" "+that.data.need_time+":00",
+      },
+    })
+  },
+  checkPost:function(){
+    if(this.data.title==""){this.showError("标题"); return false;}
+    else if(this.data.detail==""){this.showError("详情"); return false;}
+    else if(this.data.category=="" || this.data.category=="未分类"){this.showError("分类"); return false;}
+    else if(this.data.price==""){this.showError("帮助金"); return false;}
+    else if(this.data.phone==""){this.showError("电话"); return false;}
+    return true;
+  },
+  showError:function(data){
+    wx.showToast({
+      title: data+'缺失',
+      icon: 'error',
+      duration: 1500,
+    })
+  }
 })

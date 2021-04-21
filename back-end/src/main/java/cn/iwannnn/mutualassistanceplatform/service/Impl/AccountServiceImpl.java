@@ -17,11 +17,11 @@ public class AccountServiceImpl implements AccountService {
     private AccountMapper accountMapper;
 
     @Autowired
-    private SessionServiceImpl sessionUtils;
+    private SessionServiceImpl sessionServiceImpl;
 
     @Override
     public boolean checkUserProfile(String session_3rd) {
-        String openid = sessionUtils.getOpenid(session_3rd);
+        String openid = sessionServiceImpl.getOpenid(session_3rd);
         accountMapper.insertOpenid(openid);
         Account account = accountMapper.selectProfile(openid);
         return !(account.getNickName().equals(""));
@@ -29,7 +29,7 @@ public class AccountServiceImpl implements AccountService {
 
     @Override
     public void updateUserProfile(Account account) {
-        String openid = sessionUtils.getOpenid(account.getSession_3rd());
+        String openid = sessionServiceImpl.getOpenid(account.getSession_3rd());
         accountMapper.updateProfile("nickname", account.getNickName(), openid);
         accountMapper.updateProfile("avatarurl", account.getAvatarUrl(), openid);
         accountMapper.updateProfile("gender", account.getGender(), openid);
@@ -41,7 +41,7 @@ public class AccountServiceImpl implements AccountService {
 
     @Override
     public String getUserProfile(String session_3rd) {
-        String openid = sessionUtils.getOpenid(session_3rd);
+        String openid = sessionServiceImpl.getOpenid(session_3rd);
         Account account = accountMapper.selectProfile(openid);
         ObjectMapper mapper = new ObjectMapper();
         String res = "";

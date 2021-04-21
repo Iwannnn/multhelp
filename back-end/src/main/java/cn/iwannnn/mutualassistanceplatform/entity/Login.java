@@ -11,5 +11,4 @@ public class Login {
     private String session_3rd;
     private String openid;
     private String session_key;
-
 }
