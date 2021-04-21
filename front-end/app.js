@@ -19,8 +19,7 @@ App({
                 code: res.code
               },
               success:request_res=>{
-                console.log(request_res.data)
-                this.globalData.openid=request_res.data
+                this.globalData.session_3rd=request_res.data
               }
             })
             // console.log("login ok")
@@ -33,6 +32,33 @@ App({
   globalData: {
       userInfo: null,
       domain: "http://localhost:8080",
-      openid: "",
+      session_3rd: "",
+  },
+  checkSession_3rd:function(){
+    wx.request({
+      url: this.globalData.domain+'/wx/session/checkSession_3rd',
+      data:{
+        session_3rd:this.globalData.session_3rd
+      },
+      success:request_res=>{
+        if(request_res.data==false){
+          wx.showToast({
+            title: '会话过期需重载',
+            icon: 'error',
+            duration: 5000,
+            success: function () {
+             //弹窗后执行，可以省略
+              setTimeout(
+                function () {
+                  wx.reLaunch({
+                  url: '../index/index',
+                  })
+                }, 
+                1500);
+              }
+            })
+        }
+      }
+    })
   }
 })

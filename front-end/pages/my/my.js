@@ -2,7 +2,7 @@ const app = getApp()
 Page({
   data: {
     nbFrontColor: '#000000',
-    nbBackgroundColor: '#ffffff',
+    nbBackgroundColor: '#fae4fa',
     userInfo: {},
     hasUserInfo: false
   },
@@ -10,17 +10,16 @@ Page({
     this.setData({
       nbTitle: '我的',
       nbLoading: false,
-      nbFrontColor: '#000000',
-      nbBackgroundColor: '#ffffff',
     }),
     this.canIUseProfile()
   },
   canIUseProfile:function(){
     var that=this;
+    app.checkSession_3rd()
     wx.request({
       url:  app.globalData.domain +"/wx/account/checkUserProfile",
       data:{
-        openid:app.globalData.openid
+        session_3rd:app.globalData.session_3rd
       },
       success: request_res => {
         if(request_res.data==false){
@@ -34,7 +33,7 @@ Page({
           wx.request({
             url: app.globalData.domain + '/wx/account/getUserProfile',
             data:{
-              openid:app.globalData.openid
+              session_3rd:app.globalData.session_3rd
             },
             success:request_res => {
               console.log(request_res.data)
@@ -67,7 +66,7 @@ Page({
       url: app.globalData.domain+'/wx/account/updateUserProfile',
       method:'POST',
       data:{
-        openid:app.globalData.openid,
+        session_3rd:app.globalData.session_3rd,
         avatarUrl: userInfo.avatarUrl,
         city: userInfo.city,
         country: userInfo.country,
@@ -80,5 +79,5 @@ Page({
         console.log("保存成功")
       }
     })
-  }
+  },
 })
