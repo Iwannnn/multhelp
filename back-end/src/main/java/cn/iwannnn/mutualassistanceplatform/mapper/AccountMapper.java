@@ -9,7 +9,7 @@ import cn.iwannnn.mutualassistanceplatform.entity.Account;
 public interface AccountMapper {
 
     @Insert("INSERT IGNORE INTO `account` (`openid`) VALUES (#{openid});")
-    void login(String openid);
+    void insertOpenid(String openid);
 
     @Update("UPDATE `account` SET ${updatedColumn} = #{updatedInfo} WHERE `openid` = #{openid};")
     void updateProfile(String updatedColumn, String updatedInfo, String openid);

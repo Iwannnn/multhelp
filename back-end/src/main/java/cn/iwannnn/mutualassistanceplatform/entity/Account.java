@@ -13,8 +13,10 @@ public class Account {
 
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String openid;
+
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    private String session_key;
+    private String session_3rd;
+
     private String nickName;
     private String avatarUrl;
     private String gender;
