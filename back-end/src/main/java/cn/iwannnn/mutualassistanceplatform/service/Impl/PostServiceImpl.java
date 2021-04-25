@@ -1,5 +1,7 @@
 package cn.iwannnn.mutualassistanceplatform.service.Impl;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,6 +53,20 @@ public class PostServiceImpl implements PostService {
     public PostDetail getPostDetail(String postid) {
         String publish_openid = postMapper.selectfromPost("publish_openid", postid);
         return postMapper.getPostDetail(publish_openid, postid);
+    }
+
+    @Override
+    public boolean receivePost(String session_3rd, String postid) {
+        if (!postMapper.isValue(postid))
+            return false;
+
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Date date = new Date();
+        String receive_openid = sessionServiceImpl.getOpenid(session_3rd);
+        postMapper.updatePost("receive_openid", receive_openid, postid);
+        postMapper.updateValue(false, postid);
+        postMapper.updatePost("end_time", formatter.format(date), postid);
+        return true;
     }
 
 }

@@ -38,4 +38,9 @@ public class PostController {
     public PostDetail getPostDetail(String postid) {
         return postServiceImpl.getPostDetail(postid);
     }
+
+    @RequestMapping("helpPost")
+    public boolean helpPost(String session_3rd, String postid) {
+        return postServiceImpl.receivePost(session_3rd, postid);
+    }
 }

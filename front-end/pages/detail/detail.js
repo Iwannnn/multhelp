@@ -35,5 +35,21 @@ Page({
         })
       }
     })
+  },
+  helpPost:function(){
+    var that=this;
+    app.checkSession_3rd();
+    console.log(app.globalData.session_3rd)
+    console.log(that.data.postid)
+    wx.request({
+      url: app.globalData.domain + '/wx/post/helpPost',
+      data:{
+        session_3rd:app.globalData.session_3rd,
+        postid:that.data.postid
+      },
+      success:request_res=>{
+        console.log(request_res.data)
+      }
+    })
   }
 })

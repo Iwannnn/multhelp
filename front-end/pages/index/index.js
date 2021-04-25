@@ -32,6 +32,9 @@ Page({
     })
     this.getPosts();
   },
+  onShow:function(options){
+    this.getPosts();
+  },
   onReachBottom: function () {
     var that=this;
     if(that.data.canIGetMore==true)  {

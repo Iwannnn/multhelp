@@ -15,4 +15,6 @@ public interface PostService {
     List<PostMini> getPostsWithCategory(String category, int nums);
 
     PostDetail getPostDetail(String postid);
+
+    boolean receivePost(String session_3rd, String postid);
 }

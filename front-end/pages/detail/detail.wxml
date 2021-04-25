@@ -34,7 +34,7 @@
 <view class="divLine-bottom"/>
 <view class="bottom" > 
   <view class="action_btn">
-    <button class="btn_left">在线联系</button>
-    <button class="btn_right">我要帮忙</button>
+    <button bindtap="contact" class="btn_left">在线联系</button>
+    <button bindtap="helpPost" class="btn_right">我要帮忙</button>
   </view>
 </view>

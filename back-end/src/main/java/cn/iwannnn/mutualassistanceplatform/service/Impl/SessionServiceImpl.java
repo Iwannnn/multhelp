@@ -5,14 +5,14 @@ import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import cn.iwannnn.mutualassistanceplatform.mapper.SessionUtilsMapper;
+import cn.iwannnn.mutualassistanceplatform.mapper.SessionMapper;
 import cn.iwannnn.mutualassistanceplatform.service.SessionService;
 
 @Service
 public class SessionServiceImpl implements SessionService {
 
     @Autowired
-    SessionUtilsMapper sessionUtilsMapper;
+    SessionMapper sessionUtilsMapper;
 
     public String getOpenid(String session_3rd) {
         return sessionUtilsMapper.select("openid", session_3rd);
