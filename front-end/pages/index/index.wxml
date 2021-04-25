@@ -8,6 +8,7 @@
     color-animation-timing-func="easeIn"
   />
 </page-meta>
+
 <view>
   <swiper indicator-dots="{{indicatorDots}}"autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
     <block wx:for="{{background}}" wx:key="*this">
@@ -17,24 +18,43 @@
     </block>
   </swiper>
 </view>
-<view wx:for="{{miniposts}}" wx:key="id">
-  <view style="background-color: #FFFFFF; flex: 1;">
-    <navigator class="weui-cell weui-cell_access" hover-class="weui-cell_active"
-      style="width: 744rpx; height: 360rpx; display: block; box-sizing: border-box; left: NaNrpx; top: NaNrpx">
-      <text style="position: relative; left: 54rpx; top: 24rpx">标题</text>
-      <text style="position: relative; left: -10rpx; top: 66rpx">类别</text>
-      <text style="position: relative; left: -74rpx; top: 108rpx">帮助金</text>
-      <text style="position: relative; left: -170rpx; top: 150rpx">地址</text>
-      <text style="position: relative; left: -234rpx; top: 192rpx">发布时间</text>
-      <text style="position: relative; left: -362rpx; top: 234rpx">求助时间</text>
-    </navigator>
+<view class='box' style="width: 750rpx; height: 69rpx; display: block; box-sizing: border-box; left: 0rpx; top: 0rpx">
+  <view class="{{category_idx==0?'selected-box-container':'box-container'}}"  style="width: 187rpx; height: 69rpx; display: flex; box-sizing: border-box; left: 0rpx; top: 0rpx; position: relative">
+    <view class="{{category_idx==0?'selected-left':'left'}}" bindtap='changetoAll'>{{category_list[0]}}</view>
   </view>
-  <view class="divLine"></view>
+  <view class="{{category_idx==1?'selected-box-container':'box-container'}}':'box-container'"  style="width: 187rpx; height: 69rpx; display: flex; box-sizing: border-box; left: 187rpx; top: -69rpx; position: relative">
+    <view class="{{category_idx==1?'selected-left':'left'}}" bindtap='changetoSubstitute'>{{category_list[1]}}</view>
+  </view>
+  <view class="{{category_idx==2?'selected-box-container':'box-container'}}"  style="width: 187rpx; height: 69rpx; display: flex; box-sizing: border-box; left: 374rpx; top: -138rpx; position: relative">
+    <view class="{{category_idx==2?'selected-left':'left'}}" bindtap='changetoTransaction'>{{category_list[2]}}</view>
+  </view>
+  <view class="{{category_idx==3?'selected-box-container':'box-container'}}"  style="width: 187rpx; height: 69rpx; display: flex; box-sizing: border-box; left: 560rpx; top: -207rpx; position: relative">
+    <view class="{{category_idx==3?'selected-left':'left'}}" bindtap='changetoSource'>{{category_list[3]}}</view>
+  </view>
+</view>
+<text>\n</text>
+<view wx:if="{{canIGet}}">
+  <view wx:for="{{miniposts}}" wx:key="postid">
+    <navigator  url="../detail/detail?postid={{item.postid}}" class="weui-cell weui-cell_access" 
+    hover-class="weui-cell_active"style="display: flex; box-sizing: border-box; margin:auto; width: 95vw; height: 40vh;  border-radius: 30px;" >
+      <view class="container-index" style="display: flex; box-sizing: border-box; margin:auto; width: 95vw; height: 40vh;">
+        <text class="iconfont icon-biaoti" style="font-size:25px"> 标题 : {{item.tittle}}</text>
+        <text class="iconfont icon-leibie" style="font-size:20px"> 分类 : {{item.category}}</text>
+        <text class="iconfont icon-jine" style="font-size:20px"> 帮助金 : {{item.price}}</text>
+        <text class="iconfont icon-time" style="font-size:17px"> 发布时间 : {{item.create_time}}</text>
+        <text class="iconfont icon-jiezhishijian" style="font-size:17px"> 需求时间 : {{item.need_time}}</text>
+        <text class="iconfont icon-dizhi" style="font-size:17px"> 地址 : {{item.address}}</text>
+      </view>
+    </navigator>
+    <text>\n</text>
+  </view>
+  <view wx:if="!{{canGetMore}}" style="text-align:centerx">
+  <text style="position: relative; left: 218rpx; top: -24rpx">到到到到到底辣辣辣辣辣</text>
+  </view>
 </view> 
-
-
-
-
+<view wx:else>
+  <text>无法获取数据</text>
+</view> 
 
 
 

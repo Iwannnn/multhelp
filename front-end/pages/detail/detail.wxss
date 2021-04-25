@@ -1,0 +1,69 @@
+/* pages/detail/detail.wxss */
+page {  
+  display: block;  
+  min-height: 100%;  
+  background-color: #ffffff;  
+} 
+
+.avatar{
+  border-radius: 25px;
+}
+
+.double-view{
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+}
+
+.container-detail {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: space-between;
+  padding: 55rpx 60rpx 55rpx 50rpx;
+  box-sizing: border-box;
+  background: #ffffff;
+  word-break:break-all;
+} 
+.bottom{
+  display: flex;
+  flex-direction: row;
+  position: fixed;
+  bottom: 0rpx;
+  width: 100%;
+  height: 120rpx;
+  justify-content: space-around;
+  background-color: #ffffff;
+  align-content: center;
+  align-items: center;
+}
+
+.action_btn{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 75%;
+  height: 80%;
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+  margin-top: 20rpx;
+  margin-bottom: 0rpx;
+}
+.btn_left{
+  background-color:#ff9900;
+  width: 50%;
+  height: 80%;
+  font-size: 30rpx;
+  color: #ffffff;
+  border-bottom-left-radius: 50rpx;
+  border-top-left-radius: 50rpx;
+}
+.btn_right{
+  background-color:#ff3300;
+  width: 50%;
+  height: 80%;
+  font-size: 30rpx;
+  color: #ffffff;
+  border-bottom-right-radius: 50rpx;
+  border-top-right-radius: 50rpx;
+}

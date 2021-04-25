@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import cn.iwannnn.mutualassistanceplatform.entity.Post;
+import cn.iwannnn.mutualassistanceplatform.entity.PostDetail;
 import cn.iwannnn.mutualassistanceplatform.entity.PostMini;
 import cn.iwannnn.mutualassistanceplatform.mapper.PostMapper;
 import cn.iwannnn.mutualassistanceplatform.service.PostService;
@@ -37,7 +38,19 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
-    public List<PostMini> getPosts(int nums) {
-        return postMapper.getPosts(nums);
+    public List<PostMini> getPostsWithoutCategory(int nums) {
+        return postMapper.getPostsWithoutCategory(nums);
     }
+
+    @Override
+    public List<PostMini> getPostsWithCategory(String category, int nums) {
+        return postMapper.getPostsWithCategory(category, nums);
+    }
+
+    @Override
+    public PostDetail getPostDetail(String postid) {
+        String publish_openid = postMapper.selectfromPost("publish_openid", postid);
+        return postMapper.getPostDetail(publish_openid, postid);
+    }
+
 }

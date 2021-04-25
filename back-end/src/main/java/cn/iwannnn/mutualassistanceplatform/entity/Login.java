@@ -1,5 +1,7 @@
 package cn.iwannnn.mutualassistanceplatform.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -8,7 +10,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Login {
+    @JsonIgnore
     private String session_3rd;
+
     private String openid;
     private String session_key;
 }

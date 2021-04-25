@@ -11,10 +11,11 @@ App({
     wx.login({
       success: res => {
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
+        var that=this;
         if (res.code) {
             //发起网络请求
             wx.request({
-              url:'http://localhost:8080/wx/account/login',
+              url:that.globalData.domain+'/wx/account/login',
               data: {
                 code: res.code
               },
@@ -31,7 +32,7 @@ App({
   },
   globalData: {
       userInfo: null,
-      domain: "http://localhost:8080",
+      domain: "http://localhost:8888",
       session_3rd: "",
   },
   checkSession_3rd:function(){

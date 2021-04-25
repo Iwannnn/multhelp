@@ -1,8 +1,9 @@
 {
-  "pages":[
+  "pages": [
     "pages/index/index",
     "pages/logs/logs",
     "pages/post/post",
+    "pages/detail/detail",
     "pages/my/my",
     "pages/my/mySetting/mySetting",
     "pages/my/myOrder/myOrder",
@@ -10,11 +11,11 @@
     "pages/about/about",
     "pages/message/message"
   ],
-  "window":{
-    "backgroundTextStyle":"light",
+  "window": {
+    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "Weixin",
-    "navigationBarTextStyle":"black"
+    "navigationBarTextStyle": "black"
   },
   "tabBar": {
     "color": "#959394",
@@ -48,6 +49,6 @@
       }
     ]
   },
-  "usingComponents": {
-  }
+  "usingComponents": {},
+  "sitemapLocation": "sitemap.json"
 }

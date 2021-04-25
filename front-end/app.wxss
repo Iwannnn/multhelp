@@ -4,19 +4,34 @@
 @import 'style/iconfont';
 
 .container {
-  height: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: left;
   justify-content: space-between;
-  padding: 200rpx 0;
+  padding: 100 0;
   box-sizing: border-box;
+  background: #ffffff;
 } 
+
 .divLine{
   background: #E0E3DA;
   margin:auto;
   width: 94%;
   height: 1rpx;
+}
+
+.divLine-big{
+  background: #f0f0f0;
+  margin:auto;
+  width: 100%;
+  height: 20rpx;
+}
+
+.divLine-bottom{
+  background: #f0f0f0;
+  margin:auto;
+  width: 100%;
+  height: 140rpx;
 }
 
 
@@ -45,3 +60,18 @@
 .btn-big::after{
   border: none; 
 }
+page {  
+  display: block;  
+  min-height: 100%;  
+  background-color: #f9f9f9;  
+}
+.container-ad {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: space-between;
+  padding: 55rpx 60rpx 55rpx 50rpx;
+  box-sizing: border-box;
+  background: #f0c0c3;
+  word-break:break-all;
+} 
