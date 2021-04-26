@@ -1,8 +1,5 @@
 package cn.iwannnn.mutualassistanceplatform.service.Impl;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -40,16 +37,13 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public String getUserProfile(String session_3rd) {
+    public Account getUserProfile(String session_3rd) {
         String openid = sessionServiceImpl.getOpenid(session_3rd);
-        Account account = accountMapper.selectProfile(openid);
-        ObjectMapper mapper = new ObjectMapper();
-        String res = "";
-        try {
-            res = mapper.writeValueAsString(account);
-        } catch (JsonProcessingException e) {
-            e.printStackTrace();
-        }
-        return res;
+        return accountMapper.selectProfile(openid);
+    }
+
+    @Override
+    public Account getUserProfileByOpenid(String openid) {
+        return accountMapper.selectProfile(openid);
     }
 }

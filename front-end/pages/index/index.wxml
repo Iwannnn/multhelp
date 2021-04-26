@@ -35,9 +35,9 @@
 <text>\n</text>
 <view wx:if="{{canIGet}}">
   <view wx:for="{{miniposts}}" wx:key="postid">
-    <navigator  url="../detail/detail?postid={{item.postid}}" class="weui-cell weui-cell_access" 
+    <navigator  url="detail/detail?postid={{item.postid}}" class="weui-cell weui-cell_access" 
     hover-class="weui-cell_active"style="display: flex; box-sizing: border-box; margin:auto; width: 95vw; height: 40vh;  border-radius: 30px;" >
-      <view class="container-index" style="display: flex; box-sizing: border-box; margin:auto; width: 95vw; height: 40vh;">
+      <view class="container-minipost" style="display: flex; box-sizing: border-box; margin:auto; width: 95vw; height: 40vh;">
         <text class="iconfont icon-biaoti" style="font-size:25px"> 标题 : {{item.tittle}}</text>
         <text class="iconfont icon-leibie" style="font-size:20px"> 分类 : {{item.category}}</text>
         <text class="iconfont icon-jine" style="font-size:20px"> 帮助金 : {{item.price}}</text>

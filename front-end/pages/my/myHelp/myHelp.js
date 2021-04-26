@@ -13,7 +13,7 @@ Page({
   },
   onLoad:function(options) {
     this.setData({
-      nbTitle: '我的发布',
+      nbTitle: '我的帮助',
       nbLoading: false,
       pageIndex: 1,
     })
@@ -37,7 +37,7 @@ Page({
     app.checkSession_3rd();
     var nums=that.data.pageNum*that.data.callBackCount;
     wx.request({
-      url: app.globalData.domain + '/wx/my/getPosts',
+      url: app.globalData.domain + '/wx/my/getHelps',
       data:{
         session_3rd:app.globalData.session_3rd,
         nums:nums

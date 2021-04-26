@@ -5,26 +5,12 @@ page {
   background-color: #ffffff;  
 } 
 
-.avatar{
-  border-radius: 25px;
-}
-
 .double-view{
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
 }
 
-.container-detail {
-  display: flex;
-  flex-direction: column;
-  align-items: left;
-  justify-content: space-between;
-  padding: 55rpx 60rpx 55rpx 50rpx;
-  box-sizing: border-box;
-  background: #ffffff;
-  word-break:break-all;
-} 
 .bottom{
   display: flex;
   flex-direction: row;

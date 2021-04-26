@@ -30,7 +30,6 @@ Page({
       nbLoading: false,
       pageIndex: 1,
     })
-    this.getPosts();
   },
   onShow:function(options){
     this.getPosts();

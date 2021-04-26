@@ -11,5 +11,7 @@ public interface AccountService {
 
     void updateUserProfile(Account account);
 
-    String getUserProfile(String openid);
+    Account getUserProfile(String session_3rd);
+
+    Account getUserProfileByOpenid(String openid);
 }

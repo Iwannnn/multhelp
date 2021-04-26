@@ -51,7 +51,7 @@ public class PostServiceImpl implements PostService {
 
     @Override
     public PostDetail getPostDetail(String postid) {
-        String publish_openid = postMapper.selectfromPost("publish_openid", postid);
+        String publish_openid = postMapper.selectFromPost("publish_openid", postid);
         return postMapper.getPostDetail(publish_openid, postid);
     }
 

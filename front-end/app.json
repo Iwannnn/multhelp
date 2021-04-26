@@ -1,13 +1,14 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/index/detail/detail",
     "pages/logs/logs",
     "pages/post/post",
-    "pages/detail/detail",
     "pages/my/my",
     "pages/my/mySetting/mySetting",
-    "pages/my/myOrder/myOrder",
+    "pages/my/myHelp/myHelp",
     "pages/my/myPost/myPost",
+    "pages/my/myPost/detail/detail",
     "pages/about/about",
     "pages/message/message"
   ],

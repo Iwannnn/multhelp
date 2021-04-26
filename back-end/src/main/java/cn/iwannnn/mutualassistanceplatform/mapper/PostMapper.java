@@ -24,12 +24,12 @@ public interface PostMapper {
     public String getPostid();
 
     @Select("SELECT ${selectedColumn} FROM `post` WHERE `postid` = #{postid};")
-    String selectfromPost(String selectedColumn, String postid);
+    String selectFromPost(String selectedColumn, String postid);
 
-    @Select("SELECT * FROM `post` WHERE `is_value`= TRUE order by `postid` DESC LIMIT #{nums}")
+    @Select("SELECT * FROM `post` WHERE `is_value`= TRUE ORDER BY `postid` DESC LIMIT #{nums}")
     public List<PostMini> getPostsWithoutCategory(int nums);
 
-    @Select("SELECT * FROM `post` WHERE `value`= TRUE AND `category`=#{category} order by `postid` DESC LIMIT #{nums}")
+    @Select("SELECT * FROM `post` WHERE `is_value`= TRUE AND `category`=#{category} ORDER BY `postid` DESC LIMIT #{nums}")
     public List<PostMini> getPostsWithCategory(String category, int nums);
 
     @Select("SELECT * FROM `post`  INNER JOIN `account` WHERE `openid`= #{openid} AND `postid` = #{postid}; ")

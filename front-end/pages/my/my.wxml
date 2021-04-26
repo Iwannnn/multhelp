@@ -42,9 +42,9 @@
     </view>
     <view class="divLine"></view>
     <view style="background-color: #FFFFFF; flex: 1;">
-      <navigator url="myOrder/myOrder" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+      <navigator url="myHelp/myHelp" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
         <text class="iconfont icon-dingdan" style="position: relative; left: 46rpx; top: 15rpx;font-size:25px"></text>
-        <text style="position: relative; left: 75rpx; top: 15rpx;font-size:25px">我的订单</text>
+        <text style="position: relative; left: 75rpx; top: 15rpx;font-size:25px">我的帮助</text>
         <text class="iconfont icon-rightarrow"style="position: relative; left: 420rpx; top: 15rpx;font-size:20px"></text>
       </navigator>
     </view>

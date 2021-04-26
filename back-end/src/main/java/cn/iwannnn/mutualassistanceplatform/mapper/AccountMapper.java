@@ -17,4 +17,7 @@ public interface AccountMapper {
     @Select("SELECT * FROM `account` WHERE `openid`= #{openid}")
     Account selectProfile(String openid);
 
+    @Select("SELECT ${selectedColumn} FROM `post` WHERE `openid` = #{openid};")
+    String selectFromAccount(String selectedColumn, String openid);
+
 }

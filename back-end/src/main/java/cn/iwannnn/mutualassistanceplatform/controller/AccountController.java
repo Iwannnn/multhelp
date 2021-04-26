@@ -35,7 +35,7 @@ public class AccountController {
     }
 
     @RequestMapping("getUserProfile")
-    public String getUserProfile(String session_3rd) {
+    public Account getUserProfile(String session_3rd) {
         return accountServiceImpl.getUserProfile(session_3rd);
     }
 
