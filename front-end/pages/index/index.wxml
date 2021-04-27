@@ -18,6 +18,16 @@
     </block>
   </swiper>
 </view>
+<navigator url="../search/search">
+  <view class="weui-search-bar">
+    <view class="weui-search-bar__form">
+      <view class="weui-search-bar__box">
+          <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+          <input type="text" class="weui-search-bar__input" placeholder="搜索"/>
+      </view>
+    </view>
+  </view>
+</navigator>
 <view class='box' style="width: 750rpx; height: 69rpx; display: block; box-sizing: border-box; left: 0rpx; top: 0rpx">
   <view class="{{category_idx==0?'selected-box-container':'box-container'}}"  style="width: 187rpx; height: 69rpx; display: flex; box-sizing: border-box; left: 0rpx; top: 0rpx; position: relative">
     <view class="{{category_idx==0?'selected-left':'left'}}" bindtap='changetoAll'>{{category_list[0]}}</view>
@@ -35,7 +45,7 @@
 <text>\n</text>
 <view wx:if="{{canIGet}}">
   <view wx:for="{{miniposts}}" wx:key="postid">
-    <navigator  url="detail/detail?postid={{item.postid}}" class="weui-cell weui-cell_access" 
+    <navigator  url="../detail/detail?postid={{item.postid}}" class="weui-cell weui-cell_access" 
     hover-class="weui-cell_active"style="display: flex; box-sizing: border-box; margin:auto; width: 95vw; height: 40vh;  border-radius: 30px;" >
       <view class="container-minipost" style="display: flex; box-sizing: border-box; margin:auto; width: 95vw; height: 40vh;">
         <text class="iconfont icon-biaoti" style="font-size:25px"> 标题 : {{item.tittle}}</text>

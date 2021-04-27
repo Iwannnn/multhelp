@@ -1,0 +1,43 @@
+<!--pages/search/search.wxml-->
+<page-meta style="fontsize: 25">
+  <navigation-bar
+    title="{{nbTitle}}"
+    loading="{{nbLoading}}"
+    front-color="{{nbFrontColor}}"
+    background-color="{{nbBackgroundColor}}"
+    color-animation-duration="2000"
+    color-animation-timing-func="easeIn"
+  />
+</page-meta>
+<view>
+  <view>
+    <view class="weui-search-bar">
+      <view class="weui-search-bar__form">
+        <view class="weui-search-bar__box">
+          <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+          <input class="weui-search-bar__input"  bindconfirm="searchKeyBoard" confirm-type="search" bindinput="getSearchValue" placeholder="请输入搜索内容"/>
+        </view>
+      </view>
+      <view class="weui-search-bar__search-btn" bindtap='searchButton'>搜索</view>
+    </view>
+  </view>
+</view>
+<view wx:if="{{canIGet}}">
+  <view wx:for="{{miniposts}}" wx:key="postid">
+    <navigator  url="../detail/detail?postid={{item.postid}}" class="weui-cell weui-cell_access" 
+    hover-class="weui-cell_active"style="display: flex; box-sizing: border-box; margin:auto; width: 95vw; height: 40vh;  border-radius: 30px;" >
+      <view class="container-minipost" style="display: flex; box-sizing: border-box; margin:auto; width: 95vw; height: 40vh;">
+        <text class="iconfont icon-biaoti" style="font-size:25px"> 标题 : {{item.tittle}}</text>
+        <text class="iconfont icon-leibie" style="font-size:20px"> 分类 : {{item.category}}</text>
+        <text class="iconfont icon-jine" style="font-size:20px"> 帮助金 : {{item.price}}</text>
+        <text class="iconfont icon-time" style="font-size:17px"> 发布时间 : {{item.create_time}}</text>
+        <text class="iconfont icon-jiezhishijian" style="font-size:17px"> 需求时间 : {{item.need_time}}</text>
+        <text class="iconfont icon-dizhi" style="font-size:17px"> 地址 : {{item.address}}</text>
+      </view>
+    </navigator>
+    <text>\n</text>
+  </view>
+  <view wx:if="!{{canGetMore}}" style="text-align:centerx">
+  <text style="position: relative; left: 218rpx; top: -24rpx">到到到到到底辣辣辣辣辣</text>
+  </view>
+</view>

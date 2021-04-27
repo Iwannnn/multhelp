@@ -1,15 +1,15 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/index/detail/detail",
-    "pages/logs/logs",
+    "pages/logs/logs",    
+    "pages/detail/detail",
     "pages/post/post",
     "pages/my/my",
-    "pages/my/mySetting/mySetting",
     "pages/my/myHelp/myHelp",
     "pages/my/myPost/myPost",
     "pages/my/myPost/detail/detail",
     "pages/about/about",
+    "pages/search/search",
     "pages/message/message"
   ],
   "window": {

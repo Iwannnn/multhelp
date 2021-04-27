@@ -42,11 +42,11 @@ public class MyServiceImpl implements MyService {
 
     @Override
     public List<Account> getUsersProfile(String postid) {
+        List<Account> res = new ArrayList<Account>();
         String publish_openid;
         String receive_openid;
         publish_openid = myMapper.selectFromPost("publish_openid", postid);
         receive_openid = myMapper.selectFromPost("receive_openid", postid);
-        List<Account> res = new ArrayList<Account>();
         Account publish = accountServiceImpl.getUserProfileByOpenid(publish_openid);
         Account receive = accountServiceImpl.getUserProfileByOpenid(receive_openid);
         res.add(publish);

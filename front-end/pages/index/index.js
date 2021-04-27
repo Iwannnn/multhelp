@@ -28,7 +28,7 @@ Page({
     this.setData({
       nbTitle: '主页',
       nbLoading: false,
-      pageIndex: 1,
+      pageNum: 1,
     })
   },
   onShow:function(options){
