@@ -10,7 +10,8 @@
     "pages/my/myPost/detail/detail",
     "pages/about/about",
     "pages/search/search",
-    "pages/message/message"
+    "pages/message/message",
+    "pages/message/chat/chat"
   ],
   "window": {
     "backgroundTextStyle": "light",

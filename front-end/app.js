@@ -30,11 +30,6 @@ App({
       }
     })
   },
-  globalData: {
-      userInfo: null,
-      domain: "http://localhost:8888",
-      session_3rd: "",
-  },
   checkSession_3rd:function(){
     wx.request({
       url: this.globalData.domain+'/wx/session/checkSession_3rd',
@@ -62,5 +57,11 @@ App({
         }
       }
     })
-  }
+  },
+  globalData: {
+    userInfo: null,
+    domain: "http://localhost:8888",
+    socket: "ws://localhost:8888",
+    session_3rd: "",
+},
 })

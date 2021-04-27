@@ -1,0 +1,10 @@
+<!--pages/message/chat/chat.wxml-->
+<view class="bottom">
+  <view class="weui-message-bar">
+    <view class="weui-message-bar__form">
+      <view class="weui-message-bar__box">
+        <input class="weui-message-bar__input" bindconfirm="sendMessage" confirm-type="send" bindinput="getMessage" />
+      </view>
+    </view>
+  </view>
+</view>

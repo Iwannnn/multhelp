@@ -51,5 +51,10 @@ Page({
         console.log(request_res.data)
       }
     })
+  },
+  contact:function(){
+    wx.navigateTo({
+      url: '/pages/message/chat/chat?postid='+this.data.postid,
+    })
   }
 })

@@ -59,7 +59,6 @@ public class PostServiceImpl implements PostService {
     public boolean receivePost(String session_3rd, String postid) {
         if (!postMapper.isValue(postid))
             return false;
-
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Date date = new Date();
         String receive_openid = sessionServiceImpl.getOpenid(session_3rd);

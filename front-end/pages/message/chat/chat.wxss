@@ -1,0 +1,37 @@
+/* pages/message/chat/chat.wxss */
+
+.weui-message-bar {
+  position: relative;
+  padding: 8px 10px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  box-sizing: border-box;
+  background-color: #eeeeee;
+}
+
+.weui-message-bar__form {
+  bottom:0px;
+  position: relative;
+  -webkit-box-flex: 1;
+  -webkit-flex: auto;
+          flex: auto;
+  border-radius: 5px;
+  background: #ffffff;
+  border: 1rpx solid #ffffff;
+}
+
+.weui-message-bar__input {
+  bottom:0px;
+  height: 35px;
+  line-height: 35px;
+  font-size: 17px;
+}
+
+.bottom{
+  position: fixed;
+  bottom: 0rpx;
+  width: 100%;
+  height: 150rpx;
+  background-color: #eeeeee;
+}

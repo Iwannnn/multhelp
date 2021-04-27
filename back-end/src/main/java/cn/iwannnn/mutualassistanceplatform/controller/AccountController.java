@@ -1,5 +1,7 @@
 package cn.iwannnn.mutualassistanceplatform.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -37,6 +39,16 @@ public class AccountController {
     @RequestMapping("getUserProfile")
     public Account getUserProfile(String session_3rd) {
         return accountServiceImpl.getUserProfile(session_3rd);
+    }
+
+    @RequestMapping("getOtherProfileByPostID")
+    public List<Account> getOtherProfileByPostID(String session_3rd, String postid) {
+        return accountServiceImpl.getOtherProfileByPostID(session_3rd, postid);
+    }
+
+    @RequestMapping("getOtherProfileByChatID")
+    public List<Account> getOtherProfileByChatID(String session_3rd, String chatid) {
+        return accountServiceImpl.getOtherProfileByChatID(session_3rd, chatid);
     }
 
 }
