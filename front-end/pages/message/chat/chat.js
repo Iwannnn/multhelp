@@ -11,8 +11,11 @@ Page({
     nbBackgroundColor: '#fae4fa',
     postid:'',
     chatid:'',
+    content:'',
+    contents:[],
     myProfile:{},
     otherProfile:{},
+    test:[],
   },
 
   /**
@@ -22,17 +25,40 @@ Page({
     var postid=options.postid
     var chatid=options.chatid
     this.setData({
-      nbTitle: '求助详情',
+      nbTitle: '聊天',
       nbLoading: false,
-      postid:postid
+      postid:options.postid,
+      chatid:options.chatid
     })
     app.checkSession_3rd()
+    if(this.getAccount()) console.log(this.data.chatid)
+  },
+  createWebSocket: function(){
+    var that=this;
+    wx.connectSocket({
+      url: app.globalData.socket +'/wx/chat/'+ this.data.chatid,
+    })
+    wx.onSocketMessage((res) => {
+      var content = JSON.parse(res.data);
+      that.data.contents=that.data.contents.concat(content)
+      that.setData({
+        contents: that.data.contents
+      })
+    })
+  },
+  getAccount: function(callback){
+    var chatid=this.data.chatid
+    var postid=this.data.postid
+    if(chatid){
+      console.log("getByChatId")
+      this.createWebSocket()
+      this.getOtherProfileByChatID()
+      this.getPrevContents()
+    }
     if(postid){
+      console.log("getByPostId")
       this.createChat()
       this.getOtherProfileByPostID()
-    }
-    if(chatid){
-      this.getOtherProfileByChatID()
     }
   },
   getOtherProfileByPostID:function(){
@@ -50,17 +76,12 @@ Page({
           myProfile:request_res.data[0],
           otherProfile:request_res.data[1]
         })
-        console.log("mydata")
-        console.log(that.data.myProfile)
-        console.log("otherdata")
-        console.log(that.data.otherProfile)
       }
     })
   },
   getOtherProfileByChatID:function(){
     var that=this;
     var chatid=this.data.chatid
-    console.log(chatid)
     wx.request({
       url: app.globalData.domain+'/wx/account/getOtherProfileByChatID',
       data:{
@@ -72,10 +93,6 @@ Page({
           myProfile:request_res.data[0],
           otherProfile:request_res.data[1]
         })
-        console.log("mydata")
-        console.log(that.data.myProfile)
-        console.log("otherdata")
-        console.log(that.data.otherProfile)
       }
     })
   },
@@ -89,8 +106,42 @@ Page({
         postid:postid
       },
       success:request_res=>{
-        console.log("create successfully")
+        that.setData({
+          chatid:request_res.data
+        })
+        that.createWebSocket()
+        that.getPrevContents()
       }
     })
-  }
+  },
+  getMessage: function(e){
+    this.setData({
+      content:e.detail.value
+    })
+  },
+  sendMessage: function(){
+    var that=this
+    wx.sendSocketMessage({
+      data:app.globalData.session_3rd+" "+that.data.content
+    }),
+    console.log(this.data.contents)
+    this.setData({
+    	content: ''
+    })
+  },
+  getPrevContents: function(){
+    var that=this
+    wx.request({
+      url:app.globalData.domain + '/wx/chat/getPrevContents',
+      data:{
+        chatid:that.data.chatid
+      },
+      success:request_res=>{
+        console.log(request_res.data)
+        that.setData({
+          contents:request_res.data
+        })
+      }
+    })
+  },
 })

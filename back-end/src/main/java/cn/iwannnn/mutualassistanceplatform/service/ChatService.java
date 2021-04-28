@@ -1,8 +1,11 @@
 package cn.iwannnn.mutualassistanceplatform.service;
 
-import org.springframework.stereotype.Service;
+import java.util.List;
 
-@Service
+import cn.iwannnn.mutualassistanceplatform.entity.Content;
+
 public interface ChatService {
-    void createChat(String session_3rd, String postid);
+    String createChat(String session_3rd, String postid);
+
+    List<Content> getPrevContents(String chatid);
 }

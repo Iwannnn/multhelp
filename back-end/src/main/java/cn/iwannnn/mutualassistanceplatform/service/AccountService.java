@@ -2,11 +2,8 @@ package cn.iwannnn.mutualassistanceplatform.service;
 
 import java.util.List;
 
-import org.springframework.stereotype.Service;
-
 import cn.iwannnn.mutualassistanceplatform.entity.Account;
 
-@Service
 public interface AccountService {
 
     boolean checkUserProfile(String openid);

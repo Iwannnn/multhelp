@@ -3,8 +3,12 @@
   <view class="weui-message-bar">
     <view class="weui-message-bar__form">
       <view class="weui-message-bar__box">
-        <input class="weui-message-bar__input" bindconfirm="sendMessage" confirm-type="send" bindinput="getMessage" />
+        <input class="weui-message-bar__input" value='{{content}}' bindconfirm="sendMessage" confirm-type="send" bindinput="getMessage" />
       </view>
     </view>
   </view>
+</view>
+{{contents.length}}
+<view wx:for="{{contents}}">
+  {{item.content}}
 </view>
