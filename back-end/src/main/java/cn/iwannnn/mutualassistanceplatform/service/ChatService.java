@@ -5,7 +5,10 @@ import java.util.List;
 import cn.iwannnn.mutualassistanceplatform.entity.Content;
 
 public interface ChatService {
+
     String createChat(String session_3rd, String postid);
 
     List<Content> getPrevContents(String chatid);
+
+    String checkIdentity(String chatid, String session_3rd);
 }

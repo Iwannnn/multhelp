@@ -24,4 +24,9 @@ public class ChatController {
     public List<Content> getPrevContents(String chatid) {
         return chatServiceImpl.getPrevContents(chatid);
     }
+
+    @RequestMapping("checkIdentity")
+    public String checkIdentity(String chatid, String session_3rd) {
+        return chatServiceImpl.checkIdentity(chatid, session_3rd);
+    }
 }

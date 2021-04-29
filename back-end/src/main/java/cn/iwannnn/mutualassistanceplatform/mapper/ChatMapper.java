@@ -7,7 +7,7 @@ import cn.iwannnn.mutualassistanceplatform.entity.Chat;
 
 public interface ChatMapper {
 
-    @Insert("INSERT INTO `chat` (`initiator_openid`, `invitee_openid`) VALUES ( #{initiator_openid} , #{invitee_openid} ); ")
+    @Insert("INSERT INTO `chat` (`initiator_openid`, `invitee_openid` ) VALUES ( #{initiator_openid} , #{invitee_openid} ); ")
     void createChat(String initiator_openid, String invitee_openid);
 
     @Select("SELECT * FROM `chat` WHERE (( `initiator_openid` = #{initiator_openid} AND `invitee_openid` =#{invitee_openid} ) OR"
@@ -16,4 +16,7 @@ public interface ChatMapper {
 
     @Select("SELECT * FROM `chat` WHERE `chatid` = #{chatid}")
     Chat getChat(String chatid);
+
+    @Select("SELECT ${selectedColumn} FROM `chat` WHERE `chatid` = #{chatid};")
+    String selectFromChat(String selectedColumn, String chatid);
 }

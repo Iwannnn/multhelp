@@ -47,13 +47,18 @@ public class ChatServiceImpl implements ChatService {
 
     @Override
     public List<Content> getPrevContents(String chatid) {
-        System.out.println(chatid);
         List<Content> res = new ArrayList<Content>();
         List<Message> messages = messageMapper.getMessages(chatid);
-        System.out.println(messages.toString());
         for (Message message : messages) {
             res.add(contentMapper.getContent(message.getContentid()));
         }
         return res;
+    }
+
+    @Override
+    public String checkIdentity(String chatid, String session_3rd) {
+        String check_openid = sessionServiceImpl.getOpenid(session_3rd);
+        Chat chat = chatMapper.getChat(chatid);
+        return (check_openid.equals(chat.getInitiator_openid())) ? "initiator" : "invitee";
     }
 }

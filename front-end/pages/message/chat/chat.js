@@ -11,11 +11,13 @@ Page({
     nbBackgroundColor: '#fae4fa',
     postid:'',
     chatid:'',
+    identity:'initiator',
     content:'',
     contents:[],
     myProfile:{},
     otherProfile:{},
     test:[],
+    srcollTop:0,
   },
 
   /**
@@ -31,7 +33,7 @@ Page({
       chatid:options.chatid
     })
     app.checkSession_3rd()
-    if(this.getAccount()) console.log(this.data.chatid)
+    this.getAccount()
   },
   createWebSocket: function(){
     var that=this;
@@ -42,7 +44,8 @@ Page({
       var content = JSON.parse(res.data);
       that.data.contents=that.data.contents.concat(content)
       that.setData({
-        contents: that.data.contents
+        contents: that.data.contents,
+        scrollTop:that.data.contents.length*1000
       })
     })
   },
@@ -50,21 +53,34 @@ Page({
     var chatid=this.data.chatid
     var postid=this.data.postid
     if(chatid){
-      console.log("getByChatId")
+      this.checkIdentity()
       this.createWebSocket()
       this.getOtherProfileByChatID()
       this.getPrevContents()
     }
     if(postid){
-      console.log("getByPostId")
       this.createChat()
       this.getOtherProfileByPostID()
     }
   },
+  checkIdentity: function(){
+    var that=this
+    wx.request({
+      url: app.globalData.domain +'/wx/chat/checkIdentity',
+      data:{
+        chatid:that.data.chatid,
+        session_3rd:app.globalData.session_3rd
+      },
+      success:request_res=>{
+        that.setData({
+          identity:request_res.data
+        })
+      }
+    })
+  },
   getOtherProfileByPostID:function(){
     var that=this;
     var postid=this.data.postid
-    console.log(postid)
     wx.request({
       url: app.globalData.domain+'/wx/account/getOtherProfileByPostID',
       data:{
@@ -76,6 +92,7 @@ Page({
           myProfile:request_res.data[0],
           otherProfile:request_res.data[1]
         })
+        console.log(this.data.myProfile)
       }
     })
   },
@@ -109,6 +126,7 @@ Page({
         that.setData({
           chatid:request_res.data
         })
+        that.checkIdentity()
         that.createWebSocket()
         that.getPrevContents()
       }
@@ -124,7 +142,6 @@ Page({
     wx.sendSocketMessage({
       data:app.globalData.session_3rd+" "+that.data.content
     }),
-    console.log(this.data.contents)
     this.setData({
     	content: ''
     })
@@ -139,7 +156,8 @@ Page({
       success:request_res=>{
         console.log(request_res.data)
         that.setData({
-          contents:request_res.data
+          contents:request_res.data,
+          scrollTop:request_res.data.length*1000
         })
       }
     })

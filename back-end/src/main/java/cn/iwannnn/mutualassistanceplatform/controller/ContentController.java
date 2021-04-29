@@ -20,9 +20,10 @@ import cn.iwannnn.mutualassistanceplatform.service.Impl.ContentServiceImpl;
 @RestController
 @ServerEndpoint("/wx/chat/{chatid}")
 public class ContentController {
+
     private String chatid;
 
-    private static ContentServiceImpl contentServiceImpl;
+    private static ContentServiceImpl contentServiceImpl;// 由于websocket的冲突 绑定方式要改变 不然会有null的异常
 
     @Autowired
     public void setContentServiceImpl(ContentServiceImpl contentServiceImpl) {
@@ -31,7 +32,7 @@ public class ContentController {
 
     @OnOpen
     public void onOpen(@PathParam("chatid") String chatid, Session session) throws IOException {
-        this.chatid = chatid;
+        this.chatid = chatid;// 获取chatid经行绑定
         System.out.println("new open" + this.chatid);
     }
 
@@ -43,13 +44,11 @@ public class ContentController {
     @OnMessage
     public void handleMessage(Session session, String message) throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
-        System.out.println("服务器接收到的消息：" + message);
         String[] messages = message.split(" ", 2);
-        System.out.println(messages[0]);
-        System.out.println(messages[1]);
-        System.out.println(chatid);
-        Content content = contentServiceImpl.createContent(chatid, messages[0], messages[1]);
-        session.getBasicRemote().sendText(objectMapper.writeValueAsString(content));
+        String session_3rd = messages[0];
+        String content = messages[1];
+        Content contentBack = contentServiceImpl.createContent(chatid, session_3rd, content);
+        session.getBasicRemote().sendText(objectMapper.writeValueAsString(contentBack));
     }
 
 }
