@@ -29,4 +29,6 @@ public class Message {
 
     private String lastContent;
     private String lastContentTime;
+
+    private String unread;
 }

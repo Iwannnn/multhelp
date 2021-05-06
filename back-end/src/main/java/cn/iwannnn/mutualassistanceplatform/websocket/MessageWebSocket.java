@@ -1,10 +1,11 @@
-package cn.iwannnn.mutualassistanceplatform.controller;
+package cn.iwannnn.mutualassistanceplatform.websocket;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CopyOnWriteArraySet;
 
-import javax.print.attribute.standard.MediaSize.ISO;
+import javax.websocket.OnClose;
 import javax.websocket.OnMessage;
 import javax.websocket.OnOpen;
 import javax.websocket.Session;
@@ -14,55 +15,65 @@ import javax.websocket.server.ServerEndpoint;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Component;
 
 import cn.iwannnn.mutualassistanceplatform.entity.Message;
 import cn.iwannnn.mutualassistanceplatform.service.Impl.ChatServiceImpl;
 import cn.iwannnn.mutualassistanceplatform.service.Impl.MessageServiceImpl;
 
-@RestController
 @ServerEndpoint("/wx/message/{session_3rd}")
-public class MessageController {
+@Component
+public class MessageWebSocket {
 
     private String session_3rd;
 
+    private Session session;
+
     private static ChatServiceImpl chatServiceImpl;// 由于websocket的冲突 绑定方式要改变 不然会有null的异常
+
+    private static CopyOnWriteArraySet<MessageWebSocket> webSocketSet = new CopyOnWriteArraySet<MessageWebSocket>();
 
     @Autowired
     public void setCharServiceImpl(ChatServiceImpl chatServiceImpl) {
-        MessageController.chatServiceImpl = chatServiceImpl;
+        MessageWebSocket.chatServiceImpl = chatServiceImpl;
     }
 
     private static MessageServiceImpl messageServiceImpl;// 由于websocket的冲突 绑定方式要改变 不然会有null的异常
 
     @Autowired
     public void setMessageServiceImpl(MessageServiceImpl messageServiceImpl) {
-        MessageController.messageServiceImpl = messageServiceImpl;
+        MessageWebSocket.messageServiceImpl = messageServiceImpl;
     }
 
     @OnOpen
     public void onOpen(@PathParam("session_3rd") String session_3rd, Session session) throws IOException {
         this.session_3rd = session_3rd;
-        System.out.println(this.session_3rd);
-        List<String> chatids = getChatids();
-        List<Message> messages = getMessages(chatids);
-        System.out.println(messages.toString());
-        sendMessages(session, messages);
+        this.session = session;
+        webSocketSet.add(this);
+        System.out.println("new message websocket " + this.session);
+        sendMessages();
+    }
+
+    @OnClose
+    public void onClose() {
+        webSocketSet.remove(this);
+        System.out.println("close messageWebScoket");
     }
 
     @OnMessage
     public void handleMessage(Session session, String message) throws IOException {
-        System.out.println("服务器接收到的消息：" + message);
-        session.getBasicRemote().sendText("服务器回复的消息: " + "Hello，Are you OK?");
+    }
+
+    public static void sendData(String session_3rd) throws IOException {
+        for (MessageWebSocket item : webSocketSet) {
+            if (item.session_3rd.equals(session_3rd))
+                item.sendMessages();
+        }
     }
 
     public List<String> getChatids() {
         return chatServiceImpl.getChatids(session_3rd);
     }
-
-    // public List<Chat> getChats(List<String> chatids) {
-    // return chatServiceImpl.getChats(chatids);
-    // }
 
     public List<Message> getMessages(List<String> chatids) {
         List<Message> res = new ArrayList<Message>();
@@ -72,10 +83,11 @@ public class MessageController {
         return res;
     }
 
-    public void sendMessages(Session session, List<Message> messages) throws IOException {
+    public void sendMessages() throws IOException {
+        List<String> chatids = getChatids();
+        List<Message> messages = getMessages(chatids);
         ObjectMapper objectMapper = new ObjectMapper();
-
-        session.getBasicRemote().sendText(objectMapper.writeValueAsString(messages));
+        this.session.getAsyncRemote().sendText(objectMapper.writeValueAsString(messages));
     }
 
 }

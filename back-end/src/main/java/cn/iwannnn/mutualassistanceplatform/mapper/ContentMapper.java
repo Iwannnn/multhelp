@@ -19,4 +19,8 @@ public interface ContentMapper {
 
     @Update("UPDATE `content` SET `is_read` = '1' WHERE `contentid` = #{contentid};")
     void isRead(String contentid);
+
+    @Select("SELECT COUNT(*) FROM `content` WHERE `send_openid`= #{otherOpenid}"
+            + " AND `receive_openid` = #{myOpenid} AND `is_read`=FALSE")
+    String countUnread(String myOpenid, String otherOpenid);
 }

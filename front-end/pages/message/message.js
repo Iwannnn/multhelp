@@ -6,11 +6,14 @@ Page({
    * 页面的初始数据
    */
   data: {
-    response:"",
-    messageSocket:""
+    messageSocket:"",
+    messages:[],
   },
   onLoad: function(){
     this.createWebSocket()
+  },
+  onShow: function(){
+    app.checkSession_3rd();
   },
   createWebSocket: function(){
     var that=this
@@ -19,7 +22,11 @@ Page({
     })
 
     this.data.messageSocket.onMessage((res)=>{
+      var messages=JSON.parse(res.data);
       console.log(res.data)
+      that.setData({
+        messages:messages
+      })
     })
   },
 

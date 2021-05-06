@@ -64,6 +64,10 @@ public class MessageServiceImpl implements MessageService {
         message.setGender(otherAccount.getGender());
         message.setLastContent(lastContent.getContent());
         message.setLastContentTime(lastContent.getCreate_time());
+        if (myOpenid.equals(otherOpenid))
+            message.setUnread("0");
+        else
+            message.setUnread(contentMapper.countUnread(myOpenid, otherOpenid));
         return message;
     }
 }

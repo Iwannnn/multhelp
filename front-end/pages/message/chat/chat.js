@@ -52,7 +52,6 @@ Page({
       if(content.sender!=this.data.identity){
         content.isRead=true
         this.isRead(content.contentid)
-        console.log("read")
       }
       that.data.contents=that.data.contents.concat(content)
       that.setData({
