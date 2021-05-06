@@ -63,5 +63,6 @@ App({
     domain: "http://localhost:8888",
     socket: "ws://localhost:8888",
     session_3rd: "",
-},
+    chats:[],
+  },
 })

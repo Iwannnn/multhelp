@@ -7,11 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import cn.iwannnn.mutualassistanceplatform.entity.Chat;
+import cn.iwannnn.mutualassistanceplatform.entity.ChatAndContent;
 import cn.iwannnn.mutualassistanceplatform.entity.Content;
-import cn.iwannnn.mutualassistanceplatform.entity.Message;
 import cn.iwannnn.mutualassistanceplatform.mapper.ChatMapper;
 import cn.iwannnn.mutualassistanceplatform.mapper.ContentMapper;
-import cn.iwannnn.mutualassistanceplatform.mapper.MessageMapper;
+import cn.iwannnn.mutualassistanceplatform.mapper.ChatAndContentMapper;
 import cn.iwannnn.mutualassistanceplatform.mapper.MyMapper;
 import cn.iwannnn.mutualassistanceplatform.service.ChatService;
 
@@ -22,7 +22,7 @@ public class ChatServiceImpl implements ChatService {
     ChatMapper chatMapper;
 
     @Autowired
-    MessageMapper messageMapper;
+    ChatAndContentMapper ccMapper;
 
     @Autowired
     ContentMapper contentMapper;
@@ -48,9 +48,9 @@ public class ChatServiceImpl implements ChatService {
     @Override
     public List<Content> getPrevContents(String chatid) {
         List<Content> res = new ArrayList<Content>();
-        List<Message> messages = messageMapper.getMessages(chatid);
-        for (Message message : messages) {
-            res.add(contentMapper.getContent(message.getContentid()));
+        List<ChatAndContent> ccs = ccMapper.getMessages(chatid);
+        for (ChatAndContent cc : ccs) {
+            res.add(contentMapper.getContent(cc.getContentid()));
         }
         return res;
     }
@@ -60,5 +60,25 @@ public class ChatServiceImpl implements ChatService {
         String check_openid = sessionServiceImpl.getOpenid(session_3rd);
         Chat chat = chatMapper.getChat(chatid);
         return (check_openid.equals(chat.getInitiator_openid())) ? "initiator" : "invitee";
+    }
+
+    @Override
+    public List<String> getChatids(String session_3rd) {
+        String openid = sessionServiceImpl.getOpenid(session_3rd);
+        System.out.println(openid);
+        return chatMapper.getChats(openid);
+    }
+
+    public List<Chat> getChats(List<String> chatids) {
+        List<Chat> res = new ArrayList<Chat>();
+        for (int i = 0; i < chatids.size(); i++) {
+            res.add(chatMapper.getChat(chatids.get(i)));
+        }
+        return res;
+    }
+
+    @Override
+    public void isRead(String contentid) {
+        contentMapper.isRead(contentid);
     }
 }

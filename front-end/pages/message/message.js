@@ -6,27 +6,21 @@ Page({
    * 页面的初始数据
    */
   data: {
-    response:""
+    response:"",
+    messageSocket:""
   },
-  /**
-   * 生命周期函数--监听页面显示
-   */
-
-  onLoad: function () {
-    var that = this
-    // 创建一个 WebSocket 连接
-    wx.connectSocket({
-      url: app.globalData.socket +'/wx/message',
+  onLoad: function(){
+    this.createWebSocket()
+  },
+  createWebSocket: function(){
+    var that=this
+    this.data.messageSocket=wx.connectSocket({
+      url: app.globalData.socket+'/wx/message/'+app.globalData.session_3rd,
     })
-    // 监听 WebSocket 连接打开事件
-    wx.onSocketMessage((res) => {
+
+    this.data.messageSocket.onMessage((res)=>{
       console.log(res.data)
     })
   },
-  send:function(){
-    console.log("123")
-    wx.sendSocketMessage({
-      data: "123",
-    })
-  }
+
 })

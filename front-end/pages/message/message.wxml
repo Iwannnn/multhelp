@@ -1,4 +1,3 @@
 <!--pages/message/message.wxml-->
 <text>pages/message/message.wxml</text>
 <text>{{response}}</text>
-<button bindtap="send">按钮</button>

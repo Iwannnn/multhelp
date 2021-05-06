@@ -1,16 +1,15 @@
 package cn.iwannnn.mutualassistanceplatform.mapper;
 
-import java.util.List;
-
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Select;
-
-import cn.iwannnn.mutualassistanceplatform.entity.Message;
-
 public interface MessageMapper {
-    @Insert("INSERT INTO `message` (`chatid`, `contentid`) VALUES (#{chatid}, #{contentid}); ")
-    void insertMessage(String chatid, String contentid);
 
-    @Select("SELECT * FROM `message` WHERE `chatid` = #{chatid} ")
-    List<Message> getMessages(String chatid);
+    // @Select("SELECT `chatid` FROM `message` WHERE `chatid` = #{chatd} ")
+    // String checkChatid(String chatid);
+
+    // @Insert("INSERT INTO `message` (`chatid`, `last_contentid`) VALUES
+    // (#{chatid}, #{last_contentid}); ")
+    // void createMessage(String chatid, String last_contentid);
+
+    // @Update("UPDATE `message` SET `last_contentid` = #{last_contentid} WHERE
+    // `chatid` = #{chatid} ")
+    // void updataMessage(String chatid, String last_contentid);
 }

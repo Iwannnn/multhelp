@@ -1,5 +1,7 @@
 package cn.iwannnn.mutualassistanceplatform.mapper;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 
@@ -19,4 +21,7 @@ public interface ChatMapper {
 
     @Select("SELECT ${selectedColumn} FROM `chat` WHERE `chatid` = #{chatid};")
     String selectFromChat(String selectedColumn, String chatid);
+
+    @Select("SELECT `chatid` FROM `chat` WHERE `initiator_openid`= #{openid}  OR `invitee_openid`= #{openid}")
+    List<String> getChats(String openid);
 }

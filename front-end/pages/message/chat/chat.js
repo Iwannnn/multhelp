@@ -17,7 +17,7 @@ Page({
     myProfile:{},
     otherProfile:{},
     test:[],
-    srcollTop:0,
+    chatSocket:""
   },
 
   /**
@@ -31,25 +31,37 @@ Page({
       nbLoading: false,
       postid:options.postid,
       chatid:options.chatid
-    })
+    })    
+  },
+  onShow: function(){
     app.checkSession_3rd()
     this.getAccount()
   },
+  onUnload: function(){
+    wx.closeSocket()
+  },
   createWebSocket: function(){
     var that=this;
-    wx.connectSocket({
+    
+    this.data.chatSocket=wx.connectSocket({
       url: app.globalData.socket +'/wx/chat/'+ this.data.chatid,
     })
-    wx.onSocketMessage((res) => {
+    this.data.chatSocket.onMessage((res) => {
+      console.log(res.data)
       var content = JSON.parse(res.data);
+      if(content.sender!=this.data.identity){
+        content.isRead=true
+        this.isRead(content.contentid)
+        console.log("read")
+      }
       that.data.contents=that.data.contents.concat(content)
       that.setData({
         contents: that.data.contents,
-        scrollTop:that.data.contents.length*1000
       })
+      that.srcollTo()
     })
   },
-  getAccount: function(callback){
+  getAccount: function(){
     var chatid=this.data.chatid
     var postid=this.data.postid
     if(chatid){
@@ -92,7 +104,6 @@ Page({
           myProfile:request_res.data[0],
           otherProfile:request_res.data[1]
         })
-        console.log(this.data.myProfile)
       }
     })
   },
@@ -139,9 +150,12 @@ Page({
   },
   sendMessage: function(){
     var that=this
-    wx.sendSocketMessage({
+    that.data.chatSocket.send({
       data:app.globalData.session_3rd+" "+that.data.content
-    }),
+    })
+    // wx.sendSocketMessage({
+    //   data:app.globalData.session_3rd+" "+that.data.content
+    // })
     this.setData({
     	content: ''
     })
@@ -155,11 +169,39 @@ Page({
       },
       success:request_res=>{
         console.log(request_res.data)
+        var contents=request_res.data
+        for(var i=0;i<contents.length;i++){
+          if(contents[i].sender!=that.data.identity){
+            contents[i].isRead=true
+            this.isRead(contents[i].contentid)
+            console.log("read")
+          }
+        }
         that.setData({
-          contents:request_res.data,
-          scrollTop:request_res.data.length*1000
+          contents:contents,
         })
+        that.srcollToStart()
       }
     })
   },
+  srcollToStart:function (){
+    wx.pageScrollTo({
+      scrollTop: this.data.contents.length*1000,
+      duration: 0
+    })
+  },
+  srcollTo:function (){
+    wx.pageScrollTo({
+      scrollTop: this.data.contents.length*1000,
+      duration: 300
+    })
+  },
+  isRead: function(contentid){
+    wx.request({
+      url: app.globalData.domain + '/wx/chat/isRead',
+      data:{
+        contentid:contentid
+      }
+    })
+  }
 })

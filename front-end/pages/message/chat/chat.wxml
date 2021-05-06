@@ -1,5 +1,4 @@
 
-<scroll-view scroll-y="true" scroll-top="{{scrollTop}}">
 <view style="display:flex; flex-direction:column; min-height: 150px; padding: 10px; margin-bottom: 70px;">
   <block wx:for="{{contents}}" wx:key="contetnid">
     <view wx:if="{{item.sender==identity}}" >
@@ -20,12 +19,11 @@
     </view>
   </block>
 </view>
-</scroll-view>
 <view class="bottom">
   <view class="weui-message-bar">
     <view class="weui-message-bar__form">
       <view class="weui-message-bar__box">
-        <input style="width: 708rpx; height: 78rpx; display: block; box-sizing: border-box; left: NaNrpx; top: NaNrpx"  class="weui-message-bar__input" value='{{content}}' bindconfirm="sendMessage" confirm-type="send" bindinput="getMessage" />
+        <input style="width: 708rpx; height: 78rpx; display: block; box-sizing: border-box; left: NaNrpx; top: NaNrpx"  hold-keyboard="true" class="weui-message-bar__input" value='{{content}}' bindconfirm="sendMessage" confirm-type="send" bindinput="getMessage" />
       </view>
     </view>
   </view>

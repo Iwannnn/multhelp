@@ -8,6 +8,7 @@ import cn.iwannnn.mutualassistanceplatform.entity.Content;
 import cn.iwannnn.mutualassistanceplatform.mapper.ChatMapper;
 import cn.iwannnn.mutualassistanceplatform.mapper.ContentMapper;
 import cn.iwannnn.mutualassistanceplatform.mapper.MessageMapper;
+import cn.iwannnn.mutualassistanceplatform.mapper.ChatAndContentMapper;
 import cn.iwannnn.mutualassistanceplatform.service.ContentService;
 
 @Service
@@ -18,6 +19,9 @@ public class ContentServiceImpl implements ContentService {
 
     @Autowired
     ChatMapper chatMapper;
+
+    @Autowired
+    ChatAndContentMapper ccMapper;
 
     @Autowired
     MessageMapper messageMapper;
@@ -36,8 +40,8 @@ public class ContentServiceImpl implements ContentService {
         contentMapper.insertContent(send_openid, receive_openid, sender, content);// 加入数据库
         String contentid = contentMapper.getContentid();// 获取contentid
         Content contentBack = contentMapper.getContent(contentid);
-
-        messageMapper.insertMessage(chatid, contentid);// 绑定
+        ccMapper.insertMessage(chatid, contentid);// 绑定
+        // messageMapper.updataMessage(chatid, contentid);// 更新最新contentid
         return contentBack;
     }
 

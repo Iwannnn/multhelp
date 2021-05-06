@@ -29,4 +29,9 @@ public class ChatController {
     public String checkIdentity(String chatid, String session_3rd) {
         return chatServiceImpl.checkIdentity(chatid, session_3rd);
     }
+
+    @RequestMapping("isRead")
+    public void isRead(String contentid) {
+        chatServiceImpl.isRead(contentid);
+    }
 }

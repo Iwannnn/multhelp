@@ -11,7 +11,8 @@
     "pages/about/about",
     "pages/search/search",
     "pages/message/message",
-    "pages/message/chat/chat"
+    "pages/message/chat/chat",
+    "pages/test/test"
   ],
   "window": {
     "backgroundTextStyle": "light",
