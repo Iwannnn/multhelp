@@ -1,0 +1,148 @@
+miniprogram to uni-app 转换日志
+
+---基本信息---
+时间: 2021-05-07 18:42:17
+语言: Javascript
+转换模式: Hbuilder X
+isTransformWXS: false
+isRenameWxToUni: true
+isMergeWxssToVue: true
+isRepair: false
+
+---小程序基本信息---
+name: 
+version: 
+description: 
+appid: wxb07fbb1d3f12062f
+projectname: 
+compileType: miniprogram
+author: 
+
+---目录信息---
+sourceFolder: E:/wx-miniapp/Mutual Assistance Platform/uniapp/front-end
+targetFolder: E:/wx-miniapp/Mutual Assistance Platform/uniapp/front-end_uni
+outputFolder: E:/wx-miniapp/Mutual Assistance Platform/uniapp/front-end_uni
+miniprogramRoot: E:/wx-miniapp/Mutual Assistance Platform/uniapp/front-end
+
+---日志信息---
+Convert wxs file ..\front-end_uni\miniprogram_npm\weui-miniprogram\slideview\slideview.wxs success!
+Convert wxs file ..\front-end_uni\node_modules\weui-miniprogram\miniprogram_dist\slideview\slideview.wxs success!
+[Tip] 组件间关系 relations 在Uniapp上不支持，请转换后尝试修复、或先注释、或先不管~    file:  miniprogram_npm\weui-miniprogram\form\form.js
+[Tip] 组件间关系 relations 在Uniapp上不支持，请转换后尝试修复、或先注释、或先不管~    file:  node_modules\weui-miniprogram\miniprogram_dist\form\form.js
+[Error] 检测变量 actions 位于props里，不能对其使用setData赋值，转换后请手动修改。   file-->   miniprogram_npm\weui-miniprogram\actionsheet\actionsheet.js
+[Error] 检测变量 show 位于props里，不能对其使用setData赋值，转换后请手动修改。   file-->   miniprogram_npm\weui-miniprogram\actionsheet\actionsheet.js
+[Error] 检测变量 actions 位于props里，不能对其使用setData赋值，转换后请手动修改。   file-->   node_modules\weui-miniprogram\miniprogram_dist\actionsheet\actionsheet.js
+[Error] 检测变量 show 位于props里，不能对其使用setData赋值，转换后请手动修改。   file-->   node_modules\weui-miniprogram\miniprogram_dist\actionsheet\actionsheet.js
+[Tip] 检测到@success绑定的函数 item 不存在，已添加空函数占位   file-> miniprogram_npm/weui-miniprogram/grids/grids
+[Tip] 检测到@fail绑定的函数 item 不存在，已添加空函数占位   file-> miniprogram_npm/weui-miniprogram/grids/grids
+[Tip] 检测到@complete绑定的函数 item 不存在，已添加空函数占位   file-> miniprogram_npm/weui-miniprogram/grids/grids
+[Tip] 检测到@success绑定的函数 item 不存在，已添加空函数占位   file-> node_modules/weui-miniprogram/miniprogram_dist/grids/grids
+[Tip] 检测到@fail绑定的函数 item 不存在，已添加空函数占位   file-> node_modules/weui-miniprogram/miniprogram_dist/grids/grids
+[Tip] 检测到@complete绑定的函数 item 不存在，已添加空函数占位   file-> node_modules/weui-miniprogram/miniprogram_dist/grids/grids
+Convert App.vue success!
+Convert component utils\util.js success!
+Convert component utils\http.js success!
+Convert component miniprogram_npm\weui-miniprogram\index.js success!
+Convert pages\about\about.vue success!
+Convert pages\index\index.vue success!
+Convert pages\logs\logs.vue success!
+Convert pages\detail\detail.vue success!
+Convert pages\message\message.vue success!
+Convert pages\my\my.vue success!
+Convert pages\post\post.vue success!
+Convert pages\search\search.vue success!
+Convert pages\test\test.vue success!
+Convert miniprogram_npm\@miniprogram-component-plus\emoji\index.vue success!
+Convert miniprogram_npm\weui-miniprogram\actionsheet\actionsheet.vue success!
+Convert miniprogram_npm\weui-miniprogram\cell\cell.vue success!
+Convert miniprogram_npm\weui-miniprogram\badge\badge.vue success!
+Convert miniprogram_npm\weui-miniprogram\cells\cells.vue success!
+Convert miniprogram_npm\weui-miniprogram\checkbox\checkbox.vue success!
+Convert miniprogram_npm\weui-miniprogram\checkbox-group\checkbox-group.vue success!
+Convert miniprogram_npm\weui-miniprogram\dialog\dialog.vue success!
+Convert miniprogram_npm\weui-miniprogram\form-page\form-page.vue success!
+Convert miniprogram_npm\weui-miniprogram\form\form.vue success!
+Convert miniprogram_npm\weui-miniprogram\gallery\gallery.vue success!
+Convert miniprogram_npm\weui-miniprogram\grids\grids.vue success!
+Convert miniprogram_npm\weui-miniprogram\half-screen-dialog\half-screen-dialog.vue success!
+Convert miniprogram_npm\weui-miniprogram\icon\icon.vue success!
+Convert miniprogram_npm\weui-miniprogram\loading\loading.vue success!
+Convert miniprogram_npm\weui-miniprogram\msg\msg.vue success!
+Convert miniprogram_npm\weui-miniprogram\navigation-bar\navigation-bar.vue success!
+Convert miniprogram_npm\weui-miniprogram\searchbar\searchbar.vue success!
+Convert miniprogram_npm\weui-miniprogram\slideview\slideview.vue success!
+Convert miniprogram_npm\weui-miniprogram\tabbar\tabbar.vue success!
+Convert miniprogram_npm\weui-miniprogram\uploader\uploader.vue success!
+Convert miniprogram_npm\weui-miniprogram\toptips\toptips.vue success!
+Convert component node_modules\weui-miniprogram\miniprogram_dist\index.js success!
+Convert pages\message\chat\chat.vue success!
+Convert pages\my\myHelp\myHelp.vue success!
+Convert pages\my\myPost\myPost.vue success!
+Convert node_modules\@miniprogram-component-plus\emoji\miniprogram_dist\index.vue success!
+Convert node_modules\weui-miniprogram\miniprogram_dist\actionsheet\actionsheet.vue success!
+Convert node_modules\weui-miniprogram\miniprogram_dist\badge\badge.vue success!
+Convert node_modules\weui-miniprogram\miniprogram_dist\cell\cell.vue success!
+Convert node_modules\weui-miniprogram\miniprogram_dist\checkbox\checkbox.vue success!
+Convert node_modules\weui-miniprogram\miniprogram_dist\cells\cells.vue success!
+Convert node_modules\weui-miniprogram\miniprogram_dist\checkbox-group\checkbox-group.vue success!
+Convert node_modules\weui-miniprogram\miniprogram_dist\dialog\dialog.vue success!
+Convert node_modules\weui-miniprogram\miniprogram_dist\form\form.vue success!
+Convert node_modules\weui-miniprogram\miniprogram_dist\form-page\form-page.vue success!
+Convert node_modules\weui-miniprogram\miniprogram_dist\gallery\gallery.vue success!
+Convert node_modules\weui-miniprogram\miniprogram_dist\grids\grids.vue success!
+Convert node_modules\weui-miniprogram\miniprogram_dist\half-screen-dialog\half-screen-dialog.vue success!
+Convert node_modules\weui-miniprogram\miniprogram_dist\icon\icon.vue success!
+Convert node_modules\weui-miniprogram\miniprogram_dist\loading\loading.vue success!
+Convert node_modules\weui-miniprogram\miniprogram_dist\msg\msg.vue success!
+Convert node_modules\weui-miniprogram\miniprogram_dist\navigation-bar\navigation-bar.vue success!
+Convert node_modules\weui-miniprogram\miniprogram_dist\searchbar\searchbar.vue success!
+Convert node_modules\weui-miniprogram\miniprogram_dist\slideview\slideview.vue success!
+Convert node_modules\weui-miniprogram\miniprogram_dist\toptips\toptips.vue success!
+Convert node_modules\weui-miniprogram\miniprogram_dist\tabbar\tabbar.vue success!
+Convert node_modules\weui-miniprogram\miniprogram_dist\uploader\uploader.vue success!
+Convert pages\my\myHelp\detail\detail.vue success!
+Convert pages\my\myPost\detail\detail.vue success!
+Convert style\iconfont.css.wxss success!
+Convert style\wxbootstrap.css.wxss success!
+Convert miniprogram_npm\weui-miniprogram\weui-wxss\dist\style\weui.css.wxss success!
+Convert miniprogram_npm\weui-miniprogram\weui-wxss\dist\style\icon\weui-icon.css.wxss success!
+Convert node_modules\weui-miniprogram\miniprogram_dist\weui-wxss\dist\style\weui.css.wxss success!
+Convert node_modules\weui-miniprogram\miniprogram_dist\weui-wxss\dist\style\icon\weui-icon.css.wxss success!
+
+转换完成: 
+总共 0 处调用支付Api
+输出 59 个vue文件
+耗时：7311ms
+当前转换模式：【Hbuilder X】，生成Hbuilder X 项目。
+
+
+常见问题：
+问：为什么不将 this.setData({a:1}) 转换为 this.a = 1 呢?
+答：已做polyfill，转换后可正常使用setData函数(见main.js文件)
+
+问：getApp()能在Uni-app里面使用吗？
+答：可以的，Uni-app早已支持
+
+问：为什么转换后我的资源文件都不见了？
+答：已将所有非static目录下面的资源文件都移入到static目录里
+
+问：小程序转换为Uni-app项目后，还能转换成其他小程序项目吗？
+答：当然可以，必须可以！Uni-app项目可以编译到各种小程序、H5和APP等平台
+
+问：为什么小程序运行正常，而转换到Uni-app后报了这么多错误呢？
+答：很正常。Uni-app与小程序无法一一对应，且代码写法千变万化，工具也无法预测所有情况，只能尽力做到更少的报错、更好的兼容。有问题可以添加qq group(780359397、361784059)进行交流
+
+更多信息请阅读答疑文档：https://gitee.com/zhangdaren/articles/blob/master/miniprogram-to-uniapp工具答疑.md
+
+gitee：https://gitee.com/zhangdaren/miniprogram-to-uniapp
+github：https://github.com/zhangdaren/miniprogram-to-uniapp
+
+热烈欢迎各位大佬star和issue!
+
+
+
+注意!!! 
+注意!!! 
+注意!!!
+源项目可能是引用了 We UI 组件，暂不支持转换，请先 “备份” 源项目，再使用 https://gitee.com/zhangdaren/weui-miniprogram-js 替换 We UI 后，再进行转换！！！
+
