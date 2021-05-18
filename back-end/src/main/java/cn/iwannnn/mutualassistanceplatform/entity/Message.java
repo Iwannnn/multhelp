@@ -11,7 +11,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Message {
 
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String chatid;
 
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)

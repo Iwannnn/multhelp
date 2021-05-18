@@ -1,15 +1,15 @@
 <template>
+	<page-meta>
+		<navigation-bar
+			:title="nbTitle"
+			:front-color="nbFrontColor"
+			:background-color="nbBackgroundColor"
+			color-animation-duration="2000"
+			color-animation-timing-func="easeIn"
+		></navigation-bar>
+	</page-meta>
 	<view>
 		<!--pages/my/myPost/myPost.wxml-->
-		<page-meta>
-			<navigation-bar
-				:title="nbTitle"
-				:front-color="nbFrontColor"
-				:background-color="nbBackgroundColor"
-				color-animation-duration="2000"
-				color-animation-timing-func="easeIn"
-			></navigation-bar>
-		</page-meta>
 
 		<view v-if="canIGet">
 			<view v-for="(item, index) in miniposts" :key="index">

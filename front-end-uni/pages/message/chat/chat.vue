@@ -1,4 +1,13 @@
 <template>
+	<page-meta>
+		<navigation-bar
+			:title="nbTitle"
+			:front-color="nbFrontColor"
+			:background-color="nbBackgroundColor"
+			color-animation-duration="2000"
+			color-animation-timing-func="easeIn"
+		></navigation-bar>
+	</page-meta>
 	<view>
 		<view style="display:flex; flex-direction:column; min-height: 150px; padding: 10px; margin-bottom: 70px;">
 			<block v-for="(item, index) in contents" :key="index">
@@ -16,6 +25,7 @@
 				</view>
 			</block>
 		</view>
+		<view> class="divLine-bottom"</view>
 		<view class="bottom">
 			<view class="weui-message-bar">
 				<view class="weui-message-bar__form">
@@ -86,7 +96,7 @@ export default {
 		this.getAccount();
 	},
 	onUnload: function() {
-		uni.closeSocket();
+		this.chatSocket.close();
 	},
 	methods: {
 		createWebSocket: function() {
@@ -172,7 +182,8 @@ export default {
 				success: request_res => {
 					that.setData({
 						myProfile: request_res.data[0],
-						otherProfile: request_res.data[1]
+						otherProfile: request_res.data[1],
+						nbTitle: request_res.data[1].nickName,
 					});
 				}
 			});
@@ -189,7 +200,8 @@ export default {
 				success: request_res => {
 					that.setData({
 						myProfile: request_res.data[0],
-						otherProfile: request_res.data[1]
+						otherProfile: request_res.data[1],
+						nbTitle: request_res.data[1].nickName,
 					});
 				}
 			});

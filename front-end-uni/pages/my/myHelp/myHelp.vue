@@ -1,22 +1,21 @@
 <template>
+	<page-meta>
+		<navigation-bar
+			:title="nbTitle"
+			:front-color="nbFrontColor"
+			:background-color="nbBackgroundColor"
+			color-animation-duration="2000"
+			color-animation-timing-func="easeIn"
+		></navigation-bar>
+	</page-meta>
 	<view>
 		<!--pages/my/myPost/myPost.wxml-->
-		<page-meta>
-			<navigation-bar
-				:title="nbTitle"
-				:front-color="nbFrontColor"
-				:background-color="nbBackgroundColor"
-				color-animation-duration="2000"
-				color-animation-timing-func="easeIn"
-			></navigation-bar>
-		</page-meta>
-
 		<view v-if="canIGet">
 			<view v-for="(item, index) in miniposts" :key="index">
 				<navigator
-					:url="'detail/detail?postid=' + item.postid"
-					class="weui-cell weui-cell_access"
-					hover-class="weui-cell_active"
+				:url="'detail/detail?postid=' + item.postid"
+				class="weui-cell weui-cell_access"
+				hover-class="weui-cell_active"
 					style="display: flex; box-sizing: border-box; margin:auto; width: 95vw; height: 40vh;  border-radius: 30px;"
 				>
 					<view class="container-minipost" style="display: flex; box-sizing: border-box; margin:auto; width: 95vw; height: 40vh;">
@@ -24,7 +23,6 @@
 						<text class="iconfont icon-jine" style="font-size:20px">帮助金 : {{ item.price }}</text>
 						<text class="iconfont icon-time" style="font-size:17px">发布时间 : {{ item.create_time }}</text>
 						<text class="iconfont icon-jiezhishijian" style="font-size:17px">需求时间 : {{ item.need_time }}</text>
-
 						<text v-if="item.is_value == '0'" class="iconfont icon-time" style="font-size:17px">接单时间 : {{ item.end_time }}</text>
 						<text class="iconfont icon-dizhi" style="font-size:17px">地址 : {{ item.address }}</text>
 					</view>

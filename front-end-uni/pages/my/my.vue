@@ -1,16 +1,16 @@
 <template>
+	<page-meta style="fontsize: 25">
+		<navigation-bar
+			:title="nbTitle"
+			:loading="nbLoading"
+			:front-color="nbFrontColor"
+			:background-color="nbBackgroundColor"
+			color-animation-duration="2000"
+			color-animation-timing-func="easeIn"
+		></navigation-bar>
+	</page-meta>
 	<view>
 		<!--mine.wxml-->
-		<page-meta style="fontsize: 25">
-			<navigation-bar
-				:title="nbTitle"
-				:loading="nbLoading"
-				:front-color="nbFrontColor"
-				:background-color="nbBackgroundColor"
-				color-animation-duration="2000"
-				color-animation-timing-func="easeIn"
-			></navigation-bar>
-		</page-meta>
 		<block v-if="!hasUserInfo">
 			<view style="width: 750rpx; background: #FFFFFF; min-height: 100px; height: 301rpx; display: block; box-sizing: border-box; left: NaNrpx; top: NaNrpx">
 				<text class="iconfont icon-touxiang" style="position: relative; left: 66rpx; top: 88rpx; font-size: 65px"></text>

@@ -16,11 +16,11 @@
 			<view style="width: 642rpx; height: 122rpx; display: block; box-sizing: border-box; left: NaNrpx; top: NaNrpx">
 				<image
 					class="avatar"
-					style="position: relative; left: 0rpx; top: 24rpx; width: 68rpx; height: 66rpx; display: inline-block; box-sizing: border-box"
+					style="position: relative; left: 0rpx; top: 24rpx; width: 100rpx; height: 100rpx; display: inline-block; box-sizing: border-box"
 					:src="postDetail.avatarUrl"
 					mode="cover"
 				></image>
-				<text class="userinfo-nickname" style="color: #000000; position: relative; left: 94rpx; top: -47rpx; font-size: 20px">{{ postDetail.nickName }}</text>
+				<text class="userinfo-nickname" style="color: #000000; position: relative; left: 80rpx; top:-5rpx; font-size: 50rpx">{{ postDetail.nickName }}</text>
 			</view>
 			<text class="iconfont icon-jine" style="color:#8a7c01; font-size:20px">帮助金 : {{ postDetail.price }}</text>
 			<text class="iconfont icon-time" style="color:#06663b; font-size:20px">发布时间 : {{ postDetail.create_time }}</text>
@@ -32,7 +32,7 @@
 		</view>
 		<view class="divLine-big"></view>
 		<view class="container-detail" style="color:#430227; font-size:20px">
-			<text class="iconfont icon-detail" style="font-size:25px">请求详情\n</text>
+			<text class="iconfont icon-detail" style="font-size:25px"> 请求详情\n</text>
 			{{ postDetail.detail }}
 		</view>
 		<view class="divLine-bottom"></view>

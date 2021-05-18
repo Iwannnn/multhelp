@@ -1,15 +1,15 @@
 <template>
+	<page-meta>
+		<navigation-bar
+			:title="nbTitle"
+			:front-color="nbFrontColor"
+			:background-color="nbBackgroundColor"
+			color-animation-duration="2000"
+			color-animation-timing-func="easeIn"
+		></navigation-bar>
+	</page-meta>
 	<view>
 		<!--pages/post/post.wxml-->
-		<page-meta>
-			<navigation-bar
-				:title="nbTitle"
-				:front-color="nbFrontColor"
-				:background-color="nbBackgroundColor"
-				color-animation-duration="2000"
-				color-animation-timing-func="easeIn"
-			></navigation-bar>
-		</page-meta>
 		<view class="container">
 			<view style="width: 750rpx; height: 100rpx; display: block; box-sizing: border-box; left: NaNrpx; top: NaNrpx">
 				<text style="position: relative; left: 50rpx; top: 30rpx; font-size: 17px">标题</text>

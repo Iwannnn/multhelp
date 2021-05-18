@@ -59,5 +59,64 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* pages/message/message.wxss */
+.avatar {
+	position: relative;
+	margin: 20rpx 0rpx -100rpx 0rpx;
+	float: left;
+}
+.avatar-size {
+	width: 110rpx;
+	height: 110rpx;
+	border-radius: 10rpx;
+}
+.message {
+	margin: 20rpx 20rpx -100rpx 20rpx;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+}
+.unread-num{
+	display: block;    
+	color: #FFFFFF;
+	font-weight: 1000;
+	text-align: center;
+}
+.unread-circle {
+	border-radius: 50%;
+	height: 40rpx;
+	width: 40rpx;
+	display: inline-block;
+	background: #f30303;
+	vertical-align: top;
+	float: right;
+}
 

@@ -284,6 +284,18 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 /* pages/message/chat/chat.wxss */
 .weui-message-bar {
 	position: relative;

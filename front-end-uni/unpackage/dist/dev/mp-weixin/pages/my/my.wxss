@@ -156,8 +156,31 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* pages/my/my.wxss */
-.avatar{
-  border-radius: 25px;
+.avatar {
+	border-radius: 25px;
 }
 

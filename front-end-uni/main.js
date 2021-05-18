@@ -1,6 +1,9 @@
 import Vue from 'vue';
 import App from './App';
 
+import uView from "uview-ui";
+Vue.use(uView);
+
 // Api函数polyfill（目前为实验版本，如不需要，可删除！）';
 import Polyfill from './polyfill/polyfill';
 Polyfill.init();

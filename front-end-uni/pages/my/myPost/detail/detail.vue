@@ -1,16 +1,15 @@
 <template>
+	<page-meta>
+		<navigation-bar
+			:title="nbTitle"
+			:front-color="nbFrontColor"
+			:background-color="nbBackgroundColor"
+			color-animation-duration="2000"
+			color-animation-timing-func="easeIn"
+		></navigation-bar>
+	</page-meta>
 	<view>
 		<!--pages/my/myPost/detail/detail.wxml-->
-		<!--pages/detail/detail.wxml-->
-		<page-meta>
-			<navigation-bar
-				:title="nbTitle"
-				:front-color="nbFrontColor"
-				:background-color="nbBackgroundColor"
-				color-animation-duration="2000"
-				color-animation-timing-func="easeIn"
-			></navigation-bar>
-		</page-meta>
 		<view class="container-ad" style="color:#f60309; position: relative; left: 0rpx;font-size:30px"><text>澳门网站: iwannnn.cn\n性感荷官在线为您服务</text></view>
 		<view class="container-detail">
 			<text class="iconfont icon-biaoti" style="color:#001961;font-size:35px">{{ postDetail.tittle }}</text>
