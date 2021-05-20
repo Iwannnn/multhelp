@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.multhelp.mapper.MulthelpPostMapper">
+    
+    <resultMap type="MulthelpPost" id="MulthelpPostResult">
+        <result property="postid"    column="postid"    />
+        <result property="publishOpenid"    column="publish_openid"    />
+        <result property="receiveOpenid"    column="receive_openid"    />
+        <result property="tittle"    column="tittle"    />
+        <result property="detail"    column="detail"    />
+        <result property="category"    column="category"    />
+        <result property="address"    column="address"    />
+        <result property="price"    column="price"    />
+        <result property="phone"    column="phone"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="needTime"    column="need_time"    />
+        <result property="endTime"    column="end_time"    />
+        <result property="isValue"    column="is_value"    />
+    </resultMap>
+
+    <sql id="selectMulthelpPostVo">
+        select postid, publish_openid, receive_openid, tittle, detail, category, address, price, phone, create_time, need_time, end_time, is_value from multhelp_post
+    </sql>
+
+    <select id="selectMulthelpPostList" parameterType="MulthelpPost" resultMap="MulthelpPostResult">
+        <include refid="selectMulthelpPostVo"/>
+        <where>  
+            <if test="publishOpenid != null  and publishOpenid != ''"> and publish_openid = #{publishOpenid}</if>
+            <if test="receiveOpenid != null  and receiveOpenid != ''"> and receive_openid = #{receiveOpenid}</if>
+            <if test="tittle != null  and tittle != ''"> and tittle = #{tittle}</if>
+            <if test="detail != null  and detail != ''"> and detail = #{detail}</if>
+            <if test="category != null  and category != ''"> and category = #{category}</if>
+            <if test="address != null  and address != ''"> and address = #{address}</if>
+            <if test="price != null  and price != ''"> and price = #{price}</if>
+            <if test="phone != null  and phone != ''"> and phone = #{phone}</if>
+            <if test="needTime != null "> and need_time = #{needTime}</if>
+            <if test="endTime != null "> and end_time = #{endTime}</if>
+            <if test="isValue != null "> and is_value = #{isValue}</if>
+        </where>
+    </select>
+    
+    <select id="selectMulthelpPostById" parameterType="Integer" resultMap="MulthelpPostResult">
+        <include refid="selectMulthelpPostVo"/>
+        where postid = #{postid}
+    </select>
+        
+    <insert id="insertMulthelpPost" parameterType="MulthelpPost" useGeneratedKeys="true" keyProperty="postid">
+        insert into multhelp_post
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="publishOpenid != null">publish_openid,</if>
+            <if test="receiveOpenid != null">receive_openid,</if>
+            <if test="tittle != null">tittle,</if>
+            <if test="detail != null">detail,</if>
+            <if test="category != null">category,</if>
+            <if test="address != null">address,</if>
+            <if test="price != null">price,</if>
+            <if test="phone != null">phone,</if>
+            <if test="createTime != null">create_time,</if>
+            <if test="needTime != null">need_time,</if>
+            <if test="endTime != null">end_time,</if>
+            <if test="isValue != null">is_value,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="publishOpenid != null">#{publishOpenid},</if>
+            <if test="receiveOpenid != null">#{receiveOpenid},</if>
+            <if test="tittle != null">#{tittle},</if>
+            <if test="detail != null">#{detail},</if>
+            <if test="category != null">#{category},</if>
+            <if test="address != null">#{address},</if>
+            <if test="price != null">#{price},</if>
+            <if test="phone != null">#{phone},</if>
+            <if test="createTime != null">#{createTime},</if>
+            <if test="needTime != null">#{needTime},</if>
+            <if test="endTime != null">#{endTime},</if>
+            <if test="isValue != null">#{isValue},</if>
+         </trim>
+    </insert>
+
+    <update id="updateMulthelpPost" parameterType="MulthelpPost">
+        update multhelp_post
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="publishOpenid != null">publish_openid = #{publishOpenid},</if>
+            <if test="receiveOpenid != null">receive_openid = #{receiveOpenid},</if>
+            <if test="tittle != null">tittle = #{tittle},</if>
+            <if test="detail != null">detail = #{detail},</if>
+            <if test="category != null">category = #{category},</if>
+            <if test="address != null">address = #{address},</if>
+            <if test="price != null">price = #{price},</if>
+            <if test="phone != null">phone = #{phone},</if>
+            <if test="createTime != null">create_time = #{createTime},</if>
+            <if test="needTime != null">need_time = #{needTime},</if>
+            <if test="endTime != null">end_time = #{endTime},</if>
+            <if test="isValue != null">is_value = #{isValue},</if>
+        </trim>
+        where postid = #{postid}
+    </update>
+
+    <delete id="deleteMulthelpPostById" parameterType="Integer">
+        delete from multhelp_post where postid = #{postid}
+    </delete>
+
+    <delete id="deleteMulthelpPostByIds" parameterType="String">
+        delete from multhelp_post where postid in 
+        <foreach item="postid" collection="array" open="(" separator="," close=")">
+            #{postid}
+        </foreach>
+    </delete>
+</mapper>

@@ -4,23 +4,23 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
-import cn.iwannnn.mutualassistanceplatform.entity.Content;
+import cn.iwannnn.mutualassistanceplatform.pojo.Content;
 
 public interface ContentMapper {
     @Select("SELECT LAST_INSERT_ID();") // 获取最近一次自增的主键
     String getContentid();
 
-    @Insert("INSERT INTO `content` (`send_openid`, `receive_openid`, `sender` ,`content`)"
+    @Insert("INSERT INTO `multhelp_content` (`send_openid`, `receive_openid`, `sender` ,`content`)"
             + " VALUES (#{send_openid}, #{receive_openid}, #{sender} ,#{content}); ")
     void insertContent(String send_openid, String receive_openid, String sender, String content);
 
-    @Select("SELECT * FROM `content` WHERE `contentid`=#{contentid} ")
+    @Select("SELECT * FROM `multhelp_content` WHERE `contentid`=#{contentid} ")
     Content getContent(String contentid);
 
-    @Update("UPDATE `content` SET `is_read` = '1' WHERE `contentid` = #{contentid};")
+    @Update("UPDATE `multhelp_content` SET `is_read` = '1' WHERE `contentid` = #{contentid};")
     void isRead(String contentid);
 
-    @Select("SELECT COUNT(*) FROM `content` WHERE `send_openid`= #{otherOpenid}"
+    @Select("SELECT COUNT(*) FROM `multhelp_content` WHERE `send_openid`= #{otherOpenid}"
             + " AND `receive_openid` = #{myOpenid} AND `is_read`=FALSE")
     String countUnread(String myOpenid, String otherOpenid);
 }

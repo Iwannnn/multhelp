@@ -71,8 +71,8 @@ export default {
 			});
 		},
 		userInfo: null,
-		domain: 'http://10.105.167.20:8888',
-		socket: 'ws://10.105.167.20:8888',
+		domain: 'http://localhost:8080',
+		socket: 'ws://localhost:8080',
 		session_3rd: '',
 		messageSocket: null,
 		messages: [],

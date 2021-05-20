@@ -9,7 +9,7 @@
 		></navigation-bar>
 	</page-meta>
 	<view>
-		<view style="display:flex; flex-direction:column; min-height: 150px; padding: 10px; margin-bottom: 70px;">
+		<view style="display:flex; flex-direction:column; min-height: 300rpx; padding: 20rpx; margin-bottom: 140rpx;">
 			<block v-for="(item, index) in contents" :key="index">
 				<view v-if="item.sender == identity">
 					<view>

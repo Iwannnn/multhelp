@@ -17,7 +17,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import cn.iwannnn.mutualassistanceplatform.entity.Message;
+import cn.iwannnn.mutualassistanceplatform.pojo.Message;
 import cn.iwannnn.mutualassistanceplatform.service.Impl.ChatServiceImpl;
 import cn.iwannnn.mutualassistanceplatform.service.Impl.MessageServiceImpl;
 

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.multhelp.mapper.MulthelpChatandcontentMapper">
+    
+    <resultMap type="MulthelpChatandcontent" id="MulthelpChatandcontentResult">
+        <result property="chatid"    column="chatid"    />
+        <result property="contentid"    column="contentid"    />
+    </resultMap>
+
+    <sql id="selectMulthelpChatandcontentVo">
+        select chatid, contentid from multhelp_chatandcontent
+    </sql>
+
+    <select id="selectMulthelpChatandcontentList" parameterType="MulthelpChatandcontent" resultMap="MulthelpChatandcontentResult">
+        <include refid="selectMulthelpChatandcontentVo"/>
+        <where>  
+            <if test="chatid != null "> and chatid = #{chatid}</if>
+            <if test="contentid != null "> and contentid = #{contentid}</if>
+        </where>
+    </select>
+    
+    <select id="selectMulthelpChatandcontentById" parameterType="Long" resultMap="MulthelpChatandcontentResult">
+        <include refid="selectMulthelpChatandcontentVo"/>
+        where chatid = #{chatid}
+    </select>
+        
+    <insert id="insertMulthelpChatandcontent" parameterType="MulthelpChatandcontent">
+        insert into multhelp_chatandcontent
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="chatid != null">chatid,</if>
+            <if test="contentid != null">contentid,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="chatid != null">#{chatid},</if>
+            <if test="contentid != null">#{contentid},</if>
+         </trim>
+    </insert>
+
+    <update id="updateMulthelpChatandcontent" parameterType="MulthelpChatandcontent">
+        update multhelp_chatandcontent
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="contentid != null">contentid = #{contentid},</if>
+        </trim>
+        where chatid = #{chatid}
+    </update>
+
+    <delete id="deleteMulthelpChatandcontentById" parameterType="Long">
+        delete from multhelp_chatandcontent where chatid = #{chatid}
+    </delete>
+
+    <delete id="deleteMulthelpChatandcontentByIds" parameterType="String">
+        delete from multhelp_chatandcontent where chatid in 
+        <foreach item="chatid" collection="array" open="(" separator="," close=")">
+            #{chatid}
+        </foreach>
+    </delete>
+</mapper>

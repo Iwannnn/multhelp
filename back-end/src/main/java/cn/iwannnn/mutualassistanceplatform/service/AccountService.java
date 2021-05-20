@@ -2,7 +2,7 @@ package cn.iwannnn.mutualassistanceplatform.service;
 
 import java.util.List;
 
-import cn.iwannnn.mutualassistanceplatform.entity.Account;
+import cn.iwannnn.mutualassistanceplatform.pojo.Account;
 
 public interface AccountService {
 

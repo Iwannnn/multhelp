@@ -3,11 +3,11 @@ package cn.iwannnn.mutualassistanceplatform.service.Impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import cn.iwannnn.mutualassistanceplatform.entity.Chat;
-import cn.iwannnn.mutualassistanceplatform.entity.Content;
 import cn.iwannnn.mutualassistanceplatform.mapper.ChatMapper;
 import cn.iwannnn.mutualassistanceplatform.mapper.ContentMapper;
 import cn.iwannnn.mutualassistanceplatform.mapper.MessageMapper;
+import cn.iwannnn.mutualassistanceplatform.pojo.Chat;
+import cn.iwannnn.mutualassistanceplatform.pojo.Content;
 import cn.iwannnn.mutualassistanceplatform.mapper.ChatAndContentMapper;
 import cn.iwannnn.mutualassistanceplatform.service.ContentService;
 

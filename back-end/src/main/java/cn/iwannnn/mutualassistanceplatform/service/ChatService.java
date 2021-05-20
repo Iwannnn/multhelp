@@ -2,8 +2,8 @@ package cn.iwannnn.mutualassistanceplatform.service;
 
 import java.util.List;
 
-import cn.iwannnn.mutualassistanceplatform.entity.Chat;
-import cn.iwannnn.mutualassistanceplatform.entity.Content;
+import cn.iwannnn.mutualassistanceplatform.pojo.Chat;
+import cn.iwannnn.mutualassistanceplatform.pojo.Content;
 
 public interface ChatService {
 

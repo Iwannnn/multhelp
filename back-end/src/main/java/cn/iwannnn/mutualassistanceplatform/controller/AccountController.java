@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import cn.iwannnn.mutualassistanceplatform.entity.Account;
+import cn.iwannnn.mutualassistanceplatform.pojo.Account;
 import cn.iwannnn.mutualassistanceplatform.service.Impl.AccountServiceImpl;
 import cn.iwannnn.mutualassistanceplatform.service.Impl.LoginServiceImpl;
 

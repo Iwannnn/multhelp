@@ -16,12 +16,12 @@
 				<view class="message">
 					<view style="float: left;">
 						<view style="color: #000000;font-size: 40rpx;">{{ item.nickName }}</view>
-						<view style="color: #CCCCCC;font-size: 40rpx;">{{ item.lastContent }}</view>
+						<view style="color: #CCCCCC;font-size: 30rpx;">{{ item.lastContent }}</view>
 					</view>
 					<view style="margin-left: 150rpx;">
 						<view style="color: #CCCCCC;font-size: 25rpx;">{{ item.lastContentTime }}</view>
 						<text>\n</text>
-						<view class="unread-circle" v-if="item.unread != '1'">
+						<view class="unread-circle" v-if="item.unread != '0'">
 							<view class="unread-num">
 							{{ item.unread }}
 						</view>

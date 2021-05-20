@@ -2,8 +2,8 @@ package cn.iwannnn.mutualassistanceplatform.service;
 
 import java.util.List;
 
-import cn.iwannnn.mutualassistanceplatform.entity.Account;
-import cn.iwannnn.mutualassistanceplatform.entity.MyPost;
+import cn.iwannnn.mutualassistanceplatform.dto.MyPost;
+import cn.iwannnn.mutualassistanceplatform.pojo.Account;
 
 public interface MyService {
     List<MyPost> getMyPosts(String session_3rd, int nums);

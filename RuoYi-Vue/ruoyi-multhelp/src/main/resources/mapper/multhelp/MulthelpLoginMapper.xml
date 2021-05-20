@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.multhelp.mapper.MulthelpLoginMapper">
+    
+    <resultMap type="MulthelpLogin" id="MulthelpLoginResult">
+        <result property="session3rd"    column="session_3rd"    />
+        <result property="openid"    column="openid"    />
+        <result property="sessionKey"    column="session_key"    />
+        <result property="createTime"    column="create_time"    />
+    </resultMap>
+
+    <sql id="selectMulthelpLoginVo">
+        select session_3rd, openid, session_key, create_time from multhelp_login
+    </sql>
+
+    <select id="selectMulthelpLoginList" parameterType="MulthelpLogin" resultMap="MulthelpLoginResult">
+        <include refid="selectMulthelpLoginVo"/>
+        <where>  
+            <if test="openid != null  and openid != ''"> and openid = #{openid}</if>
+            <if test="sessionKey != null  and sessionKey != ''"> and session_key = #{sessionKey}</if>
+        </where>
+    </select>
+    
+    <select id="selectMulthelpLoginById" parameterType="String" resultMap="MulthelpLoginResult">
+        <include refid="selectMulthelpLoginVo"/>
+        where session_3rd = #{session3rd}
+    </select>
+        
+    <insert id="insertMulthelpLogin" parameterType="MulthelpLogin">
+        insert into multhelp_login
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="session3rd != null">session_3rd,</if>
+            <if test="openid != null">openid,</if>
+            <if test="sessionKey != null">session_key,</if>
+            <if test="createTime != null">create_time,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="session3rd != null">#{session3rd},</if>
+            <if test="openid != null">#{openid},</if>
+            <if test="sessionKey != null">#{sessionKey},</if>
+            <if test="createTime != null">#{createTime},</if>
+         </trim>
+    </insert>
+
+    <update id="updateMulthelpLogin" parameterType="MulthelpLogin">
+        update multhelp_login
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="openid != null">openid = #{openid},</if>
+            <if test="sessionKey != null">session_key = #{sessionKey},</if>
+            <if test="createTime != null">create_time = #{createTime},</if>
+        </trim>
+        where session_3rd = #{session3rd}
+    </update>
+
+    <delete id="deleteMulthelpLoginById" parameterType="String">
+        delete from multhelp_login where session_3rd = #{session3rd}
+    </delete>
+
+    <delete id="deleteMulthelpLoginByIds" parameterType="String">
+        delete from multhelp_login where session_3rd in 
+        <foreach item="session3rd" collection="array" open="(" separator="," close=")">
+            #{session3rd}
+        </foreach>
+    </delete>
+</mapper>

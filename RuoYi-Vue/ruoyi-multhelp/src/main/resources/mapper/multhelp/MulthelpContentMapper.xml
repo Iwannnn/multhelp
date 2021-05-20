@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.multhelp.mapper.MulthelpContentMapper">
+    
+    <resultMap type="MulthelpContent" id="MulthelpContentResult">
+        <result property="contentid"    column="contentid"    />
+        <result property="sendOpenid"    column="send_openid"    />
+        <result property="receiveOpenid"    column="receive_openid"    />
+        <result property="sender"    column="sender"    />
+        <result property="content"    column="content"    />
+        <result property="isRead"    column="is_read"    />
+        <result property="createTime"    column="create_time"    />
+    </resultMap>
+
+    <sql id="selectMulthelpContentVo">
+        select contentid, send_openid, receive_openid, sender, content, is_read, create_time from multhelp_content
+    </sql>
+
+    <select id="selectMulthelpContentList" parameterType="MulthelpContent" resultMap="MulthelpContentResult">
+        <include refid="selectMulthelpContentVo"/>
+        <where>  
+            <if test="sendOpenid != null  and sendOpenid != ''"> and send_openid = #{sendOpenid}</if>
+            <if test="receiveOpenid != null  and receiveOpenid != ''"> and receive_openid = #{receiveOpenid}</if>
+            <if test="sender != null  and sender != ''"> and sender = #{sender}</if>
+            <if test="content != null  and content != ''"> and content = #{content}</if>
+            <if test="isRead != null "> and is_read = #{isRead}</if>
+        </where>
+    </select>
+    
+    <select id="selectMulthelpContentById" parameterType="Long" resultMap="MulthelpContentResult">
+        <include refid="selectMulthelpContentVo"/>
+        where contentid = #{contentid}
+    </select>
+        
+    <insert id="insertMulthelpContent" parameterType="MulthelpContent" useGeneratedKeys="true" keyProperty="contentid">
+        insert into multhelp_content
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="sendOpenid != null">send_openid,</if>
+            <if test="receiveOpenid != null">receive_openid,</if>
+            <if test="sender != null">sender,</if>
+            <if test="content != null">content,</if>
+            <if test="isRead != null">is_read,</if>
+            <if test="createTime != null">create_time,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="sendOpenid != null">#{sendOpenid},</if>
+            <if test="receiveOpenid != null">#{receiveOpenid},</if>
+            <if test="sender != null">#{sender},</if>
+            <if test="content != null">#{content},</if>
+            <if test="isRead != null">#{isRead},</if>
+            <if test="createTime != null">#{createTime},</if>
+         </trim>
+    </insert>
+
+    <update id="updateMulthelpContent" parameterType="MulthelpContent">
+        update multhelp_content
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="sendOpenid != null">send_openid = #{sendOpenid},</if>
+            <if test="receiveOpenid != null">receive_openid = #{receiveOpenid},</if>
+            <if test="sender != null">sender = #{sender},</if>
+            <if test="content != null">content = #{content},</if>
+            <if test="isRead != null">is_read = #{isRead},</if>
+            <if test="createTime != null">create_time = #{createTime},</if>
+        </trim>
+        where contentid = #{contentid}
+    </update>
+
+    <delete id="deleteMulthelpContentById" parameterType="Long">
+        delete from multhelp_content where contentid = #{contentid}
+    </delete>
+
+    <delete id="deleteMulthelpContentByIds" parameterType="String">
+        delete from multhelp_content where contentid in 
+        <foreach item="contentid" collection="array" open="(" separator="," close=")">
+            #{contentid}
+        </foreach>
+    </delete>
+</mapper>

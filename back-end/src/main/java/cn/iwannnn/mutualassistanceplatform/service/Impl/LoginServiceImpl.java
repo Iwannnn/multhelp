@@ -5,9 +5,9 @@ import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import cn.iwannnn.mutualassistanceplatform.entity.App;
-import cn.iwannnn.mutualassistanceplatform.entity.Login;
+import cn.iwannnn.mutualassistanceplatform.dto.App;
 import cn.iwannnn.mutualassistanceplatform.mapper.LoginMapper;
+import cn.iwannnn.mutualassistanceplatform.pojo.Login;
 import cn.iwannnn.mutualassistanceplatform.service.LoginService;
 
 @Service

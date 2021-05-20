@@ -7,9 +7,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import cn.iwannnn.mutualassistanceplatform.entity.Post;
-import cn.iwannnn.mutualassistanceplatform.entity.PostDetail;
-import cn.iwannnn.mutualassistanceplatform.entity.PostMini;
+import cn.iwannnn.mutualassistanceplatform.dto.PostDetail;
+import cn.iwannnn.mutualassistanceplatform.dto.PostMini;
+import cn.iwannnn.mutualassistanceplatform.pojo.Post;
 import cn.iwannnn.mutualassistanceplatform.mapper.PostMapper;
 import cn.iwannnn.mutualassistanceplatform.service.PostService;
 

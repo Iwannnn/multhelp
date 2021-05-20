@@ -6,8 +6,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import cn.iwannnn.mutualassistanceplatform.entity.Account;
-import cn.iwannnn.mutualassistanceplatform.entity.MyPost;
+import cn.iwannnn.mutualassistanceplatform.dto.MyPost;
+import cn.iwannnn.mutualassistanceplatform.pojo.Account;
 import cn.iwannnn.mutualassistanceplatform.mapper.MyMapper;
 import cn.iwannnn.mutualassistanceplatform.service.MyService;
 

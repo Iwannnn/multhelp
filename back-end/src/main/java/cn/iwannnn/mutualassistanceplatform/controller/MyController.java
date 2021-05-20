@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import cn.iwannnn.mutualassistanceplatform.entity.Account;
-import cn.iwannnn.mutualassistanceplatform.entity.MyPost;
+import cn.iwannnn.mutualassistanceplatform.dto.MyPost;
+import cn.iwannnn.mutualassistanceplatform.pojo.Account;
 import cn.iwannnn.mutualassistanceplatform.service.Impl.MyServiceImpl;
 
 @RestController

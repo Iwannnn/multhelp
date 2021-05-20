@@ -6,13 +6,13 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import cn.iwannnn.mutualassistanceplatform.entity.Chat;
-import cn.iwannnn.mutualassistanceplatform.entity.ChatAndContent;
-import cn.iwannnn.mutualassistanceplatform.entity.Content;
 import cn.iwannnn.mutualassistanceplatform.mapper.ChatMapper;
 import cn.iwannnn.mutualassistanceplatform.mapper.ContentMapper;
 import cn.iwannnn.mutualassistanceplatform.mapper.ChatAndContentMapper;
 import cn.iwannnn.mutualassistanceplatform.mapper.MyMapper;
+import cn.iwannnn.mutualassistanceplatform.pojo.Chat;
+import cn.iwannnn.mutualassistanceplatform.pojo.ChatAndContent;
+import cn.iwannnn.mutualassistanceplatform.pojo.Content;
 import cn.iwannnn.mutualassistanceplatform.service.ChatService;
 
 @Service

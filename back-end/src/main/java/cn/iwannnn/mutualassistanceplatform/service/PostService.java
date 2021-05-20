@@ -2,9 +2,9 @@ package cn.iwannnn.mutualassistanceplatform.service;
 
 import java.util.List;
 
-import cn.iwannnn.mutualassistanceplatform.entity.Post;
-import cn.iwannnn.mutualassistanceplatform.entity.PostDetail;
-import cn.iwannnn.mutualassistanceplatform.entity.PostMini;
+import cn.iwannnn.mutualassistanceplatform.dto.PostDetail;
+import cn.iwannnn.mutualassistanceplatform.dto.PostMini;
+import cn.iwannnn.mutualassistanceplatform.pojo.Post;
 
 public interface PostService {
 

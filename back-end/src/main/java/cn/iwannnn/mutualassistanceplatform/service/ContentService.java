@@ -2,7 +2,7 @@ package cn.iwannnn.mutualassistanceplatform.service;
 
 import org.springframework.stereotype.Service;
 
-import cn.iwannnn.mutualassistanceplatform.entity.Content;
+import cn.iwannnn.mutualassistanceplatform.pojo.Content;
 
 @Service
 public interface ContentService {

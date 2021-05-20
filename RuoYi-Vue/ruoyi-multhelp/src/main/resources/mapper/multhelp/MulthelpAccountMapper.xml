@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.multhelp.mapper.MulthelpAccountMapper">
+    
+    <resultMap type="MulthelpAccount" id="MulthelpAccountResult">
+        <result property="openid"    column="openid"    />
+        <result property="nickname"    column="nickname"    />
+        <result property="avatarurl"    column="avatarurl"    />
+        <result property="gender"    column="gender"    />
+        <result property="language"    column="language"    />
+        <result property="city"    column="city"    />
+        <result property="province"    column="province"    />
+        <result property="country"    column="country"    />
+    </resultMap>
+
+    <sql id="selectMulthelpAccountVo">
+        select openid, nickname, avatarurl, gender, language, city, province, country from multhelp_account
+    </sql>
+
+    <select id="selectMulthelpAccountList" parameterType="MulthelpAccount" resultMap="MulthelpAccountResult">
+        <include refid="selectMulthelpAccountVo"/>
+        <where>  
+            <if test="nickname != null  and nickname != ''"> and nickname like concat('%', #{nickname}, '%')</if>
+            <if test="avatarurl != null  and avatarurl != ''"> and avatarurl = #{avatarurl}</if>
+            <if test="gender != null "> and gender = #{gender}</if>
+            <if test="language != null  and language != ''"> and language = #{language}</if>
+            <if test="city != null  and city != ''"> and city = #{city}</if>
+            <if test="province != null  and province != ''"> and province = #{province}</if>
+            <if test="country != null  and country != ''"> and country = #{country}</if>
+        </where>
+    </select>
+    
+    <select id="selectMulthelpAccountById" parameterType="String" resultMap="MulthelpAccountResult">
+        <include refid="selectMulthelpAccountVo"/>
+        where openid = #{openid}
+    </select>
+        
+    <insert id="insertMulthelpAccount" parameterType="MulthelpAccount">
+        insert into multhelp_account
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="openid != null">openid,</if>
+            <if test="nickname != null">nickname,</if>
+            <if test="avatarurl != null">avatarurl,</if>
+            <if test="gender != null">gender,</if>
+            <if test="language != null">language,</if>
+            <if test="city != null">city,</if>
+            <if test="province != null">province,</if>
+            <if test="country != null">country,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="openid != null">#{openid},</if>
+            <if test="nickname != null">#{nickname},</if>
+            <if test="avatarurl != null">#{avatarurl},</if>
+            <if test="gender != null">#{gender},</if>
+            <if test="language != null">#{language},</if>
+            <if test="city != null">#{city},</if>
+            <if test="province != null">#{province},</if>
+            <if test="country != null">#{country},</if>
+         </trim>
+    </insert>
+
+    <update id="updateMulthelpAccount" parameterType="MulthelpAccount">
+        update multhelp_account
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="nickname != null">nickname = #{nickname},</if>
+            <if test="avatarurl != null">avatarurl = #{avatarurl},</if>
+            <if test="gender != null">gender = #{gender},</if>
+            <if test="language != null">language = #{language},</if>
+            <if test="city != null">city = #{city},</if>
+            <if test="province != null">province = #{province},</if>
+            <if test="country != null">country = #{country},</if>
+        </trim>
+        where openid = #{openid}
+    </update>
+
+    <delete id="deleteMulthelpAccountById" parameterType="String">
+        delete from multhelp_account where openid = #{openid}
+    </delete>
+
+    <delete id="deleteMulthelpAccountByIds" parameterType="String">
+        delete from multhelp_account where openid in 
+        <foreach item="openid" collection="array" open="(" separator="," close=")">
+            #{openid}
+        </foreach>
+    </delete>
+</mapper>

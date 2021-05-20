@@ -1,6 +1,6 @@
 package cn.iwannnn.mutualassistanceplatform.service;
 
-import cn.iwannnn.mutualassistanceplatform.entity.Message;
+import cn.iwannnn.mutualassistanceplatform.pojo.Message;
 
 public interface MessageService {
 

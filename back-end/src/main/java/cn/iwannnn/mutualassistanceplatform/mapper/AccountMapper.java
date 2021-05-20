@@ -4,20 +4,20 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
-import cn.iwannnn.mutualassistanceplatform.entity.Account;
+import cn.iwannnn.mutualassistanceplatform.pojo.Account;
 
 public interface AccountMapper {
 
-    @Insert("INSERT IGNORE INTO `account` (`openid`) VALUES (#{openid});")
+    @Insert("INSERT IGNORE INTO `multhelp_account` (`openid`) VALUES (#{openid});")
     void insertOpenid(String openid);
 
-    @Update("UPDATE `account` SET ${updatedColumn} = #{updatedInfo} WHERE `openid` = #{openid};")
+    @Update("UPDATE `multhelp_account` SET ${updatedColumn} = #{updatedInfo} WHERE `openid` = #{openid};")
     void updateProfile(String updatedColumn, String updatedInfo, String openid);
 
-    @Select("SELECT * FROM `account` WHERE `openid`= #{openid}")
+    @Select("SELECT * FROM `multhelp_account` WHERE `openid`= #{openid}")
     Account selectProfile(String openid);
 
-    @Select("SELECT ${selectedColumn} FROM `post` WHERE `openid` = #{openid};")
+    @Select("SELECT ${selectedColumn} FROM `multhelp_post` WHERE `openid` = #{openid};")
     String selectFromAccount(String selectedColumn, String openid);
 
 }

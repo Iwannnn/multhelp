@@ -14,7 +14,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import cn.iwannnn.mutualassistanceplatform.entity.Content;
+import cn.iwannnn.mutualassistanceplatform.pojo.Content;
 import cn.iwannnn.mutualassistanceplatform.service.Impl.ContentServiceImpl;
 
 @ServerEndpoint("/wx/chat/{chatid}")
@@ -52,6 +52,7 @@ public class ContentWebSocket {
         Content contentBack = contentServiceImpl.createContent(chatid, session_3rd, content);
         MessageWebSocket.sendData(session_3rd);
         sendMessage(contentBack);
+        System.out.println(contentBack);
     }
 
     public void sendMessage(Content content) throws IOException {
