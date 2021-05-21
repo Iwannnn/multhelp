@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import cn.iwannnn.miniapp.dto.App;
 import cn.iwannnn.miniapp.mapper.LoginMapper;
-import cn.iwannnn.miniapp.pojo.Login;
+import cn.iwannnn.miniapp.domain.Login;
 import cn.iwannnn.miniapp.service.LoginService;
 
 @Service

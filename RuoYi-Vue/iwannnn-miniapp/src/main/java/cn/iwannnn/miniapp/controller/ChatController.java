@@ -6,11 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import cn.iwannnn.miniapp.pojo.Content;
+import cn.iwannnn.miniapp.domain.Content;
 import cn.iwannnn.miniapp.service.Impl.ChatServiceImpl;
 
 @RestController
-@RequestMapping("wx/chat")
+@RequestMapping("/wx/chat")
 public class ChatController {
     @Autowired
     ChatServiceImpl chatServiceImpl;

@@ -7,12 +7,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import cn.iwannnn.miniapp.pojo.Account;
+import cn.iwannnn.miniapp.domain.Account;
 import cn.iwannnn.miniapp.service.Impl.AccountServiceImpl;
 import cn.iwannnn.miniapp.service.Impl.LoginServiceImpl;
 
 @RestController
-@RequestMapping("wx/account")
+@RequestMapping("/wx/account")
 public class AccountController {
 
     @Autowired

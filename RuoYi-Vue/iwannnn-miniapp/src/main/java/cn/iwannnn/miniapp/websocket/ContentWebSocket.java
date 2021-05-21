@@ -14,7 +14,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import cn.iwannnn.miniapp.pojo.Content;
+import cn.iwannnn.miniapp.domain.Content;
 import cn.iwannnn.miniapp.service.Impl.ContentServiceImpl;
 
 @ServerEndpoint("/wx/chat/{chatid}")

@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 import cn.iwannnn.miniapp.service.Impl.SessionServiceImpl;
 
 @RestController
-@RequestMapping("wx/session")
+@RequestMapping("/wx/session")
 public class SessionController {
 
     @Autowired

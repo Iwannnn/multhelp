@@ -1,4 +1,4 @@
-package cn.iwannnn.miniapp.pojo;
+package cn.iwannnn.miniapp.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 

@@ -9,7 +9,7 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.util.EntityUtils;
 
-import cn.iwannnn.miniapp.pojo.Login;
+import cn.iwannnn.miniapp.domain.Login;
 
 public class App {
     public static String id = "wxb07fbb1d3f12062f";

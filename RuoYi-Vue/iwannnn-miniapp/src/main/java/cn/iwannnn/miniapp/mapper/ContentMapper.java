@@ -5,7 +5,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
-import cn.iwannnn.miniapp.pojo.Content;
+import cn.iwannnn.miniapp.domain.Content;
 
 @Mapper
 public interface ContentMapper {

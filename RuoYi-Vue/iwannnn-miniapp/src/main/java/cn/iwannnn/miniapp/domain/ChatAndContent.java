@@ -1,4 +1,4 @@
-package cn.iwannnn.miniapp.pojo;
+package cn.iwannnn.miniapp.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

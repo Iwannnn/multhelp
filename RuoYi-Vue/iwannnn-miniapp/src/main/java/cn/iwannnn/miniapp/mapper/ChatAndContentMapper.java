@@ -6,7 +6,7 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
-import cn.iwannnn.miniapp.pojo.ChatAndContent;
+import cn.iwannnn.miniapp.domain.ChatAndContent;
 
 @Mapper
 public interface ChatAndContentMapper {

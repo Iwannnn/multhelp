@@ -6,11 +6,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import cn.iwannnn.miniapp.pojo.Account;
+import cn.iwannnn.miniapp.domain.Account;
 import cn.iwannnn.miniapp.mapper.AccountMapper;
 import cn.iwannnn.miniapp.mapper.ChatMapper;
 import cn.iwannnn.miniapp.mapper.MyMapper;
-import cn.iwannnn.miniapp.pojo.Chat;
+import cn.iwannnn.miniapp.domain.Chat;
 import cn.iwannnn.miniapp.service.AccountService;
 
 @Service

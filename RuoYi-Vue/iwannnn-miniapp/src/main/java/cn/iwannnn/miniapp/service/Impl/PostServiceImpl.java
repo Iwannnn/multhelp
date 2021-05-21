@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 import cn.iwannnn.miniapp.dto.PostDetail;
 import cn.iwannnn.miniapp.dto.PostMini;
-import cn.iwannnn.miniapp.pojo.Post;
+import cn.iwannnn.miniapp.domain.Post;
 import cn.iwannnn.miniapp.mapper.PostMapper;
 import cn.iwannnn.miniapp.service.PostService;
 

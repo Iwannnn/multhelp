@@ -1,6 +1,6 @@
 package cn.iwannnn.miniapp.service;
 
-import cn.iwannnn.miniapp.pojo.Message;
+import cn.iwannnn.miniapp.domain.Message;
 
 public interface MessageService {
 

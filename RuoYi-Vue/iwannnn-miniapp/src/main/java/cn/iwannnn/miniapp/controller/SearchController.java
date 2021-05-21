@@ -10,7 +10,7 @@ import cn.iwannnn.miniapp.dto.PostMini;
 import cn.iwannnn.miniapp.service.Impl.SearchServiceImpl;
 
 @RestController
-@RequestMapping("wx")
+@RequestMapping("/wx")
 public class SearchController {
 
     @Autowired

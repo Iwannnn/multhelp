@@ -5,7 +5,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
-import cn.iwannnn.miniapp.pojo.Account;
+import cn.iwannnn.miniapp.domain.Account;
 
 @Mapper
 public interface AccountMapper {

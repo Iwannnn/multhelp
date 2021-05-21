@@ -3,19 +3,17 @@ package cn.iwannnn.miniapp.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import cn.iwannnn.miniapp.dto.PostDetail;
 import cn.iwannnn.miniapp.dto.PostMini;
-import cn.iwannnn.miniapp.pojo.Post;
+import cn.iwannnn.miniapp.domain.Post;
 import cn.iwannnn.miniapp.service.Impl.PostServiceImpl;
 
 @RestController
-@RequestMapping("wx/post")
-@PreAuthorize("@ss.hasAnyRoles('user,admin')")
+@RequestMapping("/wx/post")
 public class PostController {
 
     @Autowired

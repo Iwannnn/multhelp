@@ -7,11 +7,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import cn.iwannnn.miniapp.dto.MyPost;
-import cn.iwannnn.miniapp.pojo.Account;
+import cn.iwannnn.miniapp.domain.Account;
 import cn.iwannnn.miniapp.service.Impl.MyServiceImpl;
 
 @RestController
-@RequestMapping("wx/my")
+@RequestMapping("/wx/my")
 public class MyController {
     @Autowired
     MyServiceImpl myServiceImpl;

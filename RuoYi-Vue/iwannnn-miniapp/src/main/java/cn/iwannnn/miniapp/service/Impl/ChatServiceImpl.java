@@ -10,9 +10,9 @@ import cn.iwannnn.miniapp.mapper.ChatMapper;
 import cn.iwannnn.miniapp.mapper.ContentMapper;
 import cn.iwannnn.miniapp.mapper.ChatAndContentMapper;
 import cn.iwannnn.miniapp.mapper.MyMapper;
-import cn.iwannnn.miniapp.pojo.Chat;
-import cn.iwannnn.miniapp.pojo.ChatAndContent;
-import cn.iwannnn.miniapp.pojo.Content;
+import cn.iwannnn.miniapp.domain.Chat;
+import cn.iwannnn.miniapp.domain.ChatAndContent;
+import cn.iwannnn.miniapp.domain.Content;
 import cn.iwannnn.miniapp.service.ChatService;
 
 @Service

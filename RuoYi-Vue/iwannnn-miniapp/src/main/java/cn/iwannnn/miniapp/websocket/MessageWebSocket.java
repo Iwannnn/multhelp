@@ -17,7 +17,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import cn.iwannnn.miniapp.pojo.Message;
+import cn.iwannnn.miniapp.domain.Message;
 import cn.iwannnn.miniapp.service.Impl.ChatServiceImpl;
 import cn.iwannnn.miniapp.service.Impl.MessageServiceImpl;
 

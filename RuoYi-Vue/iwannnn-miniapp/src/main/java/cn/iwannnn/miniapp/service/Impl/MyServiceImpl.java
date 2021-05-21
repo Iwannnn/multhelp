@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import cn.iwannnn.miniapp.dto.MyPost;
-import cn.iwannnn.miniapp.pojo.Account;
+import cn.iwannnn.miniapp.domain.Account;
 import cn.iwannnn.miniapp.mapper.MyMapper;
 import cn.iwannnn.miniapp.service.MyService;
 

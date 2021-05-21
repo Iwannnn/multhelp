@@ -2,8 +2,8 @@ package cn.iwannnn.miniapp.service;
 
 import java.util.List;
 
-import cn.iwannnn.miniapp.pojo.Chat;
-import cn.iwannnn.miniapp.pojo.Content;
+import cn.iwannnn.miniapp.domain.Chat;
+import cn.iwannnn.miniapp.domain.Content;
 
 public interface ChatService {
 

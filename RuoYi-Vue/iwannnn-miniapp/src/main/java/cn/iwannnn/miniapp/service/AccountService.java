@@ -2,7 +2,7 @@ package cn.iwannnn.miniapp.service;
 
 import java.util.List;
 
-import cn.iwannnn.miniapp.pojo.Account;
+import cn.iwannnn.miniapp.domain.Account;
 
 public interface AccountService {
 

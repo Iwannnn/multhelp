@@ -4,7 +4,7 @@ import java.util.List;
 
 import cn.iwannnn.miniapp.dto.PostDetail;
 import cn.iwannnn.miniapp.dto.PostMini;
-import cn.iwannnn.miniapp.pojo.Post;
+import cn.iwannnn.miniapp.domain.Post;
 
 public interface PostService {
 

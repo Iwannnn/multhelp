@@ -3,15 +3,15 @@ package cn.iwannnn.miniapp.service.Impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import cn.iwannnn.miniapp.pojo.Account;
-import cn.iwannnn.miniapp.pojo.Message;
+import cn.iwannnn.miniapp.domain.Account;
+import cn.iwannnn.miniapp.domain.Message;
 import cn.iwannnn.miniapp.mapper.ChatAndContentMapper;
 import cn.iwannnn.miniapp.mapper.ChatMapper;
 import cn.iwannnn.miniapp.mapper.ContentMapper;
 import cn.iwannnn.miniapp.mapper.MessageMapper;
-import cn.iwannnn.miniapp.pojo.Chat;
-import cn.iwannnn.miniapp.pojo.ChatAndContent;
-import cn.iwannnn.miniapp.pojo.Content;
+import cn.iwannnn.miniapp.domain.Chat;
+import cn.iwannnn.miniapp.domain.ChatAndContent;
+import cn.iwannnn.miniapp.domain.Content;
 import cn.iwannnn.miniapp.service.MessageService;
 
 @Service

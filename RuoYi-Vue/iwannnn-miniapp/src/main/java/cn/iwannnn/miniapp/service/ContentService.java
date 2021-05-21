@@ -2,7 +2,7 @@ package cn.iwannnn.miniapp.service;
 
 import org.springframework.stereotype.Service;
 
-import cn.iwannnn.miniapp.pojo.Content;
+import cn.iwannnn.miniapp.domain.Content;
 
 @Service
 public interface ContentService {
