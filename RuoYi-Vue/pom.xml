@@ -222,6 +222,11 @@
                 <version>${ruoyi.version}</version>
             </dependency>
 
+            <dependency>
+                <groupId>com.ruoyi</groupId>
+                <artifactId>iwannnn-miniapp</artifactId>
+                <version>${ruoyi.version}</version>
+            </dependency>
 
         </dependencies>
     </dependencyManagement>
@@ -234,6 +239,7 @@
         <module>ruoyi-generator</module>
         <module>ruoyi-common</module>
         <module>ruoyi-multhelp</module>
+        <module>iwannnn-miniapp</module>
     </modules>
     <packaging>pom</packaging>
 
