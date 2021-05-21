@@ -28,8 +28,7 @@ import com.ruoyi.common.core.page.TableDataInfo;
  */
 @RestController
 @RequestMapping("/multhelp/chatandcontent")
-public class MulthelpChatandcontentController extends BaseController
-{
+public class MulthelpChatandcontentController extends BaseController {
     @Autowired
     private IMulthelpChatandcontentService multhelpChatandcontentService;
 
@@ -38,10 +37,10 @@ public class MulthelpChatandcontentController extends BaseController
      */
     @PreAuthorize("@ss.hasPermi('multhelp:chatandcontent:list')")
     @GetMapping("/list")
-    public TableDataInfo list(MulthelpChatandcontent multhelpChatandcontent)
-    {
+    public TableDataInfo list(MulthelpChatandcontent multhelpChatandcontent) {
         startPage();
-        List<MulthelpChatandcontent> list = multhelpChatandcontentService.selectMulthelpChatandcontentList(multhelpChatandcontent);
+        List<MulthelpChatandcontent> list = multhelpChatandcontentService
+                .selectMulthelpChatandcontentList(multhelpChatandcontent);
         return getDataTable(list);
     }
 
@@ -51,9 +50,9 @@ public class MulthelpChatandcontentController extends BaseController
     @PreAuthorize("@ss.hasPermi('multhelp:chatandcontent:export')")
     @Log(title = "聊天会话连接", businessType = BusinessType.EXPORT)
     @GetMapping("/export")
-    public AjaxResult export(MulthelpChatandcontent multhelpChatandcontent)
-    {
-        List<MulthelpChatandcontent> list = multhelpChatandcontentService.selectMulthelpChatandcontentList(multhelpChatandcontent);
+    public AjaxResult export(MulthelpChatandcontent multhelpChatandcontent) {
+        List<MulthelpChatandcontent> list = multhelpChatandcontentService
+                .selectMulthelpChatandcontentList(multhelpChatandcontent);
         ExcelUtil<MulthelpChatandcontent> util = new ExcelUtil<MulthelpChatandcontent>(MulthelpChatandcontent.class);
         return util.exportExcel(list, "聊天会话连接数据");
     }
@@ -63,8 +62,7 @@ public class MulthelpChatandcontentController extends BaseController
      */
     @PreAuthorize("@ss.hasPermi('multhelp:chatandcontent:query')")
     @GetMapping(value = "/{chatid}")
-    public AjaxResult getInfo(@PathVariable("chatid") Long chatid)
-    {
+    public AjaxResult getInfo(@PathVariable("chatid") Long chatid) {
         return AjaxResult.success(multhelpChatandcontentService.selectMulthelpChatandcontentById(chatid));
     }
 
@@ -74,8 +72,7 @@ public class MulthelpChatandcontentController extends BaseController
     @PreAuthorize("@ss.hasPermi('multhelp:chatandcontent:add')")
     @Log(title = "聊天会话连接", businessType = BusinessType.INSERT)
     @PostMapping
-    public AjaxResult add(@RequestBody MulthelpChatandcontent multhelpChatandcontent)
-    {
+    public AjaxResult add(@RequestBody MulthelpChatandcontent multhelpChatandcontent) {
         return toAjax(multhelpChatandcontentService.insertMulthelpChatandcontent(multhelpChatandcontent));
     }
 
@@ -85,8 +82,7 @@ public class MulthelpChatandcontentController extends BaseController
     @PreAuthorize("@ss.hasPermi('multhelp:chatandcontent:edit')")
     @Log(title = "聊天会话连接", businessType = BusinessType.UPDATE)
     @PutMapping
-    public AjaxResult edit(@RequestBody MulthelpChatandcontent multhelpChatandcontent)
-    {
+    public AjaxResult edit(@RequestBody MulthelpChatandcontent multhelpChatandcontent) {
         return toAjax(multhelpChatandcontentService.updateMulthelpChatandcontent(multhelpChatandcontent));
     }
 
@@ -95,9 +91,8 @@ public class MulthelpChatandcontentController extends BaseController
      */
     @PreAuthorize("@ss.hasPermi('multhelp:chatandcontent:remove')")
     @Log(title = "聊天会话连接", businessType = BusinessType.DELETE)
-	@DeleteMapping("/{chatids}")
-    public AjaxResult remove(@PathVariable Long[] chatids)
-    {
+    @DeleteMapping("/{chatids}")
+    public AjaxResult remove(@PathVariable Long[] chatids) {
         return toAjax(multhelpChatandcontentService.deleteMulthelpChatandcontentByIds(chatids));
     }
 }

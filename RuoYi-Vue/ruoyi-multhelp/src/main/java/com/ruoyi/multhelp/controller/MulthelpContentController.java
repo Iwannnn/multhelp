@@ -28,8 +28,7 @@ import com.ruoyi.common.core.page.TableDataInfo;
  */
 @RestController
 @RequestMapping("/multhelp/content")
-public class MulthelpContentController extends BaseController
-{
+public class MulthelpContentController extends BaseController {
     @Autowired
     private IMulthelpContentService multhelpContentService;
 
@@ -38,8 +37,7 @@ public class MulthelpContentController extends BaseController
      */
     @PreAuthorize("@ss.hasPermi('multhelp:content:list')")
     @GetMapping("/list")
-    public TableDataInfo list(MulthelpContent multhelpContent)
-    {
+    public TableDataInfo list(MulthelpContent multhelpContent) {
         startPage();
         List<MulthelpContent> list = multhelpContentService.selectMulthelpContentList(multhelpContent);
         return getDataTable(list);
@@ -51,8 +49,7 @@ public class MulthelpContentController extends BaseController
     @PreAuthorize("@ss.hasPermi('multhelp:content:export')")
     @Log(title = "聊天内容", businessType = BusinessType.EXPORT)
     @GetMapping("/export")
-    public AjaxResult export(MulthelpContent multhelpContent)
-    {
+    public AjaxResult export(MulthelpContent multhelpContent) {
         List<MulthelpContent> list = multhelpContentService.selectMulthelpContentList(multhelpContent);
         ExcelUtil<MulthelpContent> util = new ExcelUtil<MulthelpContent>(MulthelpContent.class);
         return util.exportExcel(list, "聊天内容数据");
@@ -63,8 +60,7 @@ public class MulthelpContentController extends BaseController
      */
     @PreAuthorize("@ss.hasPermi('multhelp:content:query')")
     @GetMapping(value = "/{contentid}")
-    public AjaxResult getInfo(@PathVariable("contentid") Long contentid)
-    {
+    public AjaxResult getInfo(@PathVariable("contentid") Long contentid) {
         return AjaxResult.success(multhelpContentService.selectMulthelpContentById(contentid));
     }
 
@@ -74,8 +70,7 @@ public class MulthelpContentController extends BaseController
     @PreAuthorize("@ss.hasPermi('multhelp:content:add')")
     @Log(title = "聊天内容", businessType = BusinessType.INSERT)
     @PostMapping
-    public AjaxResult add(@RequestBody MulthelpContent multhelpContent)
-    {
+    public AjaxResult add(@RequestBody MulthelpContent multhelpContent) {
         return toAjax(multhelpContentService.insertMulthelpContent(multhelpContent));
     }
 
@@ -85,8 +80,7 @@ public class MulthelpContentController extends BaseController
     @PreAuthorize("@ss.hasPermi('multhelp:content:edit')")
     @Log(title = "聊天内容", businessType = BusinessType.UPDATE)
     @PutMapping
-    public AjaxResult edit(@RequestBody MulthelpContent multhelpContent)
-    {
+    public AjaxResult edit(@RequestBody MulthelpContent multhelpContent) {
         return toAjax(multhelpContentService.updateMulthelpContent(multhelpContent));
     }
 
@@ -95,9 +89,8 @@ public class MulthelpContentController extends BaseController
      */
     @PreAuthorize("@ss.hasPermi('multhelp:content:remove')")
     @Log(title = "聊天内容", businessType = BusinessType.DELETE)
-	@DeleteMapping("/{contentids}")
-    public AjaxResult remove(@PathVariable Long[] contentids)
-    {
+    @DeleteMapping("/{contentids}")
+    public AjaxResult remove(@PathVariable Long[] contentids) {
         return toAjax(multhelpContentService.deleteMulthelpContentByIds(contentids));
     }
 }

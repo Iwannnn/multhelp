@@ -28,8 +28,7 @@ import com.ruoyi.common.core.page.TableDataInfo;
  */
 @RestController
 @RequestMapping("/multhelp/account")
-public class MulthelpAccountController extends BaseController
-{
+public class MulthelpAccountController extends BaseController {
     @Autowired
     private IMulthelpAccountService multhelpAccountService;
 
@@ -38,8 +37,7 @@ public class MulthelpAccountController extends BaseController
      */
     @PreAuthorize("@ss.hasPermi('multhelp:account:list')")
     @GetMapping("/list")
-    public TableDataInfo list(MulthelpAccount multhelpAccount)
-    {
+    public TableDataInfo list(MulthelpAccount multhelpAccount) {
         startPage();
         List<MulthelpAccount> list = multhelpAccountService.selectMulthelpAccountList(multhelpAccount);
         return getDataTable(list);
@@ -51,8 +49,7 @@ public class MulthelpAccountController extends BaseController
     @PreAuthorize("@ss.hasPermi('multhelp:account:export')")
     @Log(title = "用户账号", businessType = BusinessType.EXPORT)
     @GetMapping("/export")
-    public AjaxResult export(MulthelpAccount multhelpAccount)
-    {
+    public AjaxResult export(MulthelpAccount multhelpAccount) {
         List<MulthelpAccount> list = multhelpAccountService.selectMulthelpAccountList(multhelpAccount);
         ExcelUtil<MulthelpAccount> util = new ExcelUtil<MulthelpAccount>(MulthelpAccount.class);
         return util.exportExcel(list, "用户账号数据");
@@ -63,8 +60,7 @@ public class MulthelpAccountController extends BaseController
      */
     @PreAuthorize("@ss.hasPermi('multhelp:account:query')")
     @GetMapping(value = "/{openid}")
-    public AjaxResult getInfo(@PathVariable("openid") String openid)
-    {
+    public AjaxResult getInfo(@PathVariable("openid") String openid) {
         return AjaxResult.success(multhelpAccountService.selectMulthelpAccountById(openid));
     }
 
@@ -74,8 +70,7 @@ public class MulthelpAccountController extends BaseController
     @PreAuthorize("@ss.hasPermi('multhelp:account:add')")
     @Log(title = "用户账号", businessType = BusinessType.INSERT)
     @PostMapping
-    public AjaxResult add(@RequestBody MulthelpAccount multhelpAccount)
-    {
+    public AjaxResult add(@RequestBody MulthelpAccount multhelpAccount) {
         return toAjax(multhelpAccountService.insertMulthelpAccount(multhelpAccount));
     }
 
@@ -85,8 +80,7 @@ public class MulthelpAccountController extends BaseController
     @PreAuthorize("@ss.hasPermi('multhelp:account:edit')")
     @Log(title = "用户账号", businessType = BusinessType.UPDATE)
     @PutMapping
-    public AjaxResult edit(@RequestBody MulthelpAccount multhelpAccount)
-    {
+    public AjaxResult edit(@RequestBody MulthelpAccount multhelpAccount) {
         return toAjax(multhelpAccountService.updateMulthelpAccount(multhelpAccount));
     }
 
@@ -95,9 +89,8 @@ public class MulthelpAccountController extends BaseController
      */
     @PreAuthorize("@ss.hasPermi('multhelp:account:remove')")
     @Log(title = "用户账号", businessType = BusinessType.DELETE)
-	@DeleteMapping("/{openids}")
-    public AjaxResult remove(@PathVariable String[] openids)
-    {
+    @DeleteMapping("/{openids}")
+    public AjaxResult remove(@PathVariable String[] openids) {
         return toAjax(multhelpAccountService.deleteMulthelpAccountByIds(openids));
     }
 }

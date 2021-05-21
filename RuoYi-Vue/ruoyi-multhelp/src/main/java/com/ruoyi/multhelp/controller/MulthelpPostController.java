@@ -28,8 +28,7 @@ import com.ruoyi.common.core.page.TableDataInfo;
  */
 @RestController
 @RequestMapping("/multhelp/post")
-public class MulthelpPostController extends BaseController
-{
+public class MulthelpPostController extends BaseController {
     @Autowired
     private IMulthelpPostService multhelpPostService;
 
@@ -38,8 +37,7 @@ public class MulthelpPostController extends BaseController
      */
     @PreAuthorize("@ss.hasPermi('multhelp:post:list')")
     @GetMapping("/list")
-    public TableDataInfo list(MulthelpPost multhelpPost)
-    {
+    public TableDataInfo list(MulthelpPost multhelpPost) {
         startPage();
         List<MulthelpPost> list = multhelpPostService.selectMulthelpPostList(multhelpPost);
         return getDataTable(list);
@@ -51,8 +49,7 @@ public class MulthelpPostController extends BaseController
     @PreAuthorize("@ss.hasPermi('multhelp:post:export')")
     @Log(title = "发布帮助", businessType = BusinessType.EXPORT)
     @GetMapping("/export")
-    public AjaxResult export(MulthelpPost multhelpPost)
-    {
+    public AjaxResult export(MulthelpPost multhelpPost) {
         List<MulthelpPost> list = multhelpPostService.selectMulthelpPostList(multhelpPost);
         ExcelUtil<MulthelpPost> util = new ExcelUtil<MulthelpPost>(MulthelpPost.class);
         return util.exportExcel(list, "发布帮助数据");
@@ -63,8 +60,7 @@ public class MulthelpPostController extends BaseController
      */
     @PreAuthorize("@ss.hasPermi('multhelp:post:query')")
     @GetMapping(value = "/{postid}")
-    public AjaxResult getInfo(@PathVariable("postid") Integer postid)
-    {
+    public AjaxResult getInfo(@PathVariable("postid") Integer postid) {
         return AjaxResult.success(multhelpPostService.selectMulthelpPostById(postid));
     }
 
@@ -74,8 +70,7 @@ public class MulthelpPostController extends BaseController
     @PreAuthorize("@ss.hasPermi('multhelp:post:add')")
     @Log(title = "发布帮助", businessType = BusinessType.INSERT)
     @PostMapping
-    public AjaxResult add(@RequestBody MulthelpPost multhelpPost)
-    {
+    public AjaxResult add(@RequestBody MulthelpPost multhelpPost) {
         return toAjax(multhelpPostService.insertMulthelpPost(multhelpPost));
     }
 
@@ -85,8 +80,7 @@ public class MulthelpPostController extends BaseController
     @PreAuthorize("@ss.hasPermi('multhelp:post:edit')")
     @Log(title = "发布帮助", businessType = BusinessType.UPDATE)
     @PutMapping
-    public AjaxResult edit(@RequestBody MulthelpPost multhelpPost)
-    {
+    public AjaxResult edit(@RequestBody MulthelpPost multhelpPost) {
         return toAjax(multhelpPostService.updateMulthelpPost(multhelpPost));
     }
 
@@ -95,9 +89,8 @@ public class MulthelpPostController extends BaseController
      */
     @PreAuthorize("@ss.hasPermi('multhelp:post:remove')")
     @Log(title = "发布帮助", businessType = BusinessType.DELETE)
-	@DeleteMapping("/{postids}")
-    public AjaxResult remove(@PathVariable Integer[] postids)
-    {
+    @DeleteMapping("/{postids}")
+    public AjaxResult remove(@PathVariable Integer[] postids) {
         return toAjax(multhelpPostService.deleteMulthelpPostByIds(postids));
     }
 }

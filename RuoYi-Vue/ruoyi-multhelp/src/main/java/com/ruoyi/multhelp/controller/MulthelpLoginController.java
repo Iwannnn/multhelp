@@ -28,8 +28,7 @@ import com.ruoyi.common.core.page.TableDataInfo;
  */
 @RestController
 @RequestMapping("/multhelp/login")
-public class MulthelpLoginController extends BaseController
-{
+public class MulthelpLoginController extends BaseController {
     @Autowired
     private IMulthelpLoginService multhelpLoginService;
 
@@ -38,8 +37,7 @@ public class MulthelpLoginController extends BaseController
      */
     @PreAuthorize("@ss.hasPermi('multhelp:login:list')")
     @GetMapping("/list")
-    public TableDataInfo list(MulthelpLogin multhelpLogin)
-    {
+    public TableDataInfo list(MulthelpLogin multhelpLogin) {
         startPage();
         List<MulthelpLogin> list = multhelpLoginService.selectMulthelpLoginList(multhelpLogin);
         return getDataTable(list);
@@ -51,8 +49,7 @@ public class MulthelpLoginController extends BaseController
     @PreAuthorize("@ss.hasPermi('multhelp:login:export')")
     @Log(title = "登陆验证", businessType = BusinessType.EXPORT)
     @GetMapping("/export")
-    public AjaxResult export(MulthelpLogin multhelpLogin)
-    {
+    public AjaxResult export(MulthelpLogin multhelpLogin) {
         List<MulthelpLogin> list = multhelpLoginService.selectMulthelpLoginList(multhelpLogin);
         ExcelUtil<MulthelpLogin> util = new ExcelUtil<MulthelpLogin>(MulthelpLogin.class);
         return util.exportExcel(list, "登陆验证数据");
@@ -63,8 +60,7 @@ public class MulthelpLoginController extends BaseController
      */
     @PreAuthorize("@ss.hasPermi('multhelp:login:query')")
     @GetMapping(value = "/{session3rd}")
-    public AjaxResult getInfo(@PathVariable("session3rd") String session3rd)
-    {
+    public AjaxResult getInfo(@PathVariable("session3rd") String session3rd) {
         return AjaxResult.success(multhelpLoginService.selectMulthelpLoginById(session3rd));
     }
 
@@ -74,8 +70,7 @@ public class MulthelpLoginController extends BaseController
     @PreAuthorize("@ss.hasPermi('multhelp:login:add')")
     @Log(title = "登陆验证", businessType = BusinessType.INSERT)
     @PostMapping
-    public AjaxResult add(@RequestBody MulthelpLogin multhelpLogin)
-    {
+    public AjaxResult add(@RequestBody MulthelpLogin multhelpLogin) {
         return toAjax(multhelpLoginService.insertMulthelpLogin(multhelpLogin));
     }
 
@@ -85,8 +80,7 @@ public class MulthelpLoginController extends BaseController
     @PreAuthorize("@ss.hasPermi('multhelp:login:edit')")
     @Log(title = "登陆验证", businessType = BusinessType.UPDATE)
     @PutMapping
-    public AjaxResult edit(@RequestBody MulthelpLogin multhelpLogin)
-    {
+    public AjaxResult edit(@RequestBody MulthelpLogin multhelpLogin) {
         return toAjax(multhelpLoginService.updateMulthelpLogin(multhelpLogin));
     }
 
@@ -95,9 +89,8 @@ public class MulthelpLoginController extends BaseController
      */
     @PreAuthorize("@ss.hasPermi('multhelp:login:remove')")
     @Log(title = "登陆验证", businessType = BusinessType.DELETE)
-	@DeleteMapping("/{session3rds}")
-    public AjaxResult remove(@PathVariable String[] session3rds)
-    {
+    @DeleteMapping("/{session3rds}")
+    public AjaxResult remove(@PathVariable String[] session3rds) {
         return toAjax(multhelpLoginService.deleteMulthelpLoginByIds(session3rds));
     }
 }

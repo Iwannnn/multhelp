@@ -79,11 +79,6 @@
             <artifactId>ruoyi-multhelp</artifactId>
         </dependency>
 
-        <!-- 小程序 -->
-        <dependency>
-            <groupId>com.ruoyi</groupId>
-            <artifactId>iwannnn-miniapp</artifactId>
-        </dependency>
 
     </dependencies>
 

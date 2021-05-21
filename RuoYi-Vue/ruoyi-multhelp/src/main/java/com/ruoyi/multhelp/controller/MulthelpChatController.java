@@ -28,8 +28,7 @@ import com.ruoyi.common.core.page.TableDataInfo;
  */
 @RestController
 @RequestMapping("/multhelp/chat")
-public class MulthelpChatController extends BaseController
-{
+public class MulthelpChatController extends BaseController {
     @Autowired
     private IMulthelpChatService multhelpChatService;
 
@@ -38,8 +37,7 @@ public class MulthelpChatController extends BaseController
      */
     @PreAuthorize("@ss.hasPermi('multhelp:chat:list')")
     @GetMapping("/list")
-    public TableDataInfo list(MulthelpChat multhelpChat)
-    {
+    public TableDataInfo list(MulthelpChat multhelpChat) {
         startPage();
         List<MulthelpChat> list = multhelpChatService.selectMulthelpChatList(multhelpChat);
         return getDataTable(list);
@@ -51,8 +49,7 @@ public class MulthelpChatController extends BaseController
     @PreAuthorize("@ss.hasPermi('multhelp:chat:export')")
     @Log(title = "用户聊天", businessType = BusinessType.EXPORT)
     @GetMapping("/export")
-    public AjaxResult export(MulthelpChat multhelpChat)
-    {
+    public AjaxResult export(MulthelpChat multhelpChat) {
         List<MulthelpChat> list = multhelpChatService.selectMulthelpChatList(multhelpChat);
         ExcelUtil<MulthelpChat> util = new ExcelUtil<MulthelpChat>(MulthelpChat.class);
         return util.exportExcel(list, "用户聊天数据");
@@ -63,8 +60,7 @@ public class MulthelpChatController extends BaseController
      */
     @PreAuthorize("@ss.hasPermi('multhelp:chat:query')")
     @GetMapping(value = "/{chatid}")
-    public AjaxResult getInfo(@PathVariable("chatid") Long chatid)
-    {
+    public AjaxResult getInfo(@PathVariable("chatid") Long chatid) {
         return AjaxResult.success(multhelpChatService.selectMulthelpChatById(chatid));
     }
 
@@ -74,8 +70,7 @@ public class MulthelpChatController extends BaseController
     @PreAuthorize("@ss.hasPermi('multhelp:chat:add')")
     @Log(title = "用户聊天", businessType = BusinessType.INSERT)
     @PostMapping
-    public AjaxResult add(@RequestBody MulthelpChat multhelpChat)
-    {
+    public AjaxResult add(@RequestBody MulthelpChat multhelpChat) {
         return toAjax(multhelpChatService.insertMulthelpChat(multhelpChat));
     }
 
@@ -85,8 +80,7 @@ public class MulthelpChatController extends BaseController
     @PreAuthorize("@ss.hasPermi('multhelp:chat:edit')")
     @Log(title = "用户聊天", businessType = BusinessType.UPDATE)
     @PutMapping
-    public AjaxResult edit(@RequestBody MulthelpChat multhelpChat)
-    {
+    public AjaxResult edit(@RequestBody MulthelpChat multhelpChat) {
         return toAjax(multhelpChatService.updateMulthelpChat(multhelpChat));
     }
 
@@ -95,9 +89,8 @@ public class MulthelpChatController extends BaseController
      */
     @PreAuthorize("@ss.hasPermi('multhelp:chat:remove')")
     @Log(title = "用户聊天", businessType = BusinessType.DELETE)
-	@DeleteMapping("/{chatids}")
-    public AjaxResult remove(@PathVariable Long[] chatids)
-    {
+    @DeleteMapping("/{chatids}")
+    public AjaxResult remove(@PathVariable Long[] chatids) {
         return toAjax(multhelpChatService.deleteMulthelpChatByIds(chatids));
     }
 }
