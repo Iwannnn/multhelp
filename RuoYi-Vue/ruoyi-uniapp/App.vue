@@ -71,8 +71,8 @@ export default {
 			});
 		},
 		userInfo: null,
-		domain: 'http://localhost:8080',
-		socket: 'ws://localhost:8080',
+		domain: 'http://localhost:8080/ry-miniapp',
+		socket: 'ws://localhost:8080/ry-miniapp',
 		session_3rd: '',
 		messageSocket: null,
 		messages: [],
