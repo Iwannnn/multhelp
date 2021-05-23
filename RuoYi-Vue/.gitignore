@@ -11,6 +11,10 @@ target/
 ######################################################################
 # IDE
 
+### VSCode ###
+.vscode/*
+
+
 ### STS ###
 .apt_generated
 .classpath
@@ -24,6 +28,7 @@ target/
 *.iws
 *.iml
 *.ipr
+
 
 ### NetBeans ###
 nbproject/private/
