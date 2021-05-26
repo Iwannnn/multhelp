@@ -42,9 +42,18 @@ CREATE TABLE `gen_table` (
   `update_time` datetime DEFAULT NULL COMMENT '更新时间',
   `remark` varchar(500) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`table_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='代码生成业务表';
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='代码生成业务表';
 
 /*Data for the table `gen_table` */
+
+insert  into `gen_table`(`table_id`,`table_name`,`table_comment`,`sub_table_name`,`sub_table_fk_name`,`class_name`,`tpl_category`,`package_name`,`module_name`,`business_name`,`function_name`,`function_author`,`gen_type`,`gen_path`,`options`,`create_by`,`create_time`,`update_by`,`update_time`,`remark`) values 
+(1,'multhelp_account','aa',NULL,NULL,'MulthelpAccount','crud','com.ruoyi.system','system','account','a','ruoyi','0','/','{\"parentMenuId\":2000}','admin','2021-05-26 16:16:43','','2021-05-26 16:18:41',NULL),
+(2,'multhelp_chat','c',NULL,NULL,'MulthelpChat','crud','com.ruoyi.system','system','chat','c','ruoyi','0','/','{\"parentMenuId\":2000}','admin','2021-05-26 16:16:43','','2021-05-26 16:20:05',NULL),
+(3,'multhelp_chatandcontent','c',NULL,NULL,'MulthelpChatandcontent','crud','com.ruoyi.system','system','chatandcontent','cc','ruoyi','0','/','{\"parentMenuId\":2000}','admin','2021-05-26 16:16:43','','2021-05-26 16:20:21',NULL),
+(4,'multhelp_content','cc',NULL,NULL,'MulthelpContent','crud','com.ruoyi.system','system','content','cc','ruoyi','0','/','{\"parentMenuId\":2000}','admin','2021-05-26 16:16:43','','2021-05-26 16:20:31',NULL),
+(5,'multhelp_login','c',NULL,NULL,'MulthelpLogin','crud','com.ruoyi.system','system','login','cc','ruoyi','0','/','{\"parentMenuId\":2000}','admin','2021-05-26 16:16:43','','2021-05-26 16:20:43',NULL),
+(6,'multhelp_message','c',NULL,NULL,'MulthelpMessage','crud','com.ruoyi.system','system','message','c','ruoyi','0','/','{\"parentMenuId\":2000}','admin','2021-05-26 16:16:43','','2021-05-26 16:20:52',NULL),
+(7,'multhelp_post','s',NULL,NULL,'MulthelpPost','crud','com.ruoyi.system','system','post','s','ruoyi','0','/','{\"parentMenuId\":2000}','admin','2021-05-26 16:16:43','','2021-05-26 16:21:03',NULL);
 
 /*Table structure for table `gen_table_column` */
 
@@ -74,9 +83,51 @@ CREATE TABLE `gen_table_column` (
   `update_by` varchar(64) COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '更新者',
   `update_time` datetime DEFAULT NULL COMMENT '更新时间',
   PRIMARY KEY (`column_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='代码生成业务表字段';
+) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='代码生成业务表字段';
 
 /*Data for the table `gen_table_column` */
+
+insert  into `gen_table_column`(`column_id`,`table_id`,`column_name`,`column_comment`,`column_type`,`java_type`,`java_field`,`is_pk`,`is_increment`,`is_required`,`is_insert`,`is_edit`,`is_list`,`is_query`,`query_type`,`html_type`,`dict_type`,`sort`,`create_by`,`create_time`,`update_by`,`update_time`) values 
+(1,'1','openid','微信给的账户id','varchar(128)','String','openid','1','0',NULL,'1',NULL,NULL,NULL,'EQ','input','',1,'admin','2021-05-26 16:16:43','','2021-05-26 16:18:41'),
+(2,'1','nickname','昵称','varchar(50)','String','nickname','0','0',NULL,'1','1','1','1','LIKE','input','',2,'admin','2021-05-26 16:16:43','','2021-05-26 16:18:41'),
+(3,'1','avatarurl','头像地址','varchar(255)','String','avatarurl','0','0',NULL,'1','1','1','1','EQ','input','',3,'admin','2021-05-26 16:16:43','','2021-05-26 16:18:41'),
+(4,'1','gender','性别','tinyint','Long','gender','0','0',NULL,'1','1','1','1','EQ','input','',4,'admin','2021-05-26 16:16:43','','2021-05-26 16:18:41'),
+(5,'1','language','语言','varchar(50)','String','language','0','0',NULL,'1','1','1','1','EQ','input','',5,'admin','2021-05-26 16:16:43','','2021-05-26 16:18:41'),
+(6,'1','city','城市','varchar(50)','String','city','0','0',NULL,'1','1','1','1','EQ','input','',6,'admin','2021-05-26 16:16:43','','2021-05-26 16:18:41'),
+(7,'1','province','省份','varchar(50)','String','province','0','0',NULL,'1','1','1','1','EQ','input','',7,'admin','2021-05-26 16:16:43','','2021-05-26 16:18:41'),
+(8,'1','country','国家','varchar(50)','String','country','0','0',NULL,'1','1','1','1','EQ','input','',8,'admin','2021-05-26 16:16:43','','2021-05-26 16:18:41'),
+(9,'2','chatid','聊天id','bigint(20) unsigned zerofill','Long','chatid','1','1',NULL,'1',NULL,NULL,NULL,'EQ','input','',1,'admin','2021-05-26 16:16:43','','2021-05-26 16:20:05'),
+(10,'2','initiator_openid','发起者','varchar(128)','String','initiatorOpenid','0','0',NULL,'1','1','1','1','EQ','input','',2,'admin','2021-05-26 16:16:43','','2021-05-26 16:20:05'),
+(11,'2','invitee_openid','受邀者','varchar(128)','String','inviteeOpenid','0','0',NULL,'1','1','1','1','EQ','input','',3,'admin','2021-05-26 16:16:43','','2021-05-26 16:20:05'),
+(12,'2','create_time','创建时间','timestamp','Date','createTime','0','0',NULL,'1',NULL,NULL,NULL,'EQ','datetime','',4,'admin','2021-05-26 16:16:43','','2021-05-26 16:20:05'),
+(13,'3','chatid','聊天id','bigint','Long','chatid','0','0',NULL,'1','1','1','1','EQ','input','',1,'admin','2021-05-26 16:16:43','','2021-05-26 16:20:21'),
+(14,'3','contentid','聊天内容id','bigint','Long','contentid','0','0',NULL,'1','1','1','1','EQ','input','',2,'admin','2021-05-26 16:16:43','','2021-05-26 16:20:21'),
+(15,'4','contentid','内容id','bigint(20) unsigned zerofill','Long','contentid','1','1',NULL,'1',NULL,NULL,NULL,'EQ','input','',1,'admin','2021-05-26 16:16:43','','2021-05-26 16:20:31'),
+(16,'4','send_openid','发送者id','varchar(128)','String','sendOpenid','0','0',NULL,'1','1','1','1','EQ','input','',2,'admin','2021-05-26 16:16:43','','2021-05-26 16:20:31'),
+(17,'4','receive_openid','接收者id','varchar(128)','String','receiveOpenid','0','0',NULL,'1','1','1','1','EQ','input','',3,'admin','2021-05-26 16:16:43','','2021-05-26 16:20:31'),
+(18,'4','sender','发送人','varchar(128)','String','sender','0','0',NULL,'1','1','1','1','EQ','input','',4,'admin','2021-05-26 16:16:43','','2021-05-26 16:20:31'),
+(19,'4','content','内容','varchar(128)','String','content','0','0',NULL,'1','1','1','1','EQ','editor','',5,'admin','2021-05-26 16:16:43','','2021-05-26 16:20:31'),
+(20,'4','is_read','已读','tinyint(1)','Integer','isRead','0','0',NULL,'1','1','1','1','EQ','input','',6,'admin','2021-05-26 16:16:43','','2021-05-26 16:20:31'),
+(21,'4','create_time','创建时间','timestamp','Date','createTime','0','0',NULL,'1',NULL,NULL,NULL,'EQ','datetime','',7,'admin','2021-05-26 16:16:43','','2021-05-26 16:20:31'),
+(22,'5','session_3rd','服务器给的临时验证','varchar(255)','String','session3rd','1','0',NULL,'1',NULL,NULL,NULL,'EQ','input','',1,'admin','2021-05-26 16:16:43','','2021-05-26 16:20:43'),
+(23,'5','openid','微信给的id','varchar(255)','String','openid','0','0',NULL,'1','1','1','1','EQ','input','',2,'admin','2021-05-26 16:16:43','','2021-05-26 16:20:43'),
+(24,'5','session_key','微信给的会话key','varchar(255)','String','sessionKey','0','0',NULL,'1','1','1','1','EQ','input','',3,'admin','2021-05-26 16:16:43','','2021-05-26 16:20:43'),
+(25,'5','create_time','创建时间','timestamp','Date','createTime','0','0',NULL,'1',NULL,NULL,NULL,'EQ','datetime','',4,'admin','2021-05-26 16:16:43','','2021-05-26 16:20:43'),
+(26,'6','chatid','聊天id','bigint','Long','chatid','0','0',NULL,'1','1','1','1','EQ','input','',1,'admin','2021-05-26 16:16:43','','2021-05-26 16:20:52'),
+(27,'6','last_contentid','最近的聊天内容id','bigint','Long','lastContentid','0','0',NULL,'1','1','1','1','EQ','input','',2,'admin','2021-05-26 16:16:43','','2021-05-26 16:20:52'),
+(28,'7','postid','发布帮助id','bigint(10) unsigned zerofill','Integer','postid','1','1',NULL,'1',NULL,NULL,NULL,'EQ','input','',1,'admin','2021-05-26 16:16:43','','2021-05-26 16:21:03'),
+(29,'7','publish_openid','发布人id','varchar(255)','String','publishOpenid','0','0',NULL,'1','1','1','1','EQ','input','',2,'admin','2021-05-26 16:16:43','','2021-05-26 16:21:03'),
+(30,'7','receive_openid','帮助人id','varchar(255)','String','receiveOpenid','0','0',NULL,'1','1','1','1','EQ','input','',3,'admin','2021-05-26 16:16:43','','2021-05-26 16:21:03'),
+(31,'7','tittle','标题','varchar(255)','String','tittle','0','0',NULL,'1','1','1','1','EQ','input','',4,'admin','2021-05-26 16:16:43','','2021-05-26 16:21:03'),
+(32,'7','detail','详情','tinytext','String','detail','0','0',NULL,'1','1','1','1','EQ','textarea','',5,'admin','2021-05-26 16:16:43','','2021-05-26 16:21:03'),
+(33,'7','category','类别','varchar(50)','String','category','0','0',NULL,'1','1','1','1','EQ','input','',6,'admin','2021-05-26 16:16:43','','2021-05-26 16:21:03'),
+(34,'7','address','地址','varchar(255)','String','address','0','0',NULL,'1','1','1','1','EQ','input','',7,'admin','2021-05-26 16:16:43','','2021-05-26 16:21:03'),
+(35,'7','price','价格','varchar(50)','String','price','0','0',NULL,'1','1','1','1','EQ','input','',8,'admin','2021-05-26 16:16:43','','2021-05-26 16:21:03'),
+(36,'7','phone','电话','varchar(50)','String','phone','0','0',NULL,'1','1','1','1','EQ','input','',9,'admin','2021-05-26 16:16:43','','2021-05-26 16:21:03'),
+(37,'7','create_time','创建时间','timestamp','Date','createTime','0','0',NULL,'1',NULL,NULL,NULL,'EQ','datetime','',10,'admin','2021-05-26 16:16:43','','2021-05-26 16:21:03'),
+(38,'7','need_time','需要时间','timestamp','Date','needTime','0','0',NULL,'1','1','1','1','EQ','datetime','',11,'admin','2021-05-26 16:16:43','','2021-05-26 16:21:03'),
+(39,'7','end_time','被帮助时间','timestamp','Date','endTime','0','0',NULL,'1','1','1','1','EQ','datetime','',12,'admin','2021-05-26 16:16:43','','2021-05-26 16:21:03'),
+(40,'7','is_value','是否已经被绑住','tinyint(1)','Integer','isValue','0','0',NULL,'1','1','1','1','EQ','input','',13,'admin','2021-05-26 16:16:43','','2021-05-26 16:21:03');
 
 /*Table structure for table `multhelp_account` */
 
@@ -231,6 +282,11 @@ CREATE TABLE `qrtz_cron_triggers` (
 
 /*Data for the table `qrtz_cron_triggers` */
 
+insert  into `qrtz_cron_triggers`(`sched_name`,`trigger_name`,`trigger_group`,`cron_expression`,`time_zone_id`) values 
+('RuoyiScheduler','TASK_CLASS_NAME1','DEFAULT','0/10 * * * * ?','GMT+08:00'),
+('RuoyiScheduler','TASK_CLASS_NAME2','DEFAULT','0/15 * * * * ?','GMT+08:00'),
+('RuoyiScheduler','TASK_CLASS_NAME3','DEFAULT','0/20 * * * * ?','GMT+08:00');
+
 /*Table structure for table `qrtz_fired_triggers` */
 
 DROP TABLE IF EXISTS `qrtz_fired_triggers`;
@@ -274,6 +330,11 @@ CREATE TABLE `qrtz_job_details` (
 
 /*Data for the table `qrtz_job_details` */
 
+insert  into `qrtz_job_details`(`sched_name`,`job_name`,`job_group`,`description`,`job_class_name`,`is_durable`,`is_nonconcurrent`,`is_update_data`,`requests_recovery`,`job_data`) values 
+('RuoyiScheduler','TASK_CLASS_NAME1','DEFAULT',NULL,'com.ruoyi.quartz.util.QuartzDisallowConcurrentExecution','0','1','0','0','��\0sr\0org.quartz.JobDataMap���迩��\0\0xr\0&org.quartz.utils.StringKeyDirtyFlagMap�����](\0Z\0allowsTransientDataxr\0org.quartz.utils.DirtyFlagMap�.�(v\n�\0Z\0dirtyL\0mapt\0Ljava/util/Map;xpsr\0java.util.HashMap���`�\0F\0\nloadFactorI\0	thresholdxp?@\0\0\0\0\0w\0\0\0\0\0\0t\0TASK_PROPERTIESsr\0com.ruoyi.quartz.domain.SysJob\0\0\0\0\0\0\0\0L\0\nconcurrentt\0Ljava/lang/String;L\0cronExpressionq\0~\0	L\0invokeTargetq\0~\0	L\0jobGroupq\0~\0	L\0jobIdt\0Ljava/lang/Long;L\0jobNameq\0~\0	L\0\rmisfirePolicyq\0~\0	L\0statusq\0~\0	xr\0\'com.ruoyi.common.core.domain.BaseEntity\0\0\0\0\0\0\0\0L\0createByq\0~\0	L\0\ncreateTimet\0Ljava/util/Date;L\0paramsq\0~\0L\0remarkq\0~\0	L\0searchValueq\0~\0	L\0updateByq\0~\0	L\0\nupdateTimeq\0~\0xpt\0adminsr\0java.util.Datehj�KYt\0\0xpw\0\0y���xpt\0\0pppt\01t\00/10 * * * * ?t\0ryTask.ryNoParamst\0DEFAULTsr\0java.lang.Long;��̏#�\0J\0valuexr\0java.lang.Number������\0\0xp\0\0\0\0\0\0\0t\0系统默认（无参）t\03t\01x\0'),
+('RuoyiScheduler','TASK_CLASS_NAME2','DEFAULT',NULL,'com.ruoyi.quartz.util.QuartzDisallowConcurrentExecution','0','1','0','0','��\0sr\0org.quartz.JobDataMap���迩��\0\0xr\0&org.quartz.utils.StringKeyDirtyFlagMap�����](\0Z\0allowsTransientDataxr\0org.quartz.utils.DirtyFlagMap�.�(v\n�\0Z\0dirtyL\0mapt\0Ljava/util/Map;xpsr\0java.util.HashMap���`�\0F\0\nloadFactorI\0	thresholdxp?@\0\0\0\0\0w\0\0\0\0\0\0t\0TASK_PROPERTIESsr\0com.ruoyi.quartz.domain.SysJob\0\0\0\0\0\0\0\0L\0\nconcurrentt\0Ljava/lang/String;L\0cronExpressionq\0~\0	L\0invokeTargetq\0~\0	L\0jobGroupq\0~\0	L\0jobIdt\0Ljava/lang/Long;L\0jobNameq\0~\0	L\0\rmisfirePolicyq\0~\0	L\0statusq\0~\0	xr\0\'com.ruoyi.common.core.domain.BaseEntity\0\0\0\0\0\0\0\0L\0createByq\0~\0	L\0\ncreateTimet\0Ljava/util/Date;L\0paramsq\0~\0L\0remarkq\0~\0	L\0searchValueq\0~\0	L\0updateByq\0~\0	L\0\nupdateTimeq\0~\0xpt\0adminsr\0java.util.Datehj�KYt\0\0xpw\0\0y���xpt\0\0pppt\01t\00/15 * * * * ?t\0ryTask.ryParams(\'ry\')t\0DEFAULTsr\0java.lang.Long;��̏#�\0J\0valuexr\0java.lang.Number������\0\0xp\0\0\0\0\0\0\0t\0系统默认（有参）t\03t\01x\0'),
+('RuoyiScheduler','TASK_CLASS_NAME3','DEFAULT',NULL,'com.ruoyi.quartz.util.QuartzDisallowConcurrentExecution','0','1','0','0','��\0sr\0org.quartz.JobDataMap���迩��\0\0xr\0&org.quartz.utils.StringKeyDirtyFlagMap�����](\0Z\0allowsTransientDataxr\0org.quartz.utils.DirtyFlagMap�.�(v\n�\0Z\0dirtyL\0mapt\0Ljava/util/Map;xpsr\0java.util.HashMap���`�\0F\0\nloadFactorI\0	thresholdxp?@\0\0\0\0\0w\0\0\0\0\0\0t\0TASK_PROPERTIESsr\0com.ruoyi.quartz.domain.SysJob\0\0\0\0\0\0\0\0L\0\nconcurrentt\0Ljava/lang/String;L\0cronExpressionq\0~\0	L\0invokeTargetq\0~\0	L\0jobGroupq\0~\0	L\0jobIdt\0Ljava/lang/Long;L\0jobNameq\0~\0	L\0\rmisfirePolicyq\0~\0	L\0statusq\0~\0	xr\0\'com.ruoyi.common.core.domain.BaseEntity\0\0\0\0\0\0\0\0L\0createByq\0~\0	L\0\ncreateTimet\0Ljava/util/Date;L\0paramsq\0~\0L\0remarkq\0~\0	L\0searchValueq\0~\0	L\0updateByq\0~\0	L\0\nupdateTimeq\0~\0xpt\0adminsr\0java.util.Datehj�KYt\0\0xpw\0\0y���xpt\0\0pppt\01t\00/20 * * * * ?t\08ryTask.ryMultipleParams(\'ry\', true, 2000L, 316.50D, 100)t\0DEFAULTsr\0java.lang.Long;��̏#�\0J\0valuexr\0java.lang.Number������\0\0xp\0\0\0\0\0\0\0t\0系统默认（多参）t\03t\01x\0');
+
 /*Table structure for table `qrtz_locks` */
 
 DROP TABLE IF EXISTS `qrtz_locks`;
@@ -285,6 +346,10 @@ CREATE TABLE `qrtz_locks` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 /*Data for the table `qrtz_locks` */
+
+insert  into `qrtz_locks`(`sched_name`,`lock_name`) values 
+('RuoyiScheduler','STATE_ACCESS'),
+('RuoyiScheduler','TRIGGER_ACCESS');
 
 /*Table structure for table `qrtz_paused_trigger_grps` */
 
@@ -313,7 +378,7 @@ CREATE TABLE `qrtz_scheduler_state` (
 /*Data for the table `qrtz_scheduler_state` */
 
 insert  into `qrtz_scheduler_state`(`sched_name`,`instance_name`,`last_checkin_time`,`checkin_interval`) values 
-('RuoyiScheduler','msi1622015199283',1622016028019,15000);
+('RuoyiScheduler','msi1622016973818',1622017353025,15000);
 
 /*Table structure for table `qrtz_simple_triggers` */
 
@@ -384,6 +449,11 @@ CREATE TABLE `qrtz_triggers` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 /*Data for the table `qrtz_triggers` */
+
+insert  into `qrtz_triggers`(`sched_name`,`trigger_name`,`trigger_group`,`job_name`,`job_group`,`description`,`next_fire_time`,`prev_fire_time`,`priority`,`trigger_state`,`trigger_type`,`start_time`,`end_time`,`calendar_name`,`misfire_instr`,`job_data`) values 
+('RuoyiScheduler','TASK_CLASS_NAME1','DEFAULT','TASK_CLASS_NAME1','DEFAULT',NULL,1622016980000,-1,5,'PAUSED','CRON',1622016974000,0,NULL,2,''),
+('RuoyiScheduler','TASK_CLASS_NAME2','DEFAULT','TASK_CLASS_NAME2','DEFAULT',NULL,1622016975000,-1,5,'PAUSED','CRON',1622016974000,0,NULL,2,''),
+('RuoyiScheduler','TASK_CLASS_NAME3','DEFAULT','TASK_CLASS_NAME3','DEFAULT',NULL,1622016980000,-1,5,'PAUSED','CRON',1622016974000,0,NULL,2,'');
 
 /*Table structure for table `sys_config` */
 
@@ -621,7 +691,7 @@ CREATE TABLE `sys_menu` (
   `update_time` datetime DEFAULT NULL COMMENT '更新时间',
   `remark` varchar(500) COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '备注',
   PRIMARY KEY (`menu_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2000 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='菜单权限表';
+) ENGINE=InnoDB AUTO_INCREMENT=2043 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='菜单权限表';
 
 /*Data for the table `sys_menu` */
 
@@ -708,7 +778,50 @@ insert  into `sys_menu`(`menu_id`,`menu_name`,`parent_id`,`order_num`,`path`,`co
 (1057,'生成删除',115,3,'#','',1,0,'F','0','0','tool:gen:remove','#','admin','2021-05-26 16:00:03','',NULL,''),
 (1058,'导入代码',115,2,'#','',1,0,'F','0','0','tool:gen:import','#','admin','2021-05-26 16:00:03','',NULL,''),
 (1059,'预览代码',115,4,'#','',1,0,'F','0','0','tool:gen:preview','#','admin','2021-05-26 16:00:03','',NULL,''),
-(1060,'生成代码',115,5,'#','',1,0,'F','0','0','tool:gen:code','#','admin','2021-05-26 16:00:03','',NULL,'');
+(1060,'生成代码',115,5,'#','',1,0,'F','0','0','tool:gen:code','#','admin','2021-05-26 16:00:03','',NULL,''),
+(2000,'微信互助',0,0,'multhelp',NULL,1,0,'M','0','0',NULL,'people','admin','2021-05-26 16:17:52','',NULL,''),
+(2001,'用户账号',2000,1,'account','multhelp/account/index',1,0,'C','0','0','multhelp:account:list','#','admin','2021-05-26 16:21:57','',NULL,'用户账号菜单'),
+(2002,'用户账号查询',2001,1,'#','',1,0,'F','0','0','multhelp:account:query','#','admin','2021-05-26 16:21:57','',NULL,''),
+(2003,'用户账号新增',2001,2,'#','',1,0,'F','0','0','multhelp:account:add','#','admin','2021-05-26 16:21:57','',NULL,''),
+(2004,'用户账号修改',2001,3,'#','',1,0,'F','0','0','multhelp:account:edit','#','admin','2021-05-26 16:21:57','',NULL,''),
+(2005,'用户账号删除',2001,4,'#','',1,0,'F','0','0','multhelp:account:remove','#','admin','2021-05-26 16:21:57','',NULL,''),
+(2006,'用户账号导出',2001,5,'#','',1,0,'F','0','0','multhelp:account:export','#','admin','2021-05-26 16:21:57','',NULL,''),
+(2007,'聊天会话连接',2000,1,'chatandcontent','multhelp/chatandcontent/index',1,0,'C','0','0','multhelp:chatandcontent:list','#','admin','2021-05-26 16:22:02','',NULL,'聊天会话连接菜单'),
+(2008,'聊天会话连接查询',2007,1,'#','',1,0,'F','0','0','multhelp:chatandcontent:query','#','admin','2021-05-26 16:22:02','',NULL,''),
+(2009,'聊天会话连接新增',2007,2,'#','',1,0,'F','0','0','multhelp:chatandcontent:add','#','admin','2021-05-26 16:22:02','',NULL,''),
+(2010,'聊天会话连接修改',2007,3,'#','',1,0,'F','0','0','multhelp:chatandcontent:edit','#','admin','2021-05-26 16:22:02','',NULL,''),
+(2011,'聊天会话连接删除',2007,4,'#','',1,0,'F','0','0','multhelp:chatandcontent:remove','#','admin','2021-05-26 16:22:02','',NULL,''),
+(2012,'聊天会话连接导出',2007,5,'#','',1,0,'F','0','0','multhelp:chatandcontent:export','#','admin','2021-05-26 16:22:02','',NULL,''),
+(2013,'用户聊天',2000,1,'chat','multhelp/chat/index',1,0,'C','0','0','multhelp:chat:list','#','admin','2021-05-26 16:22:06','',NULL,'用户聊天菜单'),
+(2014,'用户聊天查询',2013,1,'#','',1,0,'F','0','0','multhelp:chat:query','#','admin','2021-05-26 16:22:06','',NULL,''),
+(2015,'用户聊天新增',2013,2,'#','',1,0,'F','0','0','multhelp:chat:add','#','admin','2021-05-26 16:22:06','',NULL,''),
+(2016,'用户聊天修改',2013,3,'#','',1,0,'F','0','0','multhelp:chat:edit','#','admin','2021-05-26 16:22:06','',NULL,''),
+(2017,'用户聊天删除',2013,4,'#','',1,0,'F','0','0','multhelp:chat:remove','#','admin','2021-05-26 16:22:06','',NULL,''),
+(2018,'用户聊天导出',2013,5,'#','',1,0,'F','0','0','multhelp:chat:export','#','admin','2021-05-26 16:22:06','',NULL,''),
+(2019,'聊天内容',2000,1,'content','multhelp/content/index',1,0,'C','0','0','multhelp:content:list','#','admin','2021-05-26 16:22:10','',NULL,'聊天内容菜单'),
+(2020,'聊天内容查询',2019,1,'#','',1,0,'F','0','0','multhelp:content:query','#','admin','2021-05-26 16:22:10','',NULL,''),
+(2021,'聊天内容新增',2019,2,'#','',1,0,'F','0','0','multhelp:content:add','#','admin','2021-05-26 16:22:10','',NULL,''),
+(2022,'聊天内容修改',2019,3,'#','',1,0,'F','0','0','multhelp:content:edit','#','admin','2021-05-26 16:22:10','',NULL,''),
+(2023,'聊天内容删除',2019,4,'#','',1,0,'F','0','0','multhelp:content:remove','#','admin','2021-05-26 16:22:10','',NULL,''),
+(2024,'聊天内容导出',2019,5,'#','',1,0,'F','0','0','multhelp:content:export','#','admin','2021-05-26 16:22:10','',NULL,''),
+(2025,'登陆验证',2000,1,'login','multhelp/login/index',1,0,'C','0','0','multhelp:login:list','#','admin','2021-05-26 16:22:14','',NULL,'登陆验证菜单'),
+(2026,'登陆验证查询',2025,1,'#','',1,0,'F','0','0','multhelp:login:query','#','admin','2021-05-26 16:22:14','',NULL,''),
+(2027,'登陆验证新增',2025,2,'#','',1,0,'F','0','0','multhelp:login:add','#','admin','2021-05-26 16:22:14','',NULL,''),
+(2028,'登陆验证修改',2025,3,'#','',1,0,'F','0','0','multhelp:login:edit','#','admin','2021-05-26 16:22:14','',NULL,''),
+(2029,'登陆验证删除',2025,4,'#','',1,0,'F','0','0','multhelp:login:remove','#','admin','2021-05-26 16:22:14','',NULL,''),
+(2030,'登陆验证导出',2025,5,'#','',1,0,'F','0','0','multhelp:login:export','#','admin','2021-05-26 16:22:14','',NULL,''),
+(2031,'消息界面',2000,1,'message','multhelp/message/index',1,0,'C','0','0','multhelp:message:list','#','admin','2021-05-26 16:22:17','',NULL,'消息界面菜单'),
+(2032,'消息界面查询',2031,1,'#','',1,0,'F','0','0','multhelp:message:query','#','admin','2021-05-26 16:22:17','',NULL,''),
+(2033,'消息界面新增',2031,2,'#','',1,0,'F','0','0','multhelp:message:add','#','admin','2021-05-26 16:22:17','',NULL,''),
+(2034,'消息界面修改',2031,3,'#','',1,0,'F','0','0','multhelp:message:edit','#','admin','2021-05-26 16:22:17','',NULL,''),
+(2035,'消息界面删除',2031,4,'#','',1,0,'F','0','0','multhelp:message:remove','#','admin','2021-05-26 16:22:17','',NULL,''),
+(2036,'消息界面导出',2031,5,'#','',1,0,'F','0','0','multhelp:message:export','#','admin','2021-05-26 16:22:17','',NULL,''),
+(2037,'发布帮助',2000,1,'post','multhelp/post/index',1,0,'C','0','0','multhelp:post:list','#','admin','2021-05-26 16:22:21','',NULL,'发布帮助菜单'),
+(2038,'发布帮助查询',2037,1,'#','',1,0,'F','0','0','multhelp:post:query','#','admin','2021-05-26 16:22:21','',NULL,''),
+(2039,'发布帮助新增',2037,2,'#','',1,0,'F','0','0','multhelp:post:add','#','admin','2021-05-26 16:22:21','',NULL,''),
+(2040,'发布帮助修改',2037,3,'#','',1,0,'F','0','0','multhelp:post:edit','#','admin','2021-05-26 16:22:21','',NULL,''),
+(2041,'发布帮助删除',2037,4,'#','',1,0,'F','0','0','multhelp:post:remove','#','admin','2021-05-26 16:22:21','',NULL,''),
+(2042,'发布帮助导出',2037,5,'#','',1,0,'F','0','0','multhelp:post:export','#','admin','2021-05-26 16:22:21','',NULL,'');
 
 /*Table structure for table `sys_notice` */
 
@@ -756,9 +869,21 @@ CREATE TABLE `sys_oper_log` (
   `error_msg` varchar(2000) COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '错误消息',
   `oper_time` datetime DEFAULT NULL COMMENT '操作时间',
   PRIMARY KEY (`oper_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=100 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='操作日志记录';
+) ENGINE=InnoDB AUTO_INCREMENT=110 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='操作日志记录';
 
 /*Data for the table `sys_oper_log` */
+
+insert  into `sys_oper_log`(`oper_id`,`title`,`business_type`,`method`,`request_method`,`operator_type`,`oper_name`,`dept_name`,`oper_url`,`oper_ip`,`oper_location`,`oper_param`,`json_result`,`status`,`error_msg`,`oper_time`) values 
+(100,'代码生成',6,'com.ruoyi.generator.controller.GenController.importTableSave()','POST',1,'admin',NULL,'/ry-miniapp/tool/gen/importTable','127.0.0.1','内网IP','multhelp_account,multhelp_chat,multhelp_chatandcontent,multhelp_login,multhelp_content,multhelp_message,multhelp_post','{\"msg\":\"操作成功\",\"code\":200}',0,NULL,'2021-05-26 16:16:43'),
+(101,'菜单管理',1,'com.ruoyi.web.controller.system.SysMenuController.add()','POST',1,'admin',NULL,'/ry-miniapp/system/menu','127.0.0.1','内网IP','{\"visible\":\"0\",\"icon\":\"people\",\"orderNum\":\"0\",\"menuName\":\"微信互助\",\"params\":{},\"parentId\":0,\"isCache\":\"0\",\"path\":\"multhelp\",\"createBy\":\"admin\",\"children\":[],\"isFrame\":\"1\",\"menuType\":\"M\",\"status\":\"0\"}','{\"msg\":\"操作成功\",\"code\":200}',0,NULL,'2021-05-26 16:17:52'),
+(102,'代码生成',2,'com.ruoyi.generator.controller.GenController.editSave()','PUT',1,'admin',NULL,'/ry-miniapp/tool/gen','127.0.0.1','内网IP','{\"sub\":false,\"functionAuthor\":\"ruoyi\",\"columns\":[{\"capJavaField\":\"Openid\",\"usableColumn\":false,\"columnId\":1,\"isIncrement\":\"0\",\"increment\":false,\"insert\":true,\"dictType\":\"\",\"required\":false,\"superColumn\":false,\"updateBy\":\"\",\"isInsert\":\"1\",\"javaField\":\"openid\",\"htmlType\":\"input\",\"edit\":false,\"query\":false,\"columnComment\":\"微信给的账户id\",\"sort\":1,\"list\":false,\"params\":{},\"javaType\":\"String\",\"queryType\":\"EQ\",\"columnType\":\"varchar(128)\",\"createBy\":\"admin\",\"isPk\":\"1\",\"createTime\":1622017003000,\"tableId\":1,\"pk\":true,\"columnName\":\"openid\"},{\"capJavaField\":\"Nickname\",\"usableColumn\":false,\"columnId\":2,\"isIncrement\":\"0\",\"increment\":false,\"insert\":true,\"isList\":\"1\",\"dictType\":\"\",\"required\":false,\"superColumn\":false,\"updateBy\":\"\",\"isInsert\":\"1\",\"javaField\":\"nickname\",\"htmlType\":\"input\",\"edit\":true,\"query\":true,\"columnComment\":\"昵称\",\"isQuery\":\"1\",\"sort\":2,\"list\":true,\"params\":{},\"javaType\":\"String\",\"queryType\":\"LIKE\",\"columnType\":\"varchar(50)\",\"createBy\":\"admin\",\"isPk\":\"0\",\"createTime\":1622017003000,\"isEdit\":\"1\",\"tableId\":1,\"pk\":false,\"columnName\":\"nickname\"},{\"capJavaField\":\"Avatarurl\",\"usableColumn\":false,\"columnId\":3,\"isIncrement\":\"0\",\"increment\":false,\"insert\":true,\"isList\":\"1\",\"dictType\":\"\",\"required\":false,\"superColumn\":false,\"updateBy\":\"\",\"isInsert\":\"1\",\"javaField\":\"avatarurl\",\"htmlType\":\"input\",\"edit\":true,\"query\":true,\"columnComment\":\"头像地址\",\"isQuery\":\"1\",\"sort\":3,\"list\":true,\"params\":{},\"javaType\":\"String\",\"queryType\":\"EQ\",\"columnType\":\"varchar(255)\",\"createBy\":\"admin\",\"isPk\":\"0\",\"createTime\":1622017003000,\"isEdit\":\"1\",\"tableId\":1,\"pk\":false,\"columnName\":\"avatarurl\"},{\"capJavaField\":\"Gender\",\"usableColumn\":false,\"columnId\":4,\"isIncrement\":\"0\",\"increment\":false,\"insert\":true,\"isList\":\"1\",\"dictType\":\"\",\"required\":false,\"superColumn\":false,\"updateBy\":\"\",\"isInsert\":\"1\",\"javaField\":\"gender\",\"htmlType\":\"input\",\"edit\":true,\"query\":true,\"columnComment\":\"性别\",\"isQuery\":\"1\",\"sort\":4,\"list\":true,\"params\":{},\"javaType\":\"Long\",\"queryType\":\"EQ\",\"columnType\":\"tinyint\",\"createBy\":\"admin\",\"isPk','{\"msg\":\"操作成功\",\"code\":200}',0,NULL,'2021-05-26 16:18:41'),
+(103,'代码生成',2,'com.ruoyi.generator.controller.GenController.editSave()','PUT',1,'admin',NULL,'/ry-miniapp/tool/gen','127.0.0.1','内网IP','{\"sub\":false,\"functionAuthor\":\"ruoyi\",\"columns\":[{\"capJavaField\":\"Chatid\",\"usableColumn\":false,\"columnId\":9,\"isIncrement\":\"1\",\"increment\":true,\"insert\":true,\"dictType\":\"\",\"required\":false,\"superColumn\":false,\"updateBy\":\"\",\"isInsert\":\"1\",\"javaField\":\"chatid\",\"htmlType\":\"input\",\"edit\":false,\"query\":false,\"columnComment\":\"聊天id\",\"sort\":1,\"list\":false,\"params\":{},\"javaType\":\"Long\",\"queryType\":\"EQ\",\"columnType\":\"bigint(20) unsigned zerofill\",\"createBy\":\"admin\",\"isPk\":\"1\",\"createTime\":1622017003000,\"tableId\":2,\"pk\":true,\"columnName\":\"chatid\"},{\"capJavaField\":\"InitiatorOpenid\",\"usableColumn\":false,\"columnId\":10,\"isIncrement\":\"0\",\"increment\":false,\"insert\":true,\"isList\":\"1\",\"dictType\":\"\",\"required\":false,\"superColumn\":false,\"updateBy\":\"\",\"isInsert\":\"1\",\"javaField\":\"initiatorOpenid\",\"htmlType\":\"input\",\"edit\":true,\"query\":true,\"columnComment\":\"发起者\",\"isQuery\":\"1\",\"sort\":2,\"list\":true,\"params\":{},\"javaType\":\"String\",\"queryType\":\"EQ\",\"columnType\":\"varchar(128)\",\"createBy\":\"admin\",\"isPk\":\"0\",\"createTime\":1622017003000,\"isEdit\":\"1\",\"tableId\":2,\"pk\":false,\"columnName\":\"initiator_openid\"},{\"capJavaField\":\"InviteeOpenid\",\"usableColumn\":false,\"columnId\":11,\"isIncrement\":\"0\",\"increment\":false,\"insert\":true,\"isList\":\"1\",\"dictType\":\"\",\"required\":false,\"superColumn\":false,\"updateBy\":\"\",\"isInsert\":\"1\",\"javaField\":\"inviteeOpenid\",\"htmlType\":\"input\",\"edit\":true,\"query\":true,\"columnComment\":\"受邀者\",\"isQuery\":\"1\",\"sort\":3,\"list\":true,\"params\":{},\"javaType\":\"String\",\"queryType\":\"EQ\",\"columnType\":\"varchar(128)\",\"createBy\":\"admin\",\"isPk\":\"0\",\"createTime\":1622017003000,\"isEdit\":\"1\",\"tableId\":2,\"pk\":false,\"columnName\":\"invitee_openid\"},{\"capJavaField\":\"CreateTime\",\"usableColumn\":false,\"columnId\":12,\"isIncrement\":\"0\",\"increment\":false,\"insert\":true,\"dictType\":\"\",\"required\":false,\"superColumn\":true,\"updateBy\":\"\",\"isInsert\":\"1\",\"javaField\":\"createTime\",\"htmlType\":\"datetime\",\"edit\":false,\"query\":false,\"columnComment\":\"创建时间\",\"sort\":4,\"list\":false,\"params\":{},\"javaType\":\"Date\",\"queryType\":\"EQ\",\"columnType\":','{\"msg\":\"操作成功\",\"code\":200}',0,NULL,'2021-05-26 16:20:05'),
+(104,'代码生成',2,'com.ruoyi.generator.controller.GenController.editSave()','PUT',1,'admin',NULL,'/ry-miniapp/tool/gen','127.0.0.1','内网IP','{\"sub\":false,\"functionAuthor\":\"ruoyi\",\"columns\":[{\"capJavaField\":\"Chatid\",\"usableColumn\":false,\"columnId\":13,\"isIncrement\":\"0\",\"increment\":false,\"insert\":true,\"isList\":\"1\",\"dictType\":\"\",\"required\":false,\"superColumn\":false,\"updateBy\":\"\",\"isInsert\":\"1\",\"javaField\":\"chatid\",\"htmlType\":\"input\",\"edit\":true,\"query\":true,\"columnComment\":\"聊天id\",\"isQuery\":\"1\",\"sort\":1,\"list\":true,\"params\":{},\"javaType\":\"Long\",\"queryType\":\"EQ\",\"columnType\":\"bigint\",\"createBy\":\"admin\",\"isPk\":\"0\",\"createTime\":1622017003000,\"isEdit\":\"1\",\"tableId\":3,\"pk\":false,\"columnName\":\"chatid\"},{\"capJavaField\":\"Contentid\",\"usableColumn\":false,\"columnId\":14,\"isIncrement\":\"0\",\"increment\":false,\"insert\":true,\"isList\":\"1\",\"dictType\":\"\",\"required\":false,\"superColumn\":false,\"updateBy\":\"\",\"isInsert\":\"1\",\"javaField\":\"contentid\",\"htmlType\":\"input\",\"edit\":true,\"query\":true,\"columnComment\":\"聊天内容id\",\"isQuery\":\"1\",\"sort\":2,\"list\":true,\"params\":{},\"javaType\":\"Long\",\"queryType\":\"EQ\",\"columnType\":\"bigint\",\"createBy\":\"admin\",\"isPk\":\"0\",\"createTime\":1622017003000,\"isEdit\":\"1\",\"tableId\":3,\"pk\":false,\"columnName\":\"contentid\"}],\"businessName\":\"chatandcontent\",\"moduleName\":\"system\",\"className\":\"MulthelpChatandcontent\",\"tableName\":\"multhelp_chatandcontent\",\"crud\":true,\"options\":\"{\\\"parentMenuId\\\":2000}\",\"genType\":\"0\",\"packageName\":\"com.ruoyi.system\",\"functionName\":\"cc\",\"tree\":false,\"tableComment\":\"c\",\"params\":{\"parentMenuId\":2000},\"tplCategory\":\"crud\",\"parentMenuId\":\"2000\",\"tableId\":3,\"genPath\":\"/\"}','{\"msg\":\"操作成功\",\"code\":200}',0,NULL,'2021-05-26 16:20:21'),
+(105,'代码生成',2,'com.ruoyi.generator.controller.GenController.editSave()','PUT',1,'admin',NULL,'/ry-miniapp/tool/gen','127.0.0.1','内网IP','{\"sub\":false,\"functionAuthor\":\"ruoyi\",\"columns\":[{\"capJavaField\":\"Contentid\",\"usableColumn\":false,\"columnId\":15,\"isIncrement\":\"1\",\"increment\":true,\"insert\":true,\"dictType\":\"\",\"required\":false,\"superColumn\":false,\"updateBy\":\"\",\"isInsert\":\"1\",\"javaField\":\"contentid\",\"htmlType\":\"input\",\"edit\":false,\"query\":false,\"columnComment\":\"内容id\",\"sort\":1,\"list\":false,\"params\":{},\"javaType\":\"Long\",\"queryType\":\"EQ\",\"columnType\":\"bigint(20) unsigned zerofill\",\"createBy\":\"admin\",\"isPk\":\"1\",\"createTime\":1622017003000,\"tableId\":4,\"pk\":true,\"columnName\":\"contentid\"},{\"capJavaField\":\"SendOpenid\",\"usableColumn\":false,\"columnId\":16,\"isIncrement\":\"0\",\"increment\":false,\"insert\":true,\"isList\":\"1\",\"dictType\":\"\",\"required\":false,\"superColumn\":false,\"updateBy\":\"\",\"isInsert\":\"1\",\"javaField\":\"sendOpenid\",\"htmlType\":\"input\",\"edit\":true,\"query\":true,\"columnComment\":\"发送者id\",\"isQuery\":\"1\",\"sort\":2,\"list\":true,\"params\":{},\"javaType\":\"String\",\"queryType\":\"EQ\",\"columnType\":\"varchar(128)\",\"createBy\":\"admin\",\"isPk\":\"0\",\"createTime\":1622017003000,\"isEdit\":\"1\",\"tableId\":4,\"pk\":false,\"columnName\":\"send_openid\"},{\"capJavaField\":\"ReceiveOpenid\",\"usableColumn\":false,\"columnId\":17,\"isIncrement\":\"0\",\"increment\":false,\"insert\":true,\"isList\":\"1\",\"dictType\":\"\",\"required\":false,\"superColumn\":false,\"updateBy\":\"\",\"isInsert\":\"1\",\"javaField\":\"receiveOpenid\",\"htmlType\":\"input\",\"edit\":true,\"query\":true,\"columnComment\":\"接收者id\",\"isQuery\":\"1\",\"sort\":3,\"list\":true,\"params\":{},\"javaType\":\"String\",\"queryType\":\"EQ\",\"columnType\":\"varchar(128)\",\"createBy\":\"admin\",\"isPk\":\"0\",\"createTime\":1622017003000,\"isEdit\":\"1\",\"tableId\":4,\"pk\":false,\"columnName\":\"receive_openid\"},{\"capJavaField\":\"Sender\",\"usableColumn\":false,\"columnId\":18,\"isIncrement\":\"0\",\"increment\":false,\"insert\":true,\"isList\":\"1\",\"dictType\":\"\",\"required\":false,\"superColumn\":false,\"updateBy\":\"\",\"isInsert\":\"1\",\"javaField\":\"sender\",\"htmlType\":\"input\",\"edit\":true,\"query\":true,\"columnComment\":\"发送人\",\"isQuery\":\"1\",\"sort\":4,\"list\":true,\"params\":{},\"javaType\":\"String\",\"queryType\":\"EQ\"','{\"msg\":\"操作成功\",\"code\":200}',0,NULL,'2021-05-26 16:20:31'),
+(106,'代码生成',2,'com.ruoyi.generator.controller.GenController.editSave()','PUT',1,'admin',NULL,'/ry-miniapp/tool/gen','127.0.0.1','内网IP','{\"sub\":false,\"functionAuthor\":\"ruoyi\",\"columns\":[{\"capJavaField\":\"Session3rd\",\"usableColumn\":false,\"columnId\":22,\"isIncrement\":\"0\",\"increment\":false,\"insert\":true,\"dictType\":\"\",\"required\":false,\"superColumn\":false,\"updateBy\":\"\",\"isInsert\":\"1\",\"javaField\":\"session3rd\",\"htmlType\":\"input\",\"edit\":false,\"query\":false,\"columnComment\":\"服务器给的临时验证\",\"sort\":1,\"list\":false,\"params\":{},\"javaType\":\"String\",\"queryType\":\"EQ\",\"columnType\":\"varchar(255)\",\"createBy\":\"admin\",\"isPk\":\"1\",\"createTime\":1622017003000,\"tableId\":5,\"pk\":true,\"columnName\":\"session_3rd\"},{\"capJavaField\":\"Openid\",\"usableColumn\":false,\"columnId\":23,\"isIncrement\":\"0\",\"increment\":false,\"insert\":true,\"isList\":\"1\",\"dictType\":\"\",\"required\":false,\"superColumn\":false,\"updateBy\":\"\",\"isInsert\":\"1\",\"javaField\":\"openid\",\"htmlType\":\"input\",\"edit\":true,\"query\":true,\"columnComment\":\"微信给的id\",\"isQuery\":\"1\",\"sort\":2,\"list\":true,\"params\":{},\"javaType\":\"String\",\"queryType\":\"EQ\",\"columnType\":\"varchar(255)\",\"createBy\":\"admin\",\"isPk\":\"0\",\"createTime\":1622017003000,\"isEdit\":\"1\",\"tableId\":5,\"pk\":false,\"columnName\":\"openid\"},{\"capJavaField\":\"SessionKey\",\"usableColumn\":false,\"columnId\":24,\"isIncrement\":\"0\",\"increment\":false,\"insert\":true,\"isList\":\"1\",\"dictType\":\"\",\"required\":false,\"superColumn\":false,\"updateBy\":\"\",\"isInsert\":\"1\",\"javaField\":\"sessionKey\",\"htmlType\":\"input\",\"edit\":true,\"query\":true,\"columnComment\":\"微信给的会话key\",\"isQuery\":\"1\",\"sort\":3,\"list\":true,\"params\":{},\"javaType\":\"String\",\"queryType\":\"EQ\",\"columnType\":\"varchar(255)\",\"createBy\":\"admin\",\"isPk\":\"0\",\"createTime\":1622017003000,\"isEdit\":\"1\",\"tableId\":5,\"pk\":false,\"columnName\":\"session_key\"},{\"capJavaField\":\"CreateTime\",\"usableColumn\":false,\"columnId\":25,\"isIncrement\":\"0\",\"increment\":false,\"insert\":true,\"dictType\":\"\",\"required\":false,\"superColumn\":true,\"updateBy\":\"\",\"isInsert\":\"1\",\"javaField\":\"createTime\",\"htmlType\":\"datetime\",\"edit\":false,\"query\":false,\"columnComment\":\"创建时间\",\"sort\":4,\"list\":false,\"params\":{},\"javaType\":\"Date\",\"queryType\":\"EQ\",\"columnType\":\"timestamp\",\"createBy\"','{\"msg\":\"操作成功\",\"code\":200}',0,NULL,'2021-05-26 16:20:43'),
+(107,'代码生成',2,'com.ruoyi.generator.controller.GenController.editSave()','PUT',1,'admin',NULL,'/ry-miniapp/tool/gen','127.0.0.1','内网IP','{\"sub\":false,\"functionAuthor\":\"ruoyi\",\"columns\":[{\"capJavaField\":\"Chatid\",\"usableColumn\":false,\"columnId\":26,\"isIncrement\":\"0\",\"increment\":false,\"insert\":true,\"isList\":\"1\",\"dictType\":\"\",\"required\":false,\"superColumn\":false,\"updateBy\":\"\",\"isInsert\":\"1\",\"javaField\":\"chatid\",\"htmlType\":\"input\",\"edit\":true,\"query\":true,\"columnComment\":\"聊天id\",\"isQuery\":\"1\",\"sort\":1,\"list\":true,\"params\":{},\"javaType\":\"Long\",\"queryType\":\"EQ\",\"columnType\":\"bigint\",\"createBy\":\"admin\",\"isPk\":\"0\",\"createTime\":1622017003000,\"isEdit\":\"1\",\"tableId\":6,\"pk\":false,\"columnName\":\"chatid\"},{\"capJavaField\":\"LastContentid\",\"usableColumn\":false,\"columnId\":27,\"isIncrement\":\"0\",\"increment\":false,\"insert\":true,\"isList\":\"1\",\"dictType\":\"\",\"required\":false,\"superColumn\":false,\"updateBy\":\"\",\"isInsert\":\"1\",\"javaField\":\"lastContentid\",\"htmlType\":\"input\",\"edit\":true,\"query\":true,\"columnComment\":\"最近的聊天内容id\",\"isQuery\":\"1\",\"sort\":2,\"list\":true,\"params\":{},\"javaType\":\"Long\",\"queryType\":\"EQ\",\"columnType\":\"bigint\",\"createBy\":\"admin\",\"isPk\":\"0\",\"createTime\":1622017003000,\"isEdit\":\"1\",\"tableId\":6,\"pk\":false,\"columnName\":\"last_contentid\"}],\"businessName\":\"message\",\"moduleName\":\"system\",\"className\":\"MulthelpMessage\",\"tableName\":\"multhelp_message\",\"crud\":true,\"options\":\"{\\\"parentMenuId\\\":2000}\",\"genType\":\"0\",\"packageName\":\"com.ruoyi.system\",\"functionName\":\"c\",\"tree\":false,\"tableComment\":\"c\",\"params\":{\"parentMenuId\":2000},\"tplCategory\":\"crud\",\"parentMenuId\":\"2000\",\"tableId\":6,\"genPath\":\"/\"}','{\"msg\":\"操作成功\",\"code\":200}',0,NULL,'2021-05-26 16:20:52'),
+(108,'代码生成',2,'com.ruoyi.generator.controller.GenController.editSave()','PUT',1,'admin',NULL,'/ry-miniapp/tool/gen','127.0.0.1','内网IP','{\"sub\":false,\"functionAuthor\":\"ruoyi\",\"columns\":[{\"capJavaField\":\"Postid\",\"usableColumn\":false,\"columnId\":28,\"isIncrement\":\"1\",\"increment\":true,\"insert\":true,\"dictType\":\"\",\"required\":false,\"superColumn\":false,\"updateBy\":\"\",\"isInsert\":\"1\",\"javaField\":\"postid\",\"htmlType\":\"input\",\"edit\":false,\"query\":false,\"columnComment\":\"发布帮助id\",\"sort\":1,\"list\":false,\"params\":{},\"javaType\":\"Integer\",\"queryType\":\"EQ\",\"columnType\":\"bigint(10) unsigned zerofill\",\"createBy\":\"admin\",\"isPk\":\"1\",\"createTime\":1622017003000,\"tableId\":7,\"pk\":true,\"columnName\":\"postid\"},{\"capJavaField\":\"PublishOpenid\",\"usableColumn\":false,\"columnId\":29,\"isIncrement\":\"0\",\"increment\":false,\"insert\":true,\"isList\":\"1\",\"dictType\":\"\",\"required\":false,\"superColumn\":false,\"updateBy\":\"\",\"isInsert\":\"1\",\"javaField\":\"publishOpenid\",\"htmlType\":\"input\",\"edit\":true,\"query\":true,\"columnComment\":\"发布人id\",\"isQuery\":\"1\",\"sort\":2,\"list\":true,\"params\":{},\"javaType\":\"String\",\"queryType\":\"EQ\",\"columnType\":\"varchar(255)\",\"createBy\":\"admin\",\"isPk\":\"0\",\"createTime\":1622017003000,\"isEdit\":\"1\",\"tableId\":7,\"pk\":false,\"columnName\":\"publish_openid\"},{\"capJavaField\":\"ReceiveOpenid\",\"usableColumn\":false,\"columnId\":30,\"isIncrement\":\"0\",\"increment\":false,\"insert\":true,\"isList\":\"1\",\"dictType\":\"\",\"required\":false,\"superColumn\":false,\"updateBy\":\"\",\"isInsert\":\"1\",\"javaField\":\"receiveOpenid\",\"htmlType\":\"input\",\"edit\":true,\"query\":true,\"columnComment\":\"帮助人id\",\"isQuery\":\"1\",\"sort\":3,\"list\":true,\"params\":{},\"javaType\":\"String\",\"queryType\":\"EQ\",\"columnType\":\"varchar(255)\",\"createBy\":\"admin\",\"isPk\":\"0\",\"createTime\":1622017003000,\"isEdit\":\"1\",\"tableId\":7,\"pk\":false,\"columnName\":\"receive_openid\"},{\"capJavaField\":\"Tittle\",\"usableColumn\":false,\"columnId\":31,\"isIncrement\":\"0\",\"increment\":false,\"insert\":true,\"isList\":\"1\",\"dictType\":\"\",\"required\":false,\"superColumn\":false,\"updateBy\":\"\",\"isInsert\":\"1\",\"javaField\":\"tittle\",\"htmlType\":\"input\",\"edit\":true,\"query\":true,\"columnComment\":\"标题\",\"isQuery\":\"1\",\"sort\":4,\"list\":true,\"params\":{},\"javaType\":\"String\",\"queryType\":','{\"msg\":\"操作成功\",\"code\":200}',0,NULL,'2021-05-26 16:21:03'),
+(109,'代码生成',8,'com.ruoyi.generator.controller.GenController.batchGenCode()','GET',1,'admin',NULL,'/ry-miniapp/tool/gen/batchGenCode','127.0.0.1','内网IP','{}','null',0,NULL,'2021-05-26 16:21:06');
 
 /*Table structure for table `sys_post` */
 
