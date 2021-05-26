@@ -378,7 +378,7 @@ CREATE TABLE `qrtz_scheduler_state` (
 /*Data for the table `qrtz_scheduler_state` */
 
 insert  into `qrtz_scheduler_state`(`sched_name`,`instance_name`,`last_checkin_time`,`checkin_interval`) values 
-('RuoyiScheduler','msi1622016973818',1622017353025,15000);
+('RuoyiScheduler','msi1622016973818',1622017683060,15000);
 
 /*Table structure for table `qrtz_simple_triggers` */
 
