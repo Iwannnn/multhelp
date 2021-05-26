@@ -93,7 +93,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/common/download/resource**").anonymous().antMatchers("/swagger-ui.html").anonymous()
                 .antMatchers("/swagger-resources/**").anonymous().antMatchers("/webjars/**").anonymous()
                 .antMatchers("/*/api-docs").anonymous().antMatchers("/druid/**").anonymous().antMatchers("/wx/**")
-                .anonymous().antMatchers("/ry-miniapp/**").anonymous()
+                .permitAll().antMatchers("/ry-miniapp/**").permitAll()
                 // 除上面外的所有请求全部需要鉴权认证
                 .anyRequest().authenticated().and().headers().frameOptions().disable();
         httpSecurity.logout().logoutUrl("/logout").logoutSuccessHandler(logoutSuccessHandler);
