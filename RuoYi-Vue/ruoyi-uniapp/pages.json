@@ -57,10 +57,6 @@
         {
             "path": "pages/message/chat/chat",
             "style": {}
-        },
-        {
-            "path": "pages/test/test",
-            "style": {}
         }
     ],
     "tabBar": {
