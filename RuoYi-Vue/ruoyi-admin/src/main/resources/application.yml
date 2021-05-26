@@ -21,7 +21,7 @@ server:
     port: 8989
     servlet:
         # 应用的访问路径
-        context-path: /ry-miniapp
+        context-path: /
     tomcat:
         # tomcat的URI编码
         uri-encoding: UTF-8
