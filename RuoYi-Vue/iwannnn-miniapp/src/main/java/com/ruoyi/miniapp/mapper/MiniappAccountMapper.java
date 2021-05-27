@@ -15,7 +15,7 @@ public interface MiniappAccountMapper {
     void insertOpenid(@Param("openid") String openid);
 
     @Update("UPDATE `multhelp_account` SET ${updatedColumn} = #{updatedInfo} WHERE `openid` = #{openid};")
-    void updateProfile(@Param("updateColum") String updatedColumn, @Param("updateInfo") String updatedInfo,
+    void updateProfile(@Param("updatedColumn") String updatedColumn, @Param("updatedInfo") String updatedInfo,
             @Param("openid") String openid);
 
     @Select("SELECT * FROM `multhelp_account` WHERE `openid`= #{openid}")
