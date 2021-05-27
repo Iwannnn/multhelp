@@ -101,8 +101,11 @@ export default {
 					postid: that.postid
 				},
 				success: request_res => {
-					console.log(request_res.data);
-				}
+					uni.showToast({
+						icon:success,
+						title:'接单成功'
+					})
+				},
 			});
 		},
 		contact: function() {

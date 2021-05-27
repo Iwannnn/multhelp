@@ -25,7 +25,6 @@
 				</view>
 			</block>
 		</view>
-		<view> class="divLine-bottom"</view>
 		<view class="bottom">
 			<view class="weui-message-bar">
 				<view class="weui-message-bar__form">
@@ -103,7 +102,7 @@ export default {
 			var that = this;
 			this.chatSocket = uni.connectSocket({
 				url: app.globalData.socket + '/wx/chat/' + this.chatid,
-				success: () => {}
+				complete: () => {}
 			});
 			this.chatSocket.onOpen(
 				this.chatSocket.onMessage(function(res) {

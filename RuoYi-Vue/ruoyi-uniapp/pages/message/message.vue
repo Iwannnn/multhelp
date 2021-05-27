@@ -8,9 +8,9 @@
 			color-animation-timing-func="easeIn"
 		></navigation-bar>
 	</page-meta>
-	<view style="display:flex; flex-direction:column; min-height: 150px; padding: 10px; margin-bottom: 70px;">
+	<view style="display:flex; flex-direction:column; min-height: 300rpx; padding: 10px; margin-bottom: 150rpx;">
 		<!--pages/message/message.wxml-->
-		<block v-for="(item, index) in messages" :key="index">
+		<view v-for="(item, index) in messages" :key="index">
 			<navigator :url="'chat/chat?chatid=' + item.chatid" style="display: flex;">
 				<view class="avatar"><image class="avatar-size" :src="item.avatarUrl"></image></view>
 				<view class="message">
@@ -29,8 +29,8 @@
 					</view>
 				</view>
 			</navigator>
-			<view class="divLine"></view>
-		</block>
+			<view class="message-line"></view>
+		</view>
 	</view>
 </template>
 
@@ -56,7 +56,6 @@ export default {
 			nbTitle: '我的消息',
 			nbLoading: false,
 		});
-		app.globalData.messageSocket.close();
 		this.createWebSocket();
 	},
 	onShow: function() {
@@ -66,11 +65,11 @@ export default {
 	methods: {
 		createWebSocket: function() {
 			//进入message页面后，message websocket有message页面接管 为了setdata实时渲染成功
-			console.log(app.globalData.messageSocket);
+			console.log(app.globalData.messageSocket)
 			var that = this;
 			this.messageSocket = uni.connectSocket({
 				url: app.globalData.socket + '/wx/message/' + app.globalData.session_3rd,
-				success: () => {}
+				complete: () => {}
 			});
 			console.log(this.messageSocket);
 			this.messageSocket.onOpen(
@@ -101,11 +100,18 @@ export default {
 	border-radius: 10rpx;
 }
 
+
 .message {
 	margin: 20rpx 20rpx -100rpx 20rpx;
 	display: flex;
 }
 
+.message-line {
+	background: #e0e3da;
+	margin-top: 110rpx;
+	width: 94%;
+	height: 1rpx;
+}
 	
 .unread-num{
 	display: block;    

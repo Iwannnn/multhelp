@@ -22,9 +22,9 @@ export default {
 							that.$options.globalData.session_3rd = request_res.data;
 							that.$options.globalData.messageSocket = uni.connectSocket({
 								url: that.$options.globalData.socket + '/wx/message/' + that.$options.globalData.session_3rd,
-								success: () => {}
+								complete: () => {
+								}
 							});
-							// console.log(that.$options.globalData.messageSocket);
 							that.$options.globalData.messageSocket.onOpen(
 								that.$options.globalData.messageSocket.onMessage(function(res) {
 									var messages = JSON.parse(res.data);
@@ -47,7 +47,7 @@ export default {
 		checkSession_3rd: function() {
 			var that = this;
 			uni.request({
-				url: getApp().globalData.domain + 'wx/session/checkSession_3rd',
+				url: getApp().globalData.domain + '/wx/session/checkSession_3rd',
 				data: {
 					session_3rd: getApp().globalData.session_3rd
 				},
@@ -71,8 +71,8 @@ export default {
 			});
 		},
 		userInfo: null,
-		domain: 'http://iwannnn.cn/prod-api/',
-		socket: 'http://iwannnn.cn/prod-api/',
+		domain: 'http://localhost:8989',
+		socket: 'ws://localhost:8989',
 		session_3rd: '',
 		messageSocket: null,
 		messages: [],
