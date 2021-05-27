@@ -56,6 +56,7 @@ export default {
 			nbTitle: '我的消息',
 			nbLoading: false,
 		});
+		app.globalData.messageSocket.close()
 		this.createWebSocket();
 	},
 	onShow: function() {

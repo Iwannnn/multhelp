@@ -71,8 +71,8 @@ export default {
 			});
 		},
 		userInfo: null,
-		domain: 'http://localhost:8989',
-		socket: 'ws://localhost:8989',
+		domain: 'https://iwannnn.cn/prod-api',
+		socket: 'wss://iwannnn.cn/wss',
 		session_3rd: '',
 		messageSocket: null,
 		messages: [],
