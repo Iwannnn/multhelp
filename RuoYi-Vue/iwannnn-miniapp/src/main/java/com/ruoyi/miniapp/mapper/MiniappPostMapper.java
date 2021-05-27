@@ -17,11 +17,11 @@ public interface MiniappPostMapper {
     @Insert("INSERT INTO `multhelp_post` (`postid`) VALUES (NULL); ")
     public void createLine();
 
-    @Update("UPDATE `post` SET ${updatedColumn} = #{updatedInfo} WHERE `multhelp_postid` = #{postid};")
+    @Update("UPDATE `multhelp_post` SET ${updatedColumn} = #{updatedInfo} WHERE `postid` = #{postid};")
     public void updatePost(@Param("updatedColumn") String updatedColumn, @Param("updatedInfo") String updatedInfo,
             @Param("postid") String postid);
 
-    @Update("UPDATE `post` SET `is_value` = #{isValue} WHERE `multhelp_postid` = #{postid};")
+    @Update("UPDATE `multhelp_post` SET `is_value` = #{isValue} WHERE `postid` = #{postid};")
     public void updateValue(@Param("isValue") Boolean isValue, @Param("postid") String postid);
 
     @Select("SELECT LAST_INSERT_ID();") // 获取最近一次自增的主键
