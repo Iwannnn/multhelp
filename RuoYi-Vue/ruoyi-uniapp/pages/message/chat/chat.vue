@@ -108,8 +108,7 @@ export default {
 				this.chatSocket.onMessage(function(res) {
 					console.log(res.data);
 					var content = JSON.parse(res.data);
-
-					if (content.sender != this.identity) {
+					if (content.sender != that.identity) {
 						content.isRead = true;
 						that.isRead(content.contentid);
 					}
@@ -121,22 +120,6 @@ export default {
 					that.srcollTo();
 				})
 			);
-
-			// this.chatSocket.onSocketMessage(res => {
-			// 	console.log(res.data);
-			// 	var content = JSON.parse(res.data);
-
-			// 	if (content.sender != this.identity) {
-			// 		content.isRead = true;
-			// 		this.isRead(content.contentid);
-			// 	}
-
-			// 	that.contents = that.contents.concat(content);
-			// 	that.setData({
-			// 		contents: that.contents
-			// 	});
-			// 	that.srcollTo();
-			// });
 		},
 		getAccount: function() {
 			var chatid = this.chatid;
@@ -184,6 +167,8 @@ export default {
 						otherProfile: request_res.data[1],
 						nbTitle: request_res.data[1].nickName,
 					});
+					console.log(myProfile)
+					console.log(otherProfile)
 				}
 			});
 		},
@@ -197,6 +182,7 @@ export default {
 					chatid: chatid
 				},
 				success: request_res => {
+					console.log(request_res)
 					that.setData({
 						myProfile: request_res.data[0],
 						otherProfile: request_res.data[1],
@@ -257,12 +243,12 @@ export default {
 				success: request_res => {
 					console.log(request_res.data);
 					var contents = request_res.data;
-
+					console.log(that.identity)
 					for (var i = 0; i < contents.length; i++) {
 						if (contents[i].sender != that.identity) {
+							console.log(contents[i].contentid)
 							contents[i].isRead = true;
 							this.isRead(contents[i].contentid);
-							console.log('read');
 						}
 					}
 
