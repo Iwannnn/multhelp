@@ -3,6 +3,8 @@ package com.ruoyi.miniapp.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import lombok.extern.slf4j.Slf4j;
+
 import com.ruoyi.miniapp.domain.MiniappAccount;
 import com.ruoyi.miniapp.domain.MiniappMessage;
 import com.ruoyi.miniapp.mapper.MiniappChatAndContentMapper;
@@ -13,6 +15,7 @@ import com.ruoyi.miniapp.domain.MiniappChatAndContent;
 import com.ruoyi.miniapp.domain.MiniappContent;
 import com.ruoyi.miniapp.service.IMiniappMessageService;
 
+@Slf4j
 @Service
 public class MiniappMessageServiceImpl implements IMiniappMessageService {
 
@@ -54,10 +57,10 @@ public class MiniappMessageServiceImpl implements IMiniappMessageService {
             otherOpenid = inviteeOpenid;
         else
             otherOpenid = initiatoeOpenid;
-        System.out.println("initiator:" + initiatoeOpenid);
-        System.out.println("invitee:" + inviteeOpenid);
-        System.out.println("myOpenid:" + myOpenid);
-        System.out.println("otherOpenid:" + otherOpenid);
+        log.info("initiator:  " + initiatoeOpenid);
+        log.info("invitee:  " + inviteeOpenid);
+        log.info("myOpenid:  " + myOpenid);
+        log.info("otherOpenid:  " + otherOpenid);
         MiniappAccount otherAccount = accountServiceImpl.getUserProfileByOpenid(otherOpenid);
         MiniappContent lastContent = contentMapper.getContent(cc.getContentid());
         message.setChatid(chatid);

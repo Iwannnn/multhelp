@@ -1,5 +1,6 @@
 package com.ruoyi.miniapp.service.impl;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,6 +15,7 @@ import com.ruoyi.miniapp.domain.MiniappChat;
 import com.ruoyi.miniapp.domain.MiniappChatAndContent;
 import com.ruoyi.miniapp.domain.MiniappContent;
 import com.ruoyi.miniapp.service.IMiniappChatService;
+import com.ruoyi.miniapp.websocket.MessageWebSocket;
 
 @Service
 public class MiniappChatServiceImpl implements IMiniappChatService {
@@ -33,6 +35,9 @@ public class MiniappChatServiceImpl implements IMiniappChatService {
     @Autowired
     MiniappSessionServiceImpl sessionServiceImpl;
 
+    @Autowired
+    MiniappContentServiceImpl contentServiceImpl;
+
     @Override
     public String createChat(String session_3rd, String postid) {
         String initiator_openid = sessionServiceImpl.getOpenid(session_3rd);
@@ -47,6 +52,13 @@ public class MiniappChatServiceImpl implements IMiniappChatService {
 
     @Override
     public List<MiniappContent> getPrevContents(String chatid) {
+        List<String> openids = contentServiceImpl.getOpenids(chatid);
+        try {
+            MessageWebSocket.sendData(openids.get(0));
+            MessageWebSocket.sendData(openids.get(1));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         List<MiniappContent> res = new ArrayList<MiniappContent>();
         List<MiniappChatAndContent> ccs = ccMapper.getMessages(chatid);
         for (MiniappChatAndContent cc : ccs) {
@@ -64,7 +76,6 @@ public class MiniappChatServiceImpl implements IMiniappChatService {
 
     @Override
     public List<String> getChatids(String openid) {
-        System.out.println(openid);
         return chatMapper.getChats(openid);
     }
 
