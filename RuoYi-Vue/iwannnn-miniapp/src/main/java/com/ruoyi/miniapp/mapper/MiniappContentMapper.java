@@ -26,5 +26,5 @@ public interface MiniappContentMapper {
 
     @Select("SELECT COUNT(*) FROM `multhelp_content` WHERE `send_openid`= #{otherOpenid}"
             + " AND `receive_openid` = #{myOpenid} AND `is_read`=FALSE")
-    String countUnread(@Param("muOpenid") String myOpenid, @Param("otherOpenid") String otherOpenid);
+    String countUnread(@Param("myOpenid") String myOpenid, @Param("otherOpenid") String otherOpenid);
 }

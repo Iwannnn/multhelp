@@ -4,5 +4,5 @@ import com.ruoyi.miniapp.domain.MiniappMessage;
 
 public interface IMiniappMessageService {
 
-    MiniappMessage getLastMessage(String session_3rd, String chatid);
+    MiniappMessage getLastMessage(String openid, String chatid);
 }

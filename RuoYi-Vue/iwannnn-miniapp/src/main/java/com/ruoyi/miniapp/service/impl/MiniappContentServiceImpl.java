@@ -5,6 +5,10 @@ import org.springframework.stereotype.Service;
 
 import com.ruoyi.miniapp.mapper.MiniappChatMapper;
 import com.ruoyi.miniapp.mapper.MiniappContentMapper;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import com.ruoyi.miniapp.domain.MiniappChat;
 import com.ruoyi.miniapp.domain.MiniappContent;
 import com.ruoyi.miniapp.mapper.MiniappChatAndContentMapper;
@@ -39,6 +43,15 @@ public class MiniappContentServiceImpl implements IMiniappContentService {
         ccMapper.insertMessage(chatid, contentid);// 绑定
         // messageMapper.updataMessage(chatid, contentid);// 更新最新contentid
         return contentBack;
+    }
+
+    @Override
+    public List<String> getOpenids(String chatid) {
+        List<String> res = new ArrayList<String>();
+        MiniappChat chat = chatMapper.getChat(chatid);
+        res.add(chat.getInitiator_openid());
+        res.add(chat.getInvitee_openid());
+        return res;
     }
 
 }

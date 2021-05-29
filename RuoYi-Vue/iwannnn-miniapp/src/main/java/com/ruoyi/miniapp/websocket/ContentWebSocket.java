@@ -1,6 +1,7 @@
 package com.ruoyi.miniapp.websocket;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.websocket.OnClose;
 import javax.websocket.OnMessage;
@@ -49,10 +50,12 @@ public class ContentWebSocket {
         String[] messages = message.split(" ", 2);
         String session_3rd = messages[0];
         String content = messages[1];
+        List<String> openids = contentServiceImpl.getOpenids(chatid);
         MiniappContent contentBack = contentServiceImpl.createContent(chatid, session_3rd, content);
-        MessageWebSocket.sendData(session_3rd);
         sendMessage(contentBack);
-        System.out.println(contentBack);
+        MessageWebSocket.sendData(openids.get(0));
+        MessageWebSocket.sendData(openids.get(1));
+
     }
 
     public void sendMessage(MiniappContent content) throws IOException {

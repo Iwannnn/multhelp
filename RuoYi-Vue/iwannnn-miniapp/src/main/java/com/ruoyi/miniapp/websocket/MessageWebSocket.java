@@ -17,10 +17,14 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import lombok.extern.slf4j.Slf4j;
+
 import com.ruoyi.miniapp.domain.MiniappMessage;
 import com.ruoyi.miniapp.service.impl.MiniappChatServiceImpl;
 import com.ruoyi.miniapp.service.impl.MiniappMessageServiceImpl;
+import com.ruoyi.miniapp.service.impl.MiniappSessionServiceImpl;
 
+@Slf4j
 @ServerEndpoint("/wx/message/{session_3rd}")
 @Component
 public class MessageWebSocket {
@@ -37,8 +41,15 @@ public class MessageWebSocket {
     private static MiniappChatServiceImpl chatServiceImpl;// 由于websocket的冲突 绑定方式要改变 不然会有null的异常
 
     @Autowired
-    public void setCharServiceImpl(MiniappChatServiceImpl chatServiceImpl) {
+    public void setChatServiceImpl(MiniappChatServiceImpl chatServiceImpl) {
         MessageWebSocket.chatServiceImpl = chatServiceImpl;
+    }
+
+    private static MiniappSessionServiceImpl sessionServiceImpl;
+
+    @Autowired
+    public void setSessionServiceImpl(MiniappSessionServiceImpl sessionServiceImpl) {
+        MessageWebSocket.sessionServiceImpl = sessionServiceImpl;
     }
 
     private static MiniappMessageServiceImpl messageServiceImpl;// 由于websocket的冲突 绑定方式要改变 不然会有null的异常
@@ -52,45 +63,50 @@ public class MessageWebSocket {
     public void onOpen(@PathParam("session_3rd") String session_3rd, Session session) throws IOException {
         // String session_3rd_local = session_3rd;
         // Session sessionLocal = session;
-        connections.put(session_3rd, session);
+        String openid = sessionServiceImpl.getOpenid(session_3rd);
+
+        connections.put(openid, session);
         // webSocketSet.add(this);
-        System.out.println("new message websocket " + session);
-        sendData(session_3rd);
+        log.info("open message websocket ");
+        log.info("openid:" + openid);
+        sendData(openid);
     }
 
     @OnClose
     public void onClose(@PathParam("session_3rd") String session_3rd) {
-        System.out.println(session_3rd);
-        connections.remove(session_3rd);
+        String openid = sessionServiceImpl.getOpenid(session_3rd);
+        connections.remove(openid);
         // webSocketSet.remove(this);
-        System.out.println("close messageWebScoket");
+        log.info("close message webscoket");
     }
 
     @OnMessage
     public void handleMessage(Session session, String message) throws IOException {
     }
 
-    public static void sendData(String session_3rd) throws IOException {
-        Session session = connections.get(session_3rd);
+    public static void sendData(String openid) throws IOException {
+        Session session = connections.get(openid);
         if (session != null)
-            sendMessages(session_3rd, session);
+            sendMessages(openid, session);
     }
 
-    public static List<String> getChatids(String session_3rd) {
-        return chatServiceImpl.getChatids(session_3rd);
+    public static List<String> getChatids(String openid) {
+        System.out.println(openid);
+        System.out.println(chatServiceImpl.getChatids(openid));
+        return chatServiceImpl.getChatids(openid);
     }
 
-    public static List<MiniappMessage> getMessages(String session_3rd, List<String> chatids) {
+    public static List<MiniappMessage> getMessages(String openid, List<String> chatids) {
         List<MiniappMessage> res = new ArrayList<MiniappMessage>();
         for (int i = 0; i < chatids.size(); i++) {
-            res.add(messageServiceImpl.getLastMessage(session_3rd, chatids.get(i)));
+            res.add(messageServiceImpl.getLastMessage(openid, chatids.get(i)));
         }
         return res;
     }
 
-    public static void sendMessages(String session_3rd, Session session) throws IOException {
-        List<String> chatids = getChatids(session_3rd);
-        List<MiniappMessage> messages = getMessages(session_3rd, chatids);
+    public static void sendMessages(String openid, Session session) throws IOException {
+        List<String> chatids = getChatids(openid);
+        List<MiniappMessage> messages = getMessages(openid, chatids);
         ObjectMapper objectMapper = new ObjectMapper();
         session.getAsyncRemote().sendText(objectMapper.writeValueAsString(messages));
     }

@@ -73,9 +73,9 @@ public class MiniappAccountServiceImpl implements IMiniappAccountService {
                 invitee_openid = chat.getInvitee_openid();
         res.add(myAccount);
         if (my_openid.equals(initiator_openid))
-            res.add(getUserProfileByOpenid(initiator_openid));
-        else
             res.add(getUserProfileByOpenid(invitee_openid));
+        else
+            res.add(getUserProfileByOpenid(initiator_openid));
         return res;
     }
 

@@ -42,13 +42,22 @@ public class MiniappMessageServiceImpl implements IMiniappMessageService {
     // }
 
     @Override
-    public MiniappMessage getLastMessage(String session_3rd, String chatid) {
+    public MiniappMessage getLastMessage(String openid, String chatid) {
         MiniappMessage message = new MiniappMessage();
         MiniappChatAndContent cc = ccMapper.getLast(chatid);
         MiniappChat chat = chatMapper.getChat(chatid);
-        String myOpenid = sessionServiceImpl.getOpenid(session_3rd);
-        String otherOpenid = (myOpenid.equals(chat.getInitiator_openid())) ? chat.getInitiator_openid()
-                : chat.getInvitee_openid();
+        String initiatoeOpenid = chat.getInitiator_openid();
+        String inviteeOpenid = chat.getInvitee_openid();
+        String myOpenid = openid;
+        String otherOpenid;
+        if (myOpenid.equals(initiatoeOpenid))
+            otherOpenid = inviteeOpenid;
+        else
+            otherOpenid = initiatoeOpenid;
+        System.out.println("initiator:" + initiatoeOpenid);
+        System.out.println("invitee:" + inviteeOpenid);
+        System.out.println("myOpenid:" + myOpenid);
+        System.out.println("otherOpenid:" + otherOpenid);
         MiniappAccount otherAccount = accountServiceImpl.getUserProfileByOpenid(otherOpenid);
         MiniappContent lastContent = contentMapper.getContent(cc.getContentid());
         message.setChatid(chatid);

@@ -63,8 +63,7 @@ public class MiniappChatServiceImpl implements IMiniappChatService {
     }
 
     @Override
-    public List<String> getChatids(String session_3rd) {
-        String openid = sessionServiceImpl.getOpenid(session_3rd);
+    public List<String> getChatids(String openid) {
         System.out.println(openid);
         return chatMapper.getChats(openid);
     }
