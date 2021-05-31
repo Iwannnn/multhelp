@@ -2,6 +2,7 @@ package com.ruoyi.miniapp.websocket;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -101,6 +102,7 @@ public class MessageWebSocket {
         for (int i = 0; i < chatids.size(); i++) {
             res.add(messageServiceImpl.getLastMessage(openid, chatids.get(i)));
         }
+        res.sort(Comparator.comparing(MiniappMessage::getLastContentTime).reversed());
         return res;
     }
 
