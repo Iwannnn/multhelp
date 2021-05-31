@@ -18,7 +18,7 @@
 						<view style="color: #000000;font-size: 40rpx;">{{ item.nickName }}</view>
 						<view style="color: #CCCCCC;font-size: 30rpx;">{{ item.lastContent }}</view>
 					</view>
-					<view style="margin-left: 150rpx;">
+					<view style="position: absolute;right: 80rpx;">
 						<view style="color: #CCCCCC;font-size: 25rpx;">{{ item.lastContentTime }}</view>
 						<text>\n</text>
 						<view class="unread-circle" v-if="item.unread != '0'">
@@ -56,7 +56,7 @@ export default {
 			nbTitle: '我的消息',
 			nbLoading: false,
 		});
-		app.globalData.messageSocket.close()
+		// app.globalData.messageSocket.close()
 		this.createWebSocket();
 	},
 	onShow: function() {

@@ -25,7 +25,6 @@
 				</view>
 			</block>
 		</view>
-		<view class="divLine-bottom"></view>
 		<view class="bottom">
 			<view class="weui-message-bar">
 				<view class="weui-message-bar__form">
@@ -107,6 +106,7 @@ export default {
 			});
 			this.chatSocket.onOpen(
 				this.chatSocket.onMessage(function(res) {
+					console.log(res.data);
 					var content = JSON.parse(res.data);
 					if (content.sender != that.identity) {
 						content.isRead = true;
@@ -167,6 +167,8 @@ export default {
 						otherProfile: request_res.data[1],
 						nbTitle: request_res.data[1].nickName,
 					});
+					console.log(myProfile)
+					console.log(otherProfile)
 				}
 			});
 		},
@@ -180,6 +182,7 @@ export default {
 					chatid: chatid
 				},
 				success: request_res => {
+					console.log(request_res)
 					that.setData({
 						myProfile: request_res.data[0],
 						otherProfile: request_res.data[1],
@@ -238,13 +241,17 @@ export default {
 					chatid: that.chatid
 				},
 				success: request_res => {
+					console.log(request_res.data);
 					var contents = request_res.data;
+					console.log(that.identity)
 					for (var i = 0; i < contents.length; i++) {
 						if (contents[i].sender != that.identity) {
+							console.log(contents[i].contentid)
 							contents[i].isRead = true;
 							this.isRead(contents[i].contentid);
 						}
 					}
+
 					that.setData({
 						contents: contents
 					});
@@ -275,6 +282,15 @@ export default {
 </script>
 <style>
 /* pages/message/chat/chat.wxss */
+
+
+.divbottom {
+	background: #f0f0f0;
+	width: 100%;
+	height: 140rpx;
+	z-index: -999999;
+	color: #f9f9f9;
+}
 
 .weui-message-bar {
 	position: relative;
